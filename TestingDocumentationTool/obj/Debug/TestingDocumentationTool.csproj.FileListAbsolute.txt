@@ -1,0 +1,9 @@
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\bin\Debug\TestingDocumentationTool.exe.config
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\bin\Debug\TestingDocumentationTool.exe
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\bin\Debug\TestingDocumentationTool.pdb
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.csprojAssemblyReference.cache
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.Properties.Resources.resources
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.csproj.GenerateResource.cache
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.exe
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.pdb
+C:\Users\SantiagoValle\source\repos\TestingDocumentationTool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.MainWindow.resources
