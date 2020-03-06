@@ -82,8 +82,6 @@ namespace TestingDocumentationTool
 
         private void ButtonTestCases_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(TestPlan.TestCases.Count);
-
             PanelSetupTestPlan.Hide();
             PanelSetupTestPlanContinuation.Hide();
             PanelTestCases.Show();
@@ -94,7 +92,11 @@ namespace TestingDocumentationTool
 
         private void ButtonResults_Click(object sender, EventArgs e)
         {
+            if (CurrentPanel != null)
+                CurrentPanel.Hide();
 
+            PanelResults.Show();
+            CurrentPanel = PanelResults;
         }
 
         private void ButtonSummary_Click(object sender, EventArgs e)
@@ -103,6 +105,11 @@ namespace TestingDocumentationTool
         }
 
         private void ButtonDownloadXLS_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonGenerateHtmlFile_Click(object sender, EventArgs e)
         {
 
         }
@@ -159,13 +166,15 @@ namespace TestingDocumentationTool
             ButtonTestCases.ForeColor = Color.White;
             ButtonResults.ForeColor = Color.White;
             ButtonSummary.ForeColor = Color.White;
-
             ButtonDownloadXLS.ForeColor = Color.White;
+            ButtonGenerateHtmlFile.ForeColor = Color.White;
+
             ButtonSetupTestPlan.Image = Image.FromFile("..\\..\\..\\static\\setupDarkMode.png");
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\testDarkMode.png");
             ButtonResults.Image = Image.FromFile("..\\..\\..\\static\\resultsDarkMode.png");
             ButtonSummary.Image = Image.FromFile("..\\..\\..\\static\\summaryDarkMode.png");
             ButtonDownloadXLS.Image = Image.FromFile("..\\..\\..\\static\\downloadXlsDarkMode.png");
+            ButtonGenerateHtmlFile.Image = Image.FromFile("..\\..\\..\\static\\generateHtmlFileDarkMode.png");
 
             ButtonClose.Image = Image.FromFile("..\\..\\..\\static\\closeWDarkMode.png");
             ButtonMinimize.Image = Image.FromFile("..\\..\\..\\static\\minimizeDarkMode.png");
@@ -210,6 +219,24 @@ namespace TestingDocumentationTool
             ButtonTestCasesDetailedExit.ForeColor = Color.White;
             ButtonTestCasesDetailedExit.BackColor = Color.FromArgb(40, 40, 40);
 
+            // Test cases panel detailed view
+            LabelSelectTestCase.ForeColor = Color.White;
+            ButtonTestCasesDetailedViewExit.BackColor = Color.FromArgb(40, 40, 40);
+            ButtonTestCasesDetailedViewExit.ForeColor = Color.White;
+            ButtonTestCasesDetailedViewSave.BackColor = Color.FromArgb(40, 40, 40);
+            ButtonTestCasesDetailedViewSave.ForeColor = Color.White;
+            ButtonTestCasesDetailedViewRemove.BackColor = Color.FromArgb(40, 40, 40);
+            ButtonTestCasesDetailedViewRemove.ForeColor = Color.White;
+            LabelTestCaseDetailedViewID.ForeColor = Color.White;
+            LabelTestCaseDetailedViewTag.ForeColor = Color.White;
+            LabelTestCaseDetailedViewDescription.ForeColor = Color.White;
+            LabelTestCaseDetailedViewSteps.ForeColor = Color.White;
+            LabelTestCaseDetailedViewExpectedBehavior.ForeColor = Color.White;
+            LabelTestCaseDetailedViewScenario.ForeColor = Color.White;
+            LabelTestCaseDetailedViewConditions.ForeColor = Color.White;
+            /// ALL TEXTBOX COULD BE CHANGED
+
+
             Refresh();
         }
 
@@ -223,12 +250,14 @@ namespace TestingDocumentationTool
             ButtonResults.ForeColor = Color.Black;
             ButtonSummary.ForeColor = Color.Black;
             ButtonDownloadXLS.ForeColor = Color.Black;
+            ButtonGenerateHtmlFile.ForeColor = Color.Black;
 
             ButtonSetupTestPlan.Image = Image.FromFile("..\\..\\..\\static\\setup.png");
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\test.png");
             ButtonResults.Image = Image.FromFile("..\\..\\..\\static\\results.png");
             ButtonSummary.Image = Image.FromFile("..\\..\\..\\static\\summary.png");
             ButtonDownloadXLS.Image = Image.FromFile("..\\..\\..\\static\\downloadXls.png");
+            ButtonGenerateHtmlFile.Image = Image.FromFile("..\\..\\..\\static\\generateHtmlFile.png");
 
             ButtonClose.Image = Image.FromFile("..\\..\\..\\static\\closeW.png");
             ButtonMinimize.Image = Image.FromFile("..\\..\\..\\static\\minimize.png");
@@ -272,6 +301,23 @@ namespace TestingDocumentationTool
             ButtonTestCasesSave.BackColor = Color.White;
             ButtonTestCasesDetailedExit.ForeColor = Color.Black;
             ButtonTestCasesDetailedExit.BackColor = Color.White;
+
+            // Test cases panel detailed view
+            LabelSelectTestCase.ForeColor = Color.Black;
+            ButtonTestCasesDetailedViewExit.BackColor = Color.White;
+            ButtonTestCasesDetailedViewExit.ForeColor = Color.Black;
+            ButtonTestCasesDetailedViewSave.BackColor = Color.White;
+            ButtonTestCasesDetailedViewSave.ForeColor = Color.Black;
+            ButtonTestCasesDetailedViewRemove.BackColor = Color.White;
+            ButtonTestCasesDetailedViewRemove.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewID.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewTag.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewDescription.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewSteps.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewExpectedBehavior.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewScenario.ForeColor = Color.Black;
+            LabelTestCaseDetailedViewConditions.ForeColor = Color.Black;
+            /// ALL TEXTBOX COULD BE CHANGED
 
             Refresh();
         }
@@ -355,16 +401,32 @@ namespace TestingDocumentationTool
 
         private void ButtonTestCasesRemove_Click(object sender, EventArgs e)
         {
-
+            ButtonTestCasesDetailedView_Click(sender, e);
         }
 
         private void ButtonTestCasesDetailedView_Click(object sender, EventArgs e)
         {
+            CurrentPanel.Hide();
+            CurrentPanel = PanelTestCasesDetailedView;
+            CurrentPanel.Show();
+            CurrentPanel.Refresh();
 
+            ComboBoxSelectTestCase.BeginUpdate();
+            ComboBoxSelectTestCase.DataSource = TestPlan.TestCases;
+        }
+        private void ButtonTestCasesDetailedExit_Click(object sender, EventArgs e)
+        {
+            ButtonColorAnimation(ButtonTestCasesDetailedExit, Color.PaleVioletRed);
+
+            CurrentPanel.Hide();
+            CurrentPanel.Refresh();
+            CurrentPanel = null;
         }
 
         private void FillDataGridViewTestCases()
         {
+            DataGridViewTestCases.Rows.Clear();
+
             if (TestPlan.GetTestCases() != null && TestPlan.GetTestCases().Count > 0)
             {
                 TestCase tc;
@@ -372,10 +434,58 @@ namespace TestingDocumentationTool
                 for (int i = DataGridViewTestCases.Rows.Count; i < TestPlan.TestCases.Count; ++i)
                 {
                     tc = TestPlan.GetTestCases()[i];
-                    DataGridViewTestCases.Rows.Add(tc.TestArea, tc.Type, tc.Component, tc.ID, tc.TestScenario, tc.Tag, tc.PreConditions, tc.Steps, tc.ExpectedBehaviour);
+                    DataGridViewTestCases.Rows.Add(tc.TestArea, tc.Type, tc.Component, tc.ID, tc.TestScenario, tc.Description,(object)tc.Tag, tc.PreConditions, tc.Steps, tc.ExpectedBehaviour);
                 }
-            
+                
             }       
+        }
+
+        // Test cases detailed view
+        private void ComboBoxSelectTestCase_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TestCase tc = (TestCase)ComboBoxSelectTestCase.SelectedItem;
+            TextBoxTestCasesDetailedViewID.Text = tc.ID;
+            ComboBoxTestCasesDetailedViewTag.Text = tc.Tag;
+            TextBoxTestCasesDetailedViewDescription.Text = tc.Description;
+            TextBoxTestCasesDetailedViewSteps.Text = tc.Steps;
+            TextBoxTestCasesDetailedViewBehavior.Text = tc.ExpectedBehaviour;
+            TextBoxTestCasesDetailedViewScenario.Text = tc.TestScenario;
+            TextBoxTestCasesDetailedViewConditions.Text = tc.PreConditions;
+        }
+
+        private void ButtonTestCasesDetailedViewExit_Click(object sender, EventArgs e)
+        {
+            CurrentPanel.Hide();
+            CurrentPanel = PanelTestCases;
+            PanelTestCases.Show();
+            CurrentPanel.Refresh();
+        }
+
+        private void ButtonTestCasesDetailedViewRemove_Click(object sender, EventArgs e)
+        {
+            if (ComboBoxSelectTestCase.SelectedItem != null)
+            {
+                TestPlan.RemoveTestCase(ComboBoxSelectTestCase.SelectedIndex);
+                FillDataGridViewTestCases();
+                ButtonColorAnimation(ButtonTestCasesDetailedViewRemove, Color.PaleVioletRed);
+            }
+        }
+
+        private void ButtonTestCasesDetailedViewSave_Click(object sender, EventArgs e)
+        {
+            if (ComboBoxSelectTestCase.SelectedItem != null)
+            {
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].ID = TextBoxTestCasesDetailedViewID.Text;
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].Tag = (string)ComboBoxTestCasesDetailedViewTag.SelectedItem;
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].Description = TextBoxTestCasesDetailedViewDescription.Text;
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].Steps = TextBoxTestCasesDetailedViewSteps.Text;
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].ExpectedBehaviour = TextBoxTestCasesDetailedViewBehavior.Text;
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].TestScenario = TextBoxTestCasesDetailedViewScenario.Text;
+                TestPlan.TestCases[ComboBoxSelectTestCase.SelectedIndex].PreConditions = TextBoxTestCasesDetailedViewConditions.Text;
+                FillDataGridViewTestCases();
+                ButtonColorAnimation(ButtonTestCasesDetailedViewSave, Color.LightGreen);
+            }
+            
         }
 
         // Extra Functionality ->Animations<-
@@ -386,14 +496,6 @@ namespace TestingDocumentationTool
             CurrentPanel.Refresh();
             Thread.Sleep(500);
             button.BackColor = lastColor;
-        }
-
-        private void ButtonTestCasesDetailedExit_Click(object sender, EventArgs e)
-        {
-            ButtonColorAnimation(ButtonTestCasesDetailedExit, Color.PaleVioletRed);
-
-            CurrentPanel.Hide();
-            CurrentPanel = null;
         }
     }
 }

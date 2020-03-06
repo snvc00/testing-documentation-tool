@@ -27,6 +27,11 @@ namespace TestingDocumentationTool
         {
             return TestCases.AsReadOnly();
         }
+
+        public void RemoveTestCase(int _TestCaseIndex)
+        {
+            TestCases.RemoveAt(_TestCaseIndex);
+        }
     }
 
     class TestCase
@@ -75,7 +80,22 @@ namespace TestingDocumentationTool
 
         public void Clean()
         {
+            this.TestArea = "";
+            this.Type = "";
+            this.Component = "";
+            this.ID = "";
+            this.TestScenario = "";
+            this.Description = "";
+            this.Tag = "";
+            this.PreConditions = "";
+            this.Steps = "";
+            this.ExpectedBehaviour = "";
+            this.Notes = "";
+        }
 
+        public override string ToString()
+        {
+            return this.ID;
         }
     }
 }
