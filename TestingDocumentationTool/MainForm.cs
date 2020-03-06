@@ -8,17 +8,49 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Threading;
 
 namespace TestingDocumentationTool
 {
     public partial class MainWindow : Form
     {
         string AvailableLightMode;
+        Panel CurrentPanel;
+        TestPlan TestPlan;
+
+        /* Login
+           Home
+           Keyword
+           Test Cases
+           Test Suites
+           Imported Scripts
+           Collection
+           Parameters
+           Templates
+           Profiles
+           Commands
+           Robot Framework
+           Products
+           Libraries
+           Phases
+           Users
+           Information */
+
+        /* UX
+           Functionality
+           Performance
+           Integration
+           Usability
+           Security
+           User Acceptance */
+
+
         public MainWindow()
         {
             InitializeComponent();
             AvailableLightMode = "DARK MODE";
             LabelWindowLightMode.Text = AvailableLightMode;
+            TestPlan = new TestPlan();
         }
 
         // Window Control Buttons
@@ -36,12 +68,26 @@ namespace TestingDocumentationTool
 
         private void ButtonSetupTestPlan_Click(object sender, EventArgs e)
         {
+            TextBoxSetupTestPlanName.Text = TestPlan.Name;
+            RichTextBoxSetupTestPlanIntroduction.Text = TestPlan.Introduction;
+            RichTextBoxSetupTestPlanEnvironment.Text = TestPlan.SetupEnvironment;
+            RichTextBoxSetupTestPlanScope.Text = TestPlan.Scope;
 
+            if (CurrentPanel != null)
+                CurrentPanel.Hide();
+
+            PanelSetupTestPlan.Show();
+            CurrentPanel = PanelSetupTestPlan;
         }
 
         private void ButtonTestCases_Click(object sender, EventArgs e)
         {
+            PanelSetupTestPlan.Hide();
+            PanelSetupTestPlanContinuation.Hide();
+            PanelTestCases.Show();
+            CurrentPanel = PanelTestCases;
 
+            FillDataGridViewTestCases();
         }
 
         private void ButtonResults_Click(object sender, EventArgs e)
@@ -124,6 +170,42 @@ namespace TestingDocumentationTool
             ButtonLinkedIn.Image = Image.FromFile("..\\..\\..\\static\\linkedinDarkMode.png");
             ButtonGitHub.Image = Image.FromFile("..\\..\\..\\static\\githubDarkMode.png");
 
+            // Setup test plan panel
+            TextBoxSetupTestPlanName.ForeColor = Color.White;
+            RichTextBoxSetupTestPlanIntroduction.ForeColor = Color.White;
+            RichTextBoxSetupTestPlanEnvironment.ForeColor = Color.White;
+            RichTextBoxSetupTestPlanScope.ForeColor = Color.White;
+
+            TextBoxSetupTestPlanName.BackColor = Color.FromArgb(40, 40, 40);
+            RichTextBoxSetupTestPlanIntroduction.BackColor = Color.FromArgb(40, 40, 40);
+            RichTextBoxSetupTestPlanEnvironment.BackColor = Color.FromArgb(40, 40, 40);
+            RichTextBoxSetupTestPlanScope.BackColor = Color.FromArgb(40, 40, 40);
+
+            LabelSetupTestPlanName.ForeColor = Color.White;
+            LabelSetupTestPlanIntroduction.ForeColor = Color.White;
+            LabelSetupTestPlanEnvironment.ForeColor = Color.White;
+            LabelSetupTestPlanScope.ForeColor = Color.White;
+
+            ButtonSetupTestPlanCancel.ForeColor = Color.White;
+            ButtonSetupTestPlanSave.ForeColor = Color.White;
+            ButtonSetupTestPlanSave.BackColor = Color.FromArgb(40, 40, 40);
+
+            // Setup test panel continuation
+            LabelSetupTestPlanTestArea.ForeColor = Color.White;
+            LabelSetupTestPlanType.ForeColor = Color.White;
+            LabelSetupTestPlanComponent.ForeColor = Color.White;
+            LabelSetupTestPlanTestCaseName.ForeColor = Color.White;
+
+            ButtonSetupTestPlanAddTestCase.ForeColor = Color.White;
+            ButtonSetupTestPlanFinish.ForeColor = Color.White;
+            ButtonSetupTestPlanFinish.BackColor = Color.FromArgb(40, 40, 40);
+
+            // Test cases panel
+            ButtonTestCasesDetailedView.ForeColor = Color.White;
+            ButtonTestCasesRemove.ForeColor = Color.White;
+            ButtonTestCasesSave.ForeColor = Color.White;
+            ButtonTestCasesSave.BackColor = Color.FromArgb(40, 40, 40);
+
             Refresh();
         }
 
@@ -149,7 +231,146 @@ namespace TestingDocumentationTool
             ButtonLinkedIn.Image = Image.FromFile("..\\..\\..\\static\\linkedin.png");
             ButtonGitHub.Image = Image.FromFile("..\\..\\..\\static\\github.png");
 
+            // Setup test plan panel
+            TextBoxSetupTestPlanName.ForeColor = Color.Black;
+            RichTextBoxSetupTestPlanIntroduction.ForeColor = Color.Black;
+            RichTextBoxSetupTestPlanEnvironment.ForeColor = Color.Black;
+            RichTextBoxSetupTestPlanScope.ForeColor = Color.Black;
+
+            TextBoxSetupTestPlanName.BackColor = Color.White;
+            RichTextBoxSetupTestPlanIntroduction.BackColor = Color.White;
+            RichTextBoxSetupTestPlanEnvironment.BackColor = Color.White;
+            RichTextBoxSetupTestPlanScope.BackColor = Color.White;
+
+            LabelSetupTestPlanName.ForeColor = Color.Black;
+            LabelSetupTestPlanIntroduction.ForeColor = Color.Black;
+            LabelSetupTestPlanEnvironment.ForeColor = Color.Black;
+            LabelSetupTestPlanScope.ForeColor = Color.Black;
+
+            ButtonSetupTestPlanCancel.ForeColor = Color.Black;
+            ButtonSetupTestPlanSave.ForeColor = Color.Black;
+            ButtonSetupTestPlanSave.BackColor = Color.White;
+
+            // Setup test panel continuation
+            LabelSetupTestPlanTestArea.ForeColor = Color.Black;
+            LabelSetupTestPlanType.ForeColor = Color.Black;
+            LabelSetupTestPlanComponent.ForeColor = Color.Black;
+            LabelSetupTestPlanTestCaseName.ForeColor = Color.Black;
+
+            ButtonSetupTestPlanAddTestCase.ForeColor = Color.Black;
+            ButtonSetupTestPlanFinish.ForeColor = Color.Black;
+            ButtonSetupTestPlanFinish.BackColor = Color.White;
+
+            // Test cases panel
+            ButtonTestCasesDetailedView.ForeColor = Color.Black;
+            ButtonTestCasesRemove.ForeColor = Color.Black;
+            ButtonTestCasesSave.ForeColor = Color.Black;
+            ButtonTestCasesSave.BackColor = Color.White;
+
             Refresh();
         }
+
+        // Setup Test Plan Panel Functions
+        private void ButtonSetupTestPlanCancel_Click(object sender, EventArgs e)
+        {
+            ButtonColorAnimation(ButtonSetupTestPlanCancel, Color.PaleVioletRed);
+
+            CurrentPanel.Hide();
+        }
+
+        private void ButtonSetupTestPlanSave_Click(object sender, EventArgs e)
+        {
+            TestPlan.Name = TextBoxSetupTestPlanName.Text;
+            TestPlan.Introduction = RichTextBoxSetupTestPlanIntroduction.Text;
+            TestPlan.SetupEnvironment = RichTextBoxSetupTestPlanEnvironment.Text;
+            TestPlan.Scope = RichTextBoxSetupTestPlanScope.Text;
+
+            ButtonColorAnimation(ButtonSetupTestPlanSave, Color.LightGreen);
+
+            CurrentPanel = PanelSetupTestPlanContinuation;
+            CurrentPanel.Show();
+            CurrentPanel.Refresh();
+        }
+
+        // Setup Test Plan Continuation Panel Functions
+        private void ButtonSetupTestPlanFinish_Click(object sender, EventArgs e)
+        {
+            ButtonColorAnimation(ButtonSetupTestPlanFinish, Color.LightGreen);
+
+            CurrentPanel.Hide();
+            PanelSetupTestPlan.Hide();
+        }
+
+        private void ButtonSetupTestPlanAddTestCase_Click(object sender, EventArgs e)
+        {
+            TestCase tc = new TestCase();
+            tc.TestArea = ComboBoxSetupTestPlanTestArea.Text;
+            tc.Type = ComboBoxSetupTestPlanType.Text;
+            tc.Component = ComboBoxSetupTestPlanComponent.Text;
+            tc.ID = textBox1.Text;
+
+            if (tc.TestArea != "" && tc.Type != "" && tc.Component != "" && tc.ID != "")
+            {
+                TestPlan.TestCases.Add(tc);
+                LabelSetupTestPlanTestOutput.ForeColor = Color.LightGreen;
+                LabelSetupTestPlanTestOutput.Text = "Test case added succesfully";
+                CurrentPanel.Refresh();
+                Thread.Sleep(2000);
+                LabelSetupTestPlanTestOutput.Text = "";
+                ComboBoxSetupTestPlanTestArea.Text = "";
+                ComboBoxSetupTestPlanType.Text = "";
+                ComboBoxSetupTestPlanComponent.Text = "";
+                textBox1.Text = "";
+            }
+            else
+            {
+                LabelSetupTestPlanTestOutput.ForeColor = Color.PaleVioletRed;
+                LabelSetupTestPlanTestOutput.Text = "Select an option for every field";
+                CurrentPanel.Refresh();
+                Thread.Sleep(2000);
+                LabelSetupTestPlanTestOutput.Text = "";
+            }
+
+
+
+            CurrentPanel = PanelSetupTestPlanContinuation;
+        }
+
+        // Test Cases Functions
+        private void ButtonTestCasesSave_Click(object sender, EventArgs e)
+        {
+            ButtonColorAnimation(ButtonTestCasesSave, Color.LightGreen);
+
+        }
+
+        private void ButtonTestCasesRemove_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ButtonTestCasesDetailedView_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FillDataGridViewTestCases()
+        {
+            if (TestPlan.GetTestCases() != null && TestPlan.GetTestCases().Count > 0)
+            {
+                foreach (TestCase tc in TestPlan.GetTestCases())
+                    DataGridViewTestCases.Rows.Add(tc.TestArea, tc.Type, tc.Component, tc.ID, tc.TestScenario, tc.Tag, tc.PreConditions, tc.Steps, tc.ExpectedBehaviour);
+            }
+        }
+
+        // Extra Functionality ->Animations<-
+        public void ButtonColorAnimation(Button button, Color color)
+        {
+            Color lastColor = button.BackColor;
+            button.BackColor = color;
+            CurrentPanel.Refresh();
+            Thread.Sleep(500);
+            button.BackColor = lastColor;
+        }
+
     }
 }
