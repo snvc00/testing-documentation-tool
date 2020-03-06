@@ -82,6 +82,8 @@ namespace TestingDocumentationTool
 
         private void ButtonTestCases_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(TestPlan.TestCases.Count);
+
             PanelSetupTestPlan.Hide();
             PanelSetupTestPlanContinuation.Hide();
             PanelTestCases.Show();
@@ -205,6 +207,8 @@ namespace TestingDocumentationTool
             ButtonTestCasesRemove.ForeColor = Color.White;
             ButtonTestCasesSave.ForeColor = Color.White;
             ButtonTestCasesSave.BackColor = Color.FromArgb(40, 40, 40);
+            ButtonTestCasesDetailedExit.ForeColor = Color.White;
+            ButtonTestCasesDetailedExit.BackColor = Color.FromArgb(40, 40, 40);
 
             Refresh();
         }
@@ -266,6 +270,8 @@ namespace TestingDocumentationTool
             ButtonTestCasesRemove.ForeColor = Color.Black;
             ButtonTestCasesSave.ForeColor = Color.Black;
             ButtonTestCasesSave.BackColor = Color.White;
+            ButtonTestCasesDetailedExit.ForeColor = Color.Black;
+            ButtonTestCasesDetailedExit.BackColor = Color.White;
 
             Refresh();
         }
@@ -303,15 +309,9 @@ namespace TestingDocumentationTool
 
         private void ButtonSetupTestPlanAddTestCase_Click(object sender, EventArgs e)
         {
-            TestCase tc = new TestCase();
-            tc.TestArea = ComboBoxSetupTestPlanTestArea.Text;
-            tc.Type = ComboBoxSetupTestPlanType.Text;
-            tc.Component = ComboBoxSetupTestPlanComponent.Text;
-            tc.ID = textBox1.Text;
-
-            if (tc.TestArea != "" && tc.Type != "" && tc.Component != "" && tc.ID != "")
+            if (ComboBoxSetupTestPlanTestArea.Text != "" && ComboBoxSetupTestPlanType.Text != "" && ComboBoxSetupTestPlanComponent.Text != "" && textBox1.Text != "")
             {
-                TestPlan.TestCases.Add(tc);
+                TestPlan.TestCases.Add(new TestCase(ComboBoxSetupTestPlanTestArea.Text, ComboBoxSetupTestPlanType.Text, ComboBoxSetupTestPlanComponent.Text, textBox1.Text));
                 LabelSetupTestPlanTestOutput.ForeColor = Color.LightGreen;
                 LabelSetupTestPlanTestOutput.Text = "Test case added succesfully";
                 CurrentPanel.Refresh();
@@ -341,6 +341,16 @@ namespace TestingDocumentationTool
         {
             ButtonColorAnimation(ButtonTestCasesSave, Color.LightGreen);
 
+            for (int i = 0; i < TestPlan.TestCases.Count; ++i)
+            {
+                TestPlan.TestCases[i].TestScenario = (string)DataGridViewTestCases.Rows[i].Cells[4].Value;
+                TestPlan.TestCases[i].Description = (string)DataGridViewTestCases.Rows[i].Cells[5].Value;
+                TestPlan.TestCases[i].Tag = (string)DataGridViewTestCases.Rows[i].Cells[6].Value.ToString();
+                TestPlan.TestCases[i].PreConditions = (string)DataGridViewTestCases.Rows[i].Cells[7].Value;
+                TestPlan.TestCases[i].Steps = (string)DataGridViewTestCases.Rows[i].Cells[8].Value;
+                TestPlan.TestCases[i].ExpectedBehaviour = (string)DataGridViewTestCases.Rows[i].Cells[9].Value;
+            }
+
         }
 
         private void ButtonTestCasesRemove_Click(object sender, EventArgs e)
@@ -357,9 +367,15 @@ namespace TestingDocumentationTool
         {
             if (TestPlan.GetTestCases() != null && TestPlan.GetTestCases().Count > 0)
             {
-                foreach (TestCase tc in TestPlan.GetTestCases())
+                TestCase tc;
+
+                for (int i = DataGridViewTestCases.Rows.Count; i < TestPlan.TestCases.Count; ++i)
+                {
+                    tc = TestPlan.GetTestCases()[i];
                     DataGridViewTestCases.Rows.Add(tc.TestArea, tc.Type, tc.Component, tc.ID, tc.TestScenario, tc.Tag, tc.PreConditions, tc.Steps, tc.ExpectedBehaviour);
-            }
+                }
+            
+            }       
         }
 
         // Extra Functionality ->Animations<-
@@ -372,5 +388,12 @@ namespace TestingDocumentationTool
             button.BackColor = lastColor;
         }
 
+        private void ButtonTestCasesDetailedExit_Click(object sender, EventArgs e)
+        {
+            ButtonColorAnimation(ButtonTestCasesDetailedExit, Color.PaleVioletRed);
+
+            CurrentPanel.Hide();
+            CurrentPanel = null;
+        }
     }
 }

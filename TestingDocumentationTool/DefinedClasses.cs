@@ -57,5 +57,25 @@ namespace TestingDocumentationTool
             this.ExpectedBehaviour = "";
             this.Notes = "";
         }
+
+        public TestCase(string _TestArea, string _Type, string _Component, string _ID)
+        {
+            this.TestArea = _TestArea;
+            this.Type = _Type;
+            this.Component = _Component;
+            this.ID = _ID;
+            this.TestScenario = "";
+            this.Description = "";
+            this.Tag = "";
+            this.PreConditions = "";
+            this.Steps = "";
+            this.ExpectedBehaviour = "";
+            this.Notes = "";
+        }
+
+        public void Clean()
+        {
+
+        }
     }
 }

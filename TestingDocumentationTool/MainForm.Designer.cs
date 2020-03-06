@@ -68,9 +68,10 @@
             this.LabelSetupTestPlanName = new System.Windows.Forms.Label();
             this.TextBoxSetupTestPlanName = new System.Windows.Forms.TextBox();
             this.PanelTestCases = new System.Windows.Forms.Panel();
-            this.DataGridViewTestCases = new System.Windows.Forms.DataGridView();
-            this.ButtonTestCasesSave = new System.Windows.Forms.Button();
+            this.ButtonTestCasesDetailedView = new System.Windows.Forms.Button();
             this.ButtonTestCasesRemove = new System.Windows.Forms.Button();
+            this.ButtonTestCasesSave = new System.Windows.Forms.Button();
+            this.DataGridViewTestCases = new System.Windows.Forms.DataGridView();
             this.TestArea = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Type = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Component = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -81,7 +82,7 @@
             this.PreCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TestSteps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ExpectedBehaviour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ButtonTestCasesDetailedView = new System.Windows.Forms.Button();
+            this.ButtonTestCasesDetailedExit = new System.Windows.Forms.Button();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -522,6 +523,7 @@
             // 
             // PanelTestCases
             // 
+            this.PanelTestCases.Controls.Add(this.ButtonTestCasesDetailedExit);
             this.PanelTestCases.Controls.Add(this.ButtonTestCasesDetailedView);
             this.PanelTestCases.Controls.Add(this.ButtonTestCasesRemove);
             this.PanelTestCases.Controls.Add(this.ButtonTestCasesSave);
@@ -533,13 +535,46 @@
             this.PanelTestCases.TabIndex = 12;
             this.PanelTestCases.Visible = false;
             // 
+            // ButtonTestCasesDetailedView
+            // 
+            this.ButtonTestCasesDetailedView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesDetailedView.Location = new System.Drawing.Point(202, 516);
+            this.ButtonTestCasesDetailedView.Name = "ButtonTestCasesDetailedView";
+            this.ButtonTestCasesDetailedView.Size = new System.Drawing.Size(184, 43);
+            this.ButtonTestCasesDetailedView.TabIndex = 11;
+            this.ButtonTestCasesDetailedView.Text = "Detailed View";
+            this.ButtonTestCasesDetailedView.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesDetailedView.Click += new System.EventHandler(this.ButtonTestCasesDetailedView_Click);
+            // 
+            // ButtonTestCasesRemove
+            // 
+            this.ButtonTestCasesRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesRemove.Location = new System.Drawing.Point(392, 516);
+            this.ButtonTestCasesRemove.Name = "ButtonTestCasesRemove";
+            this.ButtonTestCasesRemove.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesRemove.TabIndex = 10;
+            this.ButtonTestCasesRemove.Text = "Remove";
+            this.ButtonTestCasesRemove.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesRemove.Click += new System.EventHandler(this.ButtonTestCasesRemove_Click);
+            // 
+            // ButtonTestCasesSave
+            // 
+            this.ButtonTestCasesSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesSave.Location = new System.Drawing.Point(516, 516);
+            this.ButtonTestCasesSave.Name = "ButtonTestCasesSave";
+            this.ButtonTestCasesSave.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesSave.TabIndex = 9;
+            this.ButtonTestCasesSave.Text = "Save";
+            this.ButtonTestCasesSave.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesSave.Click += new System.EventHandler(this.ButtonTestCasesSave_Click);
+            // 
             // DataGridViewTestCases
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -572,28 +607,6 @@
             this.DataGridViewTestCases.RowTemplate.Height = 24;
             this.DataGridViewTestCases.Size = new System.Drawing.Size(627, 506);
             this.DataGridViewTestCases.TabIndex = 0;
-            // 
-            // ButtonTestCasesSave
-            // 
-            this.ButtonTestCasesSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonTestCasesSave.Location = new System.Drawing.Point(516, 516);
-            this.ButtonTestCasesSave.Name = "ButtonTestCasesSave";
-            this.ButtonTestCasesSave.Size = new System.Drawing.Size(118, 43);
-            this.ButtonTestCasesSave.TabIndex = 9;
-            this.ButtonTestCasesSave.Text = "Save";
-            this.ButtonTestCasesSave.UseVisualStyleBackColor = true;
-            this.ButtonTestCasesSave.Click += new System.EventHandler(this.ButtonTestCasesSave_Click);
-            // 
-            // ButtonTestCasesRemove
-            // 
-            this.ButtonTestCasesRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonTestCasesRemove.Location = new System.Drawing.Point(392, 516);
-            this.ButtonTestCasesRemove.Name = "ButtonTestCasesRemove";
-            this.ButtonTestCasesRemove.Size = new System.Drawing.Size(118, 43);
-            this.ButtonTestCasesRemove.TabIndex = 10;
-            this.ButtonTestCasesRemove.Text = "Remove";
-            this.ButtonTestCasesRemove.UseVisualStyleBackColor = true;
-            this.ButtonTestCasesRemove.Click += new System.EventHandler(this.ButtonTestCasesRemove_Click);
             // 
             // TestArea
             // 
@@ -676,16 +689,16 @@
             this.ExpectedBehaviour.Name = "ExpectedBehaviour";
             this.ExpectedBehaviour.Width = 125;
             // 
-            // ButtonTestCasesDetailedView
+            // ButtonTestCasesDetailedExit
             // 
-            this.ButtonTestCasesDetailedView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonTestCasesDetailedView.Location = new System.Drawing.Point(202, 516);
-            this.ButtonTestCasesDetailedView.Name = "ButtonTestCasesDetailedView";
-            this.ButtonTestCasesDetailedView.Size = new System.Drawing.Size(184, 43);
-            this.ButtonTestCasesDetailedView.TabIndex = 11;
-            this.ButtonTestCasesDetailedView.Text = "Detailed View";
-            this.ButtonTestCasesDetailedView.UseVisualStyleBackColor = true;
-            this.ButtonTestCasesDetailedView.Click += new System.EventHandler(this.ButtonTestCasesDetailedView_Click);
+            this.ButtonTestCasesDetailedExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesDetailedExit.Location = new System.Drawing.Point(78, 516);
+            this.ButtonTestCasesDetailedExit.Name = "ButtonTestCasesDetailedExit";
+            this.ButtonTestCasesDetailedExit.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesDetailedExit.TabIndex = 12;
+            this.ButtonTestCasesDetailedExit.Text = "Exit";
+            this.ButtonTestCasesDetailedExit.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesDetailedExit.Click += new System.EventHandler(this.ButtonTestCasesDetailedExit_Click);
             // 
             // MainWindow
             // 
@@ -777,6 +790,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn PreCondition;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestSteps;
         private System.Windows.Forms.DataGridViewTextBoxColumn ExpectedBehaviour;
+        private System.Windows.Forms.Button ButtonTestCasesDetailedExit;
     }
 }
 
