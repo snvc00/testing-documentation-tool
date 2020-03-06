@@ -68,6 +68,7 @@
             this.LabelSetupTestPlanName = new System.Windows.Forms.Label();
             this.TextBoxSetupTestPlanName = new System.Windows.Forms.TextBox();
             this.PanelTestCases = new System.Windows.Forms.Panel();
+            this.ButtonTestCasesDetailedExit = new System.Windows.Forms.Button();
             this.ButtonTestCasesDetailedView = new System.Windows.Forms.Button();
             this.ButtonTestCasesRemove = new System.Windows.Forms.Button();
             this.ButtonTestCasesSave = new System.Windows.Forms.Button();
@@ -81,12 +82,49 @@
             this.Tag = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.PreCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TestSteps = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ExpectedBehaviour = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ButtonTestCasesDetailedExit = new System.Windows.Forms.Button();
+            this.ExpectedBehavior = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonGenerateHtmlFile = new System.Windows.Forms.Button();
+            this.PanelTestCasesDetailedView = new System.Windows.Forms.Panel();
+            this.ComboBoxTestCasesDetailedViewTag = new System.Windows.Forms.ComboBox();
+            this.ButtonTestCasesDetailedViewSave = new System.Windows.Forms.Button();
+            this.TextBoxTestCasesDetailedViewConditions = new System.Windows.Forms.TextBox();
+            this.TextBoxTestCasesDetailedViewScenario = new System.Windows.Forms.TextBox();
+            this.TextBoxTestCasesDetailedViewBehavior = new System.Windows.Forms.TextBox();
+            this.TextBoxTestCasesDetailedViewDescription = new System.Windows.Forms.TextBox();
+            this.TextBoxTestCasesDetailedViewSteps = new System.Windows.Forms.TextBox();
+            this.TextBoxTestCasesDetailedViewID = new System.Windows.Forms.TextBox();
+            this.LabelTestCaseDetailedViewTag = new System.Windows.Forms.Label();
+            this.LabelTestCaseDetailedViewExpectedBehavior = new System.Windows.Forms.Label();
+            this.LabelTestCaseDetailedViewConditions = new System.Windows.Forms.Label();
+            this.LabelTestCaseDetailedViewDescription = new System.Windows.Forms.Label();
+            this.LabelTestCaseDetailedViewScenario = new System.Windows.Forms.Label();
+            this.LabelTestCaseDetailedViewSteps = new System.Windows.Forms.Label();
+            this.LabelTestCaseDetailedViewID = new System.Windows.Forms.Label();
+            this.ButtonTestCasesDetailedViewExit = new System.Windows.Forms.Button();
+            this.ButtonTestCasesDetailedViewRemove = new System.Windows.Forms.Button();
+            this.ComboBoxSelectTestCase = new System.Windows.Forms.ComboBox();
+            this.LabelSelectTestCase = new System.Windows.Forms.Label();
+            this.PanelResults = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTestCases)).BeginInit();
+            this.PanelTestCasesDetailedView.SuspendLayout();
+            this.PanelResults.SuspendLayout();
             this.SuspendLayout();
             // 
             // ButtonSetupTestPlan
@@ -408,7 +446,7 @@
             this.ComboBoxSetupTestPlanTestArea.FormattingEnabled = true;
             this.ComboBoxSetupTestPlanTestArea.Items.AddRange(new object[] {
             "New Feature",
-            "Enhacement"});
+            "Enhancement"});
             this.ComboBoxSetupTestPlanTestArea.Location = new System.Drawing.Point(217, 128);
             this.ComboBoxSetupTestPlanTestArea.Name = "ComboBoxSetupTestPlanTestArea";
             this.ComboBoxSetupTestPlanTestArea.Size = new System.Drawing.Size(344, 36);
@@ -535,6 +573,17 @@
             this.PanelTestCases.TabIndex = 12;
             this.PanelTestCases.Visible = false;
             // 
+            // ButtonTestCasesDetailedExit
+            // 
+            this.ButtonTestCasesDetailedExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesDetailedExit.Location = new System.Drawing.Point(78, 516);
+            this.ButtonTestCasesDetailedExit.Name = "ButtonTestCasesDetailedExit";
+            this.ButtonTestCasesDetailedExit.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesDetailedExit.TabIndex = 12;
+            this.ButtonTestCasesDetailedExit.Text = "Exit";
+            this.ButtonTestCasesDetailedExit.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesDetailedExit.Click += new System.EventHandler(this.ButtonTestCasesDetailedExit_Click);
+            // 
             // ButtonTestCasesDetailedView
             // 
             this.ButtonTestCasesDetailedView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -580,8 +629,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DataGridViewTestCases.ColumnHeadersHeight = 29;
-            this.DataGridViewTestCases.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
             this.Type,
@@ -592,7 +640,7 @@
             this.Tag,
             this.PreCondition,
             this.TestSteps,
-            this.ExpectedBehaviour});
+            this.ExpectedBehavior});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -603,7 +651,7 @@
             this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
-            this.DataGridViewTestCases.RowHeadersWidth = 51;
+            this.DataGridViewTestCases.RowHeadersWidth = 90;
             this.DataGridViewTestCases.RowTemplate.Height = 24;
             this.DataGridViewTestCases.Size = new System.Drawing.Size(627, 506);
             this.DataGridViewTestCases.TabIndex = 0;
@@ -682,23 +730,401 @@
             this.TestSteps.Name = "TestSteps";
             this.TestSteps.Width = 125;
             // 
-            // ExpectedBehaviour
+            // ExpectedBehavior
             // 
-            this.ExpectedBehaviour.HeaderText = "ExpectedBehaviour";
-            this.ExpectedBehaviour.MinimumWidth = 6;
-            this.ExpectedBehaviour.Name = "ExpectedBehaviour";
-            this.ExpectedBehaviour.Width = 125;
+            this.ExpectedBehavior.HeaderText = "Expected Behavior";
+            this.ExpectedBehavior.MinimumWidth = 6;
+            this.ExpectedBehavior.Name = "ExpectedBehavior";
+            this.ExpectedBehavior.Width = 125;
             // 
-            // ButtonTestCasesDetailedExit
+            // ButtonGenerateHtmlFile
             // 
-            this.ButtonTestCasesDetailedExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonTestCasesDetailedExit.Location = new System.Drawing.Point(78, 516);
-            this.ButtonTestCasesDetailedExit.Name = "ButtonTestCasesDetailedExit";
-            this.ButtonTestCasesDetailedExit.Size = new System.Drawing.Size(118, 43);
-            this.ButtonTestCasesDetailedExit.TabIndex = 12;
-            this.ButtonTestCasesDetailedExit.Text = "Exit";
-            this.ButtonTestCasesDetailedExit.UseVisualStyleBackColor = true;
-            this.ButtonTestCasesDetailedExit.Click += new System.EventHandler(this.ButtonTestCasesDetailedExit_Click);
+            this.ButtonGenerateHtmlFile.FlatAppearance.BorderSize = 0;
+            this.ButtonGenerateHtmlFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonGenerateHtmlFile.Image = ((System.Drawing.Image)(resources.GetObject("ButtonGenerateHtmlFile.Image")));
+            this.ButtonGenerateHtmlFile.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ButtonGenerateHtmlFile.Location = new System.Drawing.Point(274, 478);
+            this.ButtonGenerateHtmlFile.Name = "ButtonGenerateHtmlFile";
+            this.ButtonGenerateHtmlFile.Padding = new System.Windows.Forms.Padding(0, 10, 0, 20);
+            this.ButtonGenerateHtmlFile.Size = new System.Drawing.Size(153, 161);
+            this.ButtonGenerateHtmlFile.TabIndex = 24;
+            this.ButtonGenerateHtmlFile.Text = "Create HTML File";
+            this.ButtonGenerateHtmlFile.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ButtonGenerateHtmlFile.UseVisualStyleBackColor = true;
+            this.ButtonGenerateHtmlFile.Click += new System.EventHandler(this.ButtonGenerateHtmlFile_Click);
+            // 
+            // PanelTestCasesDetailedView
+            // 
+            this.PanelTestCasesDetailedView.Controls.Add(this.ComboBoxTestCasesDetailedViewTag);
+            this.PanelTestCasesDetailedView.Controls.Add(this.ButtonTestCasesDetailedViewSave);
+            this.PanelTestCasesDetailedView.Controls.Add(this.TextBoxTestCasesDetailedViewConditions);
+            this.PanelTestCasesDetailedView.Controls.Add(this.TextBoxTestCasesDetailedViewScenario);
+            this.PanelTestCasesDetailedView.Controls.Add(this.TextBoxTestCasesDetailedViewBehavior);
+            this.PanelTestCasesDetailedView.Controls.Add(this.TextBoxTestCasesDetailedViewDescription);
+            this.PanelTestCasesDetailedView.Controls.Add(this.TextBoxTestCasesDetailedViewSteps);
+            this.PanelTestCasesDetailedView.Controls.Add(this.TextBoxTestCasesDetailedViewID);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewTag);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewExpectedBehavior);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewConditions);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewDescription);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewScenario);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewSteps);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelTestCaseDetailedViewID);
+            this.PanelTestCasesDetailedView.Controls.Add(this.ButtonTestCasesDetailedViewExit);
+            this.PanelTestCasesDetailedView.Controls.Add(this.ButtonTestCasesDetailedViewRemove);
+            this.PanelTestCasesDetailedView.Controls.Add(this.ComboBoxSelectTestCase);
+            this.PanelTestCasesDetailedView.Controls.Add(this.LabelSelectTestCase);
+            this.PanelTestCasesDetailedView.Location = new System.Drawing.Point(485, 85);
+            this.PanelTestCasesDetailedView.Name = "PanelTestCasesDetailedView";
+            this.PanelTestCasesDetailedView.Size = new System.Drawing.Size(639, 570);
+            this.PanelTestCasesDetailedView.TabIndex = 13;
+            this.PanelTestCasesDetailedView.Visible = false;
+            // 
+            // ComboBoxTestCasesDetailedViewTag
+            // 
+            this.ComboBoxTestCasesDetailedViewTag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComboBoxTestCasesDetailedViewTag.FormattingEnabled = true;
+            this.ComboBoxTestCasesDetailedViewTag.Items.AddRange(new object[] {
+            "UX",
+            "Functionality",
+            "Performance",
+            "Integration",
+            "Usability",
+            "Security",
+            "User Acceptance"});
+            this.ComboBoxTestCasesDetailedViewTag.Location = new System.Drawing.Point(399, 72);
+            this.ComboBoxTestCasesDetailedViewTag.Name = "ComboBoxTestCasesDetailedViewTag";
+            this.ComboBoxTestCasesDetailedViewTag.Size = new System.Drawing.Size(221, 36);
+            this.ComboBoxTestCasesDetailedViewTag.TabIndex = 30;
+            // 
+            // ButtonTestCasesDetailedViewSave
+            // 
+            this.ButtonTestCasesDetailedViewSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesDetailedViewSave.Location = new System.Drawing.Point(501, 512);
+            this.ButtonTestCasesDetailedViewSave.Name = "ButtonTestCasesDetailedViewSave";
+            this.ButtonTestCasesDetailedViewSave.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesDetailedViewSave.TabIndex = 29;
+            this.ButtonTestCasesDetailedViewSave.Text = "Save";
+            this.ButtonTestCasesDetailedViewSave.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesDetailedViewSave.Click += new System.EventHandler(this.ButtonTestCasesDetailedViewSave_Click);
+            // 
+            // TextBoxTestCasesDetailedViewConditions
+            // 
+            this.TextBoxTestCasesDetailedViewConditions.Location = new System.Drawing.Point(166, 121);
+            this.TextBoxTestCasesDetailedViewConditions.Name = "TextBoxTestCasesDetailedViewConditions";
+            this.TextBoxTestCasesDetailedViewConditions.Size = new System.Drawing.Size(454, 34);
+            this.TextBoxTestCasesDetailedViewConditions.TabIndex = 28;
+            // 
+            // TextBoxTestCasesDetailedViewScenario
+            // 
+            this.TextBoxTestCasesDetailedViewScenario.Location = new System.Drawing.Point(159, 466);
+            this.TextBoxTestCasesDetailedViewScenario.Name = "TextBoxTestCasesDetailedViewScenario";
+            this.TextBoxTestCasesDetailedViewScenario.Size = new System.Drawing.Size(460, 34);
+            this.TextBoxTestCasesDetailedViewScenario.TabIndex = 27;
+            // 
+            // TextBoxTestCasesDetailedViewBehavior
+            // 
+            this.TextBoxTestCasesDetailedViewBehavior.Location = new System.Drawing.Point(418, 291);
+            this.TextBoxTestCasesDetailedViewBehavior.Multiline = true;
+            this.TextBoxTestCasesDetailedViewBehavior.Name = "TextBoxTestCasesDetailedViewBehavior";
+            this.TextBoxTestCasesDetailedViewBehavior.Size = new System.Drawing.Size(201, 163);
+            this.TextBoxTestCasesDetailedViewBehavior.TabIndex = 25;
+            // 
+            // TextBoxTestCasesDetailedViewDescription
+            // 
+            this.TextBoxTestCasesDetailedViewDescription.Location = new System.Drawing.Point(51, 189);
+            this.TextBoxTestCasesDetailedViewDescription.Multiline = true;
+            this.TextBoxTestCasesDetailedViewDescription.Name = "TextBoxTestCasesDetailedViewDescription";
+            this.TextBoxTestCasesDetailedViewDescription.Size = new System.Drawing.Size(568, 70);
+            this.TextBoxTestCasesDetailedViewDescription.TabIndex = 23;
+            // 
+            // TextBoxTestCasesDetailedViewSteps
+            // 
+            this.TextBoxTestCasesDetailedViewSteps.Location = new System.Drawing.Point(51, 291);
+            this.TextBoxTestCasesDetailedViewSteps.Multiline = true;
+            this.TextBoxTestCasesDetailedViewSteps.Name = "TextBoxTestCasesDetailedViewSteps";
+            this.TextBoxTestCasesDetailedViewSteps.Size = new System.Drawing.Size(341, 163);
+            this.TextBoxTestCasesDetailedViewSteps.TabIndex = 24;
+            // 
+            // TextBoxTestCasesDetailedViewID
+            // 
+            this.TextBoxTestCasesDetailedViewID.Location = new System.Drawing.Point(78, 72);
+            this.TextBoxTestCasesDetailedViewID.Name = "TextBoxTestCasesDetailedViewID";
+            this.TextBoxTestCasesDetailedViewID.Size = new System.Drawing.Size(279, 34);
+            this.TextBoxTestCasesDetailedViewID.TabIndex = 21;
+            // 
+            // LabelTestCaseDetailedViewTag
+            // 
+            this.LabelTestCaseDetailedViewTag.AutoSize = true;
+            this.LabelTestCaseDetailedViewTag.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewTag.Location = new System.Drawing.Point(360, 76);
+            this.LabelTestCaseDetailedViewTag.Name = "LabelTestCaseDetailedViewTag";
+            this.LabelTestCaseDetailedViewTag.Size = new System.Drawing.Size(49, 23);
+            this.LabelTestCaseDetailedViewTag.TabIndex = 17;
+            this.LabelTestCaseDetailedViewTag.Text = "Tag :";
+            // 
+            // LabelTestCaseDetailedViewExpectedBehavior
+            // 
+            this.LabelTestCaseDetailedViewExpectedBehavior.AutoSize = true;
+            this.LabelTestCaseDetailedViewExpectedBehavior.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewExpectedBehavior.Location = new System.Drawing.Point(414, 265);
+            this.LabelTestCaseDetailedViewExpectedBehavior.Name = "LabelTestCaseDetailedViewExpectedBehavior";
+            this.LabelTestCaseDetailedViewExpectedBehavior.Size = new System.Drawing.Size(168, 23);
+            this.LabelTestCaseDetailedViewExpectedBehavior.TabIndex = 20;
+            this.LabelTestCaseDetailedViewExpectedBehavior.Text = "Expected Behavior :";
+            // 
+            // LabelTestCaseDetailedViewConditions
+            // 
+            this.LabelTestCaseDetailedViewConditions.AutoSize = true;
+            this.LabelTestCaseDetailedViewConditions.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewConditions.Location = new System.Drawing.Point(47, 126);
+            this.LabelTestCaseDetailedViewConditions.Name = "LabelTestCaseDetailedViewConditions";
+            this.LabelTestCaseDetailedViewConditions.Size = new System.Drawing.Size(139, 23);
+            this.LabelTestCaseDetailedViewConditions.TabIndex = 18;
+            this.LabelTestCaseDetailedViewConditions.Text = "Pre-Conditions :";
+            // 
+            // LabelTestCaseDetailedViewDescription
+            // 
+            this.LabelTestCaseDetailedViewDescription.AutoSize = true;
+            this.LabelTestCaseDetailedViewDescription.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewDescription.Location = new System.Drawing.Point(45, 163);
+            this.LabelTestCaseDetailedViewDescription.Name = "LabelTestCaseDetailedViewDescription";
+            this.LabelTestCaseDetailedViewDescription.Size = new System.Drawing.Size(112, 23);
+            this.LabelTestCaseDetailedViewDescription.TabIndex = 16;
+            this.LabelTestCaseDetailedViewDescription.Text = "Description :";
+            // 
+            // LabelTestCaseDetailedViewScenario
+            // 
+            this.LabelTestCaseDetailedViewScenario.AutoSize = true;
+            this.LabelTestCaseDetailedViewScenario.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewScenario.Location = new System.Drawing.Point(45, 473);
+            this.LabelTestCaseDetailedViewScenario.Name = "LabelTestCaseDetailedViewScenario";
+            this.LabelTestCaseDetailedViewScenario.Size = new System.Drawing.Size(129, 23);
+            this.LabelTestCaseDetailedViewScenario.TabIndex = 15;
+            this.LabelTestCaseDetailedViewScenario.Text = "Test Scenario : ";
+            // 
+            // LabelTestCaseDetailedViewSteps
+            // 
+            this.LabelTestCaseDetailedViewSteps.AutoSize = true;
+            this.LabelTestCaseDetailedViewSteps.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewSteps.Location = new System.Drawing.Point(45, 265);
+            this.LabelTestCaseDetailedViewSteps.Name = "LabelTestCaseDetailedViewSteps";
+            this.LabelTestCaseDetailedViewSteps.Size = new System.Drawing.Size(64, 23);
+            this.LabelTestCaseDetailedViewSteps.TabIndex = 19;
+            this.LabelTestCaseDetailedViewSteps.Text = "Steps :";
+            // 
+            // LabelTestCaseDetailedViewID
+            // 
+            this.LabelTestCaseDetailedViewID.AutoSize = true;
+            this.LabelTestCaseDetailedViewID.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelTestCaseDetailedViewID.Location = new System.Drawing.Point(48, 76);
+            this.LabelTestCaseDetailedViewID.Name = "LabelTestCaseDetailedViewID";
+            this.LabelTestCaseDetailedViewID.Size = new System.Drawing.Size(38, 23);
+            this.LabelTestCaseDetailedViewID.TabIndex = 14;
+            this.LabelTestCaseDetailedViewID.Text = "ID :";
+            // 
+            // ButtonTestCasesDetailedViewExit
+            // 
+            this.ButtonTestCasesDetailedViewExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesDetailedViewExit.Location = new System.Drawing.Point(230, 512);
+            this.ButtonTestCasesDetailedViewExit.Name = "ButtonTestCasesDetailedViewExit";
+            this.ButtonTestCasesDetailedViewExit.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesDetailedViewExit.TabIndex = 13;
+            this.ButtonTestCasesDetailedViewExit.Text = "Exit";
+            this.ButtonTestCasesDetailedViewExit.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesDetailedViewExit.Click += new System.EventHandler(this.ButtonTestCasesDetailedViewExit_Click);
+            // 
+            // ButtonTestCasesDetailedViewRemove
+            // 
+            this.ButtonTestCasesDetailedViewRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonTestCasesDetailedViewRemove.Location = new System.Drawing.Point(367, 512);
+            this.ButtonTestCasesDetailedViewRemove.Name = "ButtonTestCasesDetailedViewRemove";
+            this.ButtonTestCasesDetailedViewRemove.Size = new System.Drawing.Size(118, 43);
+            this.ButtonTestCasesDetailedViewRemove.TabIndex = 11;
+            this.ButtonTestCasesDetailedViewRemove.Text = "Remove";
+            this.ButtonTestCasesDetailedViewRemove.UseVisualStyleBackColor = true;
+            this.ButtonTestCasesDetailedViewRemove.Click += new System.EventHandler(this.ButtonTestCasesDetailedViewRemove_Click);
+            // 
+            // ComboBoxSelectTestCase
+            // 
+            this.ComboBoxSelectTestCase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ComboBoxSelectTestCase.ForeColor = System.Drawing.Color.Black;
+            this.ComboBoxSelectTestCase.FormattingEnabled = true;
+            this.ComboBoxSelectTestCase.Location = new System.Drawing.Point(174, 16);
+            this.ComboBoxSelectTestCase.Name = "ComboBoxSelectTestCase";
+            this.ComboBoxSelectTestCase.Size = new System.Drawing.Size(446, 36);
+            this.ComboBoxSelectTestCase.TabIndex = 1;
+            this.ComboBoxSelectTestCase.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSelectTestCase_SelectedIndexChanged);
+            // 
+            // LabelSelectTestCase
+            // 
+            this.LabelSelectTestCase.AutoSize = true;
+            this.LabelSelectTestCase.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelSelectTestCase.Location = new System.Drawing.Point(44, 19);
+            this.LabelSelectTestCase.Name = "LabelSelectTestCase";
+            this.LabelSelectTestCase.Size = new System.Drawing.Size(145, 23);
+            this.LabelSelectTestCase.TabIndex = 0;
+            this.LabelSelectTestCase.Text = "Select Test Case :";
+            // 
+            // PanelResults
+            // 
+            this.PanelResults.Controls.Add(this.comboBox3);
+            this.PanelResults.Controls.Add(this.comboBox1);
+            this.PanelResults.Controls.Add(this.label1);
+            this.PanelResults.Controls.Add(this.button1);
+            this.PanelResults.Controls.Add(this.textBox2);
+            this.PanelResults.Controls.Add(this.textBox4);
+            this.PanelResults.Controls.Add(this.textBox6);
+            this.PanelResults.Controls.Add(this.label2);
+            this.PanelResults.Controls.Add(this.label3);
+            this.PanelResults.Controls.Add(this.label4);
+            this.PanelResults.Controls.Add(this.label6);
+            this.PanelResults.Controls.Add(this.button2);
+            this.PanelResults.Controls.Add(this.comboBox2);
+            this.PanelResults.Controls.Add(this.label8);
+            this.PanelResults.Location = new System.Drawing.Point(485, 85);
+            this.PanelResults.Name = "PanelResults";
+            this.PanelResults.Size = new System.Drawing.Size(639, 570);
+            this.PanelResults.TabIndex = 31;
+            this.PanelResults.Visible = false;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Passed",
+            "Failed"});
+            this.comboBox1.Location = new System.Drawing.Point(102, 248);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(164, 36);
+            this.comboBox1.TabIndex = 31;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(44, 256);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(69, 23);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Result :";
+            // 
+            // button1
+            // 
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(501, 512);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(118, 43);
+            this.button1.TabIndex = 29;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(48, 85);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(571, 111);
+            this.textBox2.TabIndex = 28;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(347, 322);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(272, 174);
+            this.textBox4.TabIndex = 25;
+            // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(51, 322);
+            this.textBox6.Multiline = true;
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(279, 174);
+            this.textBox6.TabIndex = 24;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(343, 296);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(181, 23);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Test Plan Regression :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(44, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 23);
+            this.label3.TabIndex = 18;
+            this.label3.Text = "Notes :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(44, 214);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(70, 23);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Status :";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(45, 296);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 23);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "Test Plan Fixes :";
+            // 
+            // button2
+            // 
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Location = new System.Drawing.Point(367, 512);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(118, 43);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Cancel";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.ForeColor = System.Drawing.Color.Black;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(174, 16);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(446, 36);
+            this.comboBox2.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(44, 19);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(145, 23);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Select Test Case :";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "On hold",
+            "Executed",
+            "Not executed",
+            "In progress",
+            "Blocked"});
+            this.comboBox3.Location = new System.Drawing.Point(102, 206);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(164, 36);
+            this.comboBox3.TabIndex = 32;
             // 
             // MainWindow
             // 
@@ -706,6 +1132,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1220, 767);
+            this.Controls.Add(this.PanelResults);
+            this.Controls.Add(this.PanelTestCasesDetailedView);
+            this.Controls.Add(this.ButtonGenerateHtmlFile);
             this.Controls.Add(this.PanelTestCases);
             this.Controls.Add(this.PanelSetupTestPlan);
             this.Controls.Add(this.ButtonWModeForeground);
@@ -732,6 +1161,10 @@
             this.PanelSetupTestPlanContinuation.PerformLayout();
             this.PanelTestCases.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTestCases)).EndInit();
+            this.PanelTestCasesDetailedView.ResumeLayout(false);
+            this.PanelTestCasesDetailedView.PerformLayout();
+            this.PanelResults.ResumeLayout(false);
+            this.PanelResults.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -780,6 +1213,7 @@
         private System.Windows.Forms.Button ButtonTestCasesRemove;
         private System.Windows.Forms.Button ButtonTestCasesSave;
         private System.Windows.Forms.Button ButtonTestCasesDetailedView;
+        private System.Windows.Forms.Button ButtonTestCasesDetailedExit;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestArea;
         private System.Windows.Forms.DataGridViewTextBoxColumn Type;
         private System.Windows.Forms.DataGridViewTextBoxColumn Component;
@@ -789,8 +1223,43 @@
         private System.Windows.Forms.DataGridViewComboBoxColumn Tag;
         private System.Windows.Forms.DataGridViewTextBoxColumn PreCondition;
         private System.Windows.Forms.DataGridViewTextBoxColumn TestSteps;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ExpectedBehaviour;
-        private System.Windows.Forms.Button ButtonTestCasesDetailedExit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ExpectedBehavior;
+        private System.Windows.Forms.Button ButtonGenerateHtmlFile;
+        private System.Windows.Forms.Panel PanelTestCasesDetailedView;
+        private System.Windows.Forms.ComboBox ComboBoxSelectTestCase;
+        private System.Windows.Forms.Label LabelSelectTestCase;
+        private System.Windows.Forms.Button ButtonTestCasesDetailedViewExit;
+        private System.Windows.Forms.Button ButtonTestCasesDetailedViewRemove;
+        private System.Windows.Forms.TextBox TextBoxTestCasesDetailedViewConditions;
+        private System.Windows.Forms.TextBox TextBoxTestCasesDetailedViewScenario;
+        private System.Windows.Forms.TextBox TextBoxTestCasesDetailedViewBehavior;
+        private System.Windows.Forms.TextBox TextBoxTestCasesDetailedViewDescription;
+        private System.Windows.Forms.TextBox TextBoxTestCasesDetailedViewSteps;
+        private System.Windows.Forms.TextBox TextBoxTestCasesDetailedViewID;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewConditions;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewTag;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewExpectedBehavior;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewDescription;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewScenario;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewSteps;
+        private System.Windows.Forms.Label LabelTestCaseDetailedViewID;
+        private System.Windows.Forms.Button ButtonTestCasesDetailedViewSave;
+        private System.Windows.Forms.ComboBox ComboBoxTestCasesDetailedViewTag;
+        private System.Windows.Forms.Panel PanelResults;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox3;
     }
 }
 
