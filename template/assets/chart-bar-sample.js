@@ -2,10 +2,10 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-dataFunctionalNewFeaturesBar = [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1];
-dataFunctionalEnhacenmentBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-dataNonFunctionalNewFeaturesBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-dataNonFunctionalEnhacenmentBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+dataFunctionalNewFeaturesBar = [6,3,7,3,6,3,5,6,5,4,4,6,3,5,6,3,4];
+dataFunctionalEnhacenmentBar = [2,6,7,4,3,4,6,2,1,7,8,4,3,4,3,2,1];
+dataNonFunctionalNewFeaturesBar = [1,4,2,3,5,6,2,6,8,3,6,8,4,6,7,4,6];
+dataNonFunctionalEnhacenmentBar = [8,3,5,2,2,5,7,8,3,2,1,0,1,3,4,6,4];
 
 // Bar Chart Functional New Features
 var ctx = document.getElementById("myBarChart");

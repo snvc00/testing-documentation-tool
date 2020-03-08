@@ -14,7 +14,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="report.html">Testing Documentation</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+            <a class="navbar-brand" href="template.html">Testing Documentation</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         </nav>
         <!-- Side Bar Navigation -->
         <div id="layoutSidenav">
@@ -23,7 +23,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Navigation</div>
-                            <a class="nav-link" href="report.html"
+                            <a class="nav-link" href="template.html"
                                 ><div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
                                 Summary</a
                             >
@@ -47,15 +47,15 @@
 					<h1 class="mt - 4"></h1><br>
                         <h6> Introduction</h6>
                         <ol class="breadcrumb mb-4">
-<li class="breadcrumb - item active"></li>
+							<li class="breadcrumb - item active"></li>
                         </ol>
                         <h6> Test Environment</h6>
                         <ol class="breadcrumb mb-4">
-<li class="breadcrumb - item active"></li>
+							<li class="breadcrumb - item active"></li>
                         </ol>
                         <h6> Scope</h6>
                         <ol class="breadcrumb mb-4">
-<li class="breadcrumb - item active"></li>
+							<li class="breadcrumb - item active"></li>
                         </ol>
                         <!-- Test Cases Table -->
                         <div class="card mb-4">
@@ -80,7 +80,37 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <!--tr>
+                                            <!--$start_table_rows-->
+											<tr>
+												<td>New Feature</td>
+												<td>Login</td>
+												<td>Functional</td>
+												<td>a</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+											<tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>b</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</tr>
+                                            <!-- Format sample
+                                            <tr>
                                                 <td>Cara Stevens</td>
                                                 <td>Sales Assistant</td>
                                                 <td>New York</td>
@@ -93,7 +123,7 @@
                                                 <td>Failed</td>
                                                 <td>On Hold</td>
                                                 <td>Failed</td>
-                                            </tr-->
+                                            </tr>-->
                                         </tbody>
                                     </table>
                                 </div>
@@ -113,6 +143,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Functional New Features - Successful / Failed</div>
                                     <div class="card-body"><canvas id="myPieChart" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart0">Total Test: 0, Passed: 0, Failed: 0</code></div>
                                 </div>
                             </div>
 
@@ -126,6 +157,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Functional Enhacenments - Successful / Failed</div>
                                     <div class="card-body"><canvas id="functionalEnhacenmentsResults" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart1">Total Test: 0, Passed: 0, Failed: 0</code></div>
                                 </div>
                             </div>
 
@@ -139,6 +171,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Non Functional New Features - Successful / Failed</div>
                                     <div class="card-body"><canvas id="nonFunctionalNewFeaturesResults" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart2">Total Test: 0, Passed: 0, Failed: 0</code></div>
                                 </div>
                             </div>
 
@@ -152,6 +185,7 @@
                                 <div class="card mb-4">
                                     <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Non Functional Enhacenments - Successful / Failed</div>
                                     <div class="card-body"><canvas id="nonFunctionalEnhacenmentsResults" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart3">Total Test: 0, Passed: 0, Failed: 0</code></div>
                                 </div>
                             </div>
 
@@ -159,11 +193,11 @@
                         <!-- End Charts -->
                         <h6> Regression</h6>
                         <ol class="breadcrumb mb-4">
-<li class="breadcrumb - item active"></li>
+							<li class="breadcrumb - item active"></li>
                         </ol>
                         <h6> Fixes</h6>
                         <ol class="breadcrumb mb-4">
-<li class="breadcrumb - item active"></li>
+							<li class="breadcrumb - item active"></li>
                         </ol>
                     </div>
                 </main>
