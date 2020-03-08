@@ -85,6 +85,8 @@ namespace TestingDocumentationTool
 
         private void ButtonTestCases_Click(object sender, EventArgs e)
         {
+            PanelSetupTestPlan.Hide();
+
             if (CurrentPanel != null)
                 CurrentPanel.Hide();
 
@@ -144,128 +146,157 @@ namespace TestingDocumentationTool
 
         private void ButtonDownloadXLS_Click(object sender, EventArgs e)
         {
-
+            if (AvailableSummary)
+                Process.Start("..\\..\\..\\template\\notAvailable.html");
         }
 
         private void ButtonGenerateHtmlFile_Click(object sender, EventArgs e)
         {
-            // Modify HTML template
-            List<string> htmlDoc = new List<string>();
-
-            try
+            if (AvailableSummary)
             {
-                using (StreamReader sr = new StreamReader("..\\..\\..\\template\\template.html"))
-                {
-                    string line;
+                // Modify HTML template
+                List<string> htmlDoc = new List<string>();
 
-                    while ((line = sr.ReadLine()) != null)
+                try
+                {
+                    using (StreamReader sr = new StreamReader("..\\..\\..\\template\\template.html"))
                     {
-                        htmlDoc.Add(line);
+                        string line;
+
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            htmlDoc.Add(line);
+                        }
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            if (TestPlan.GetTestCases().Count > 0)
-            {
-                List<List<string>> TestCasesRows = new List<List<string>>();
-
-                foreach (TestCase tc in TestPlan.GetTestCases())
-                    TestCasesRows.Add(new TestCaseTableRow(tc).LinesOfCode);
-
-                int currentLine = 95;
-
-                for (int i = 0; i < TestCasesRows.Count; ++i)
+                catch
                 {
-                    for (int j = 0; j < TestCasesRows[i].Count; ++j)
+                    MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                if (TestPlan.GetTestCases().Count > 0)
+                {
+                    List<List<string>> TestCasesRows = new List<List<string>>();
+
+                    foreach (TestCase tc in TestPlan.GetTestCases())
+                        TestCasesRows.Add(new TestCaseTableRow(tc).LinesOfCode);
+
+                    int currentLine = 95;
+
+                    for (int i = 0; i < TestCasesRows.Count; ++i)
                     {
-                        htmlDoc.Insert(currentLine, TestCasesRows[i][j]);
-                        ++currentLine;
+                        for (int j = 0; j < TestCasesRows[i].Count; ++j)
+                        {
+                            htmlDoc.Insert(currentLine, TestCasesRows[i][j]);
+                            ++currentLine;
+                        }
                     }
                 }
-            }
 
-            for (int i = 0; i < htmlDoc.Count; ++i)
-            {
-                if (htmlDoc[i].Contains("$test_plan_name"))
-                    htmlDoc[i] = "\t\t\t\t\t<h1 class=\"mt - 4\">" + TestPlan.Name + "</h1><br>";
-
-                if (htmlDoc[i].Contains("$test_plan_introduction"))
-                    htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Introduction + "</li>";
-
-                if (htmlDoc[i].Contains("$test_plan_environment"))
-                    htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.SetupEnvironment + "</li>";
-
-                if (htmlDoc[i].Contains("$test_plan_scope"))
-                    htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Scope + "</li>";
-
-                if (htmlDoc[i].Contains("$test_plan_regression"))
-                    htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Regression + "</li>";
-
-                if (htmlDoc[i].Contains("$test_plan_fixes"))
-                    htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Fixes + "</li>";
-            }
-
-            using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\report.html"))
-            {
-                foreach (string line in htmlDoc)
-                    sw.WriteLine(line);
-            }
-
-            // Modify Dataset in chart-bar.js
-            List<string> chartBar = new List<string>();
-
-            try
-            {
-                using (StreamReader sr = new StreamReader("..\\..\\..\\template\\assets\\chart-bar.js"))
+                for (int i = 0; i < htmlDoc.Count; ++i)
                 {
-                    string line;
+                    if (htmlDoc[i].Contains("$test_plan_name"))
+                        htmlDoc[i] = "\t\t\t\t\t<h1 class=\"mt - 4\">" + TestPlan.Name + "</h1><br>";
 
-                    while ((line = sr.ReadLine()) != null)
+                    if (htmlDoc[i].Contains("$test_plan_introduction"))
+                        htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Introduction + "</li>";
+
+                    if (htmlDoc[i].Contains("$test_plan_environment"))
+                        htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.SetupEnvironment + "</li>";
+
+                    if (htmlDoc[i].Contains("$test_plan_scope"))
+                        htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Scope + "</li>";
+
+                    if (htmlDoc[i].Contains("$test_plan_regression"))
+                        htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Regression + "</li>";
+
+                    if (htmlDoc[i].Contains("$test_plan_fixes"))
+                        htmlDoc[i] = "<li class=\"breadcrumb - item active\">" + TestPlan.Fixes + "</li>";
+                }
+
+                using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\report.html"))
+                {
+                    foreach (string line in htmlDoc)
+                        sw.WriteLine(line);
+                }
+
+                // Modify Dataset in chart-bar.js
+                List<string> chartBar = new List<string>();
+
+                try
+                {
+                    using (StreamReader sr = new StreamReader("..\\..\\..\\template\\assets\\chart-bar.js"))
                     {
-                        chartBar.Add(line);
+                        string line;
+
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            chartBar.Add(line);
+                        }
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            /*chartBar[4] = "dataFunctionalNewFeaturesBar = [" + TestPlan.FunctionalNewFeatures + "];";
-            chartBar[5] = "dataFunctionalEnhacenmentBar = [" + TestPlan.FunctionalEnhacenments + "];";
-            chartBar[6] = "dataNonFunctionalNewFeaturesBar = [" + TestPlan.NonFunctionalNewFeatures + "];";
-            chartBar[7] = "dataNonFunctionalEnhacenmentBar = [" + TestPlan.NonFunctionalEnhacenments + "];";
-
-            using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-bar.js"))
-            {
-                foreach (string line in chartBar)
-                    sw.WriteLine(line);
-            }*/
-
-            // Modify Dataset in chart-pie.js
-            List<string> chartPie = new List<string>();
-
-            try
-            {
-                using (StreamReader sr = new StreamReader("..\\..\\..\\template\\assets\\chart-pie.js"))
+                catch
                 {
-                    string line;
+                    MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
-                    while ((line = sr.ReadLine()) != null)
+                TestPlan.BuildDatasets();
+
+                chartBar[4] = "dataFunctionalNewFeaturesBar = [" + TestPlan.FunctionalNewFeatures + "];";
+                chartBar[5] = "dataFunctionalEnhacenmentBar = [" + TestPlan.FunctionalEnhacenments + "];";
+                chartBar[6] = "dataNonFunctionalNewFeaturesBar = [" + TestPlan.NonFunctionalNewFeatures + "];";
+                chartBar[7] = "dataNonFunctionalEnhacenmentBar = [" + TestPlan.NonFunctionalEnhacenments + "];";
+
+                using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-bar.js"))
+                {
+                    foreach (string line in chartBar)
+                        sw.WriteLine(line);
+                }
+
+                // Modify Dataset in chart-pie.js
+                List<string> chartPie = new List<string>();
+
+                try
+                {
+                    using (StreamReader sr = new StreamReader("..\\..\\..\\template\\assets\\chart-pie.js"))
                     {
-                        chartPie.Add(line);
+                        string line;
+
+                        while ((line = sr.ReadLine()) != null)
+                        {
+                            chartPie.Add(line);
+                        }
                     }
                 }
-            }
-            catch
-            {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+                catch
+                {
+                    MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
+                TestPlan.BuildResults();
+
+                chartPie[4] = "dataFunctionalNewFeatures = [" + TestPlan.FunctionalNewFeaturesResults[1].ToString() + ", " + TestPlan.FunctionalNewFeaturesResults[0].ToString() + "];";
+                chartPie[5] = "dataFunctionalEnhacenments = [" + TestPlan.FunctionalEnhacenmentsResults[1].ToString() + ", " + TestPlan.FunctionalEnhacenmentsResults[0].ToString() + "];";
+                chartPie[6] = "dataNonFunctionalNewFeatures = [" + TestPlan.NonFunctionalNewFeaturesResults[1].ToString() + ", " + TestPlan.NonFunctionalNewFeaturesResults[0].ToString() + "];";
+                chartPie[7] = "dataNonFunctionalEnhacenments = [" + TestPlan.NonFunctionalEnhacenmentsResults[1].ToString() + ", " + TestPlan.NonFunctionalEnhacenmentsResults[0].ToString() + "];";
+
+                using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-pie.js"))
+                {
+                    foreach (string line in chartPie)
+                        sw.WriteLine(line);
+                }
+
+                if (CurrentPanel != null)
+                    CurrentPanel.Hide();
+
+                PanelCreateHTMLfile.Show();
+                CurrentPanel = PanelCreateHTMLfile;
+                CurrentPanel.Refresh();
+
+                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\htmlReady.png");
+                PictureBoxPanelHTML.Refresh();
+                CurrentPanel.Refresh();
+            }
         }
 
         // Extra Buttons
@@ -410,6 +441,10 @@ namespace TestingDocumentationTool
             ButtonSummaryOk.ForeColor = Color.White;
             ButtonSummaryOk.BackColor = Color.FromArgb(40, 40, 40);
 
+            // HTML panel
+            ButtonPanelHTMLOpenInBrowser.ForeColor = Color.White;
+            ButtonPanelHTMLOpenInBrowser.BackColor = Color.FromArgb(40, 40, 40);
+
             Refresh();
         }
 
@@ -511,6 +546,10 @@ namespace TestingDocumentationTool
             // Summary panel
             ButtonSummaryOk.ForeColor = Color.Black;
             ButtonSummaryOk.BackColor = Color.White;
+
+            // HTML panel
+            ButtonPanelHTMLOpenInBrowser.ForeColor = Color.Black;
+            ButtonPanelHTMLOpenInBrowser.BackColor = Color.White;
 
             Refresh();
         }
@@ -737,6 +776,13 @@ namespace TestingDocumentationTool
             CurrentPanel.Refresh();
         }
 
+        // HTML Panel
+        private void ButtonPanelHTMLOpenInBrowser_Click(object sender, EventArgs e)
+        {
+            ButtonColorAnimation(ButtonPanelHTMLOpenInBrowser, Color.LightGoldenrodYellow);
+            Process.Start("..\\..\\..\\template\\report.html");
+        }
+
         // Extra Functionality ->Animations<-
         public void ButtonColorAnimation(Button button, Color color)
         {
@@ -746,5 +792,7 @@ namespace TestingDocumentationTool
             Thread.Sleep(500);
             button.BackColor = lastColor;
         }
+
+        
     }
 }

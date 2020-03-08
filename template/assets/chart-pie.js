@@ -2,10 +2,10 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-/*dataset0*/dataFunctionalNewFeatures = [1, 2];
-/*dataset1*/dataFunctionalEnhacenments = [1, 2];
-/*dataset2*/dataNonFunctionalNewFeatures = [2, 2];
-/*dataset3*/dataNonFunctionalEnhacenments = [3, 1];
+dataFunctionalNewFeatures = [0, 0];
+dataFunctionalEnhacenments = [0, 0];
+dataNonFunctionalNewFeatures = [0, 0];
+dataNonFunctionalEnhacenments = [0, 0];
 
 // Pie Chart Functional New Features
 var ctx = document.getElementById("myPieChart");

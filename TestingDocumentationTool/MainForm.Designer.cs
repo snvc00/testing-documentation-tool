@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
@@ -123,6 +123,10 @@
             this.LabelSummaryMessage = new System.Windows.Forms.Label();
             this.ButtonSummaryOk = new System.Windows.Forms.Button();
             this.PictureBoxSummary = new System.Windows.Forms.PictureBox();
+            this.PanelCreateHTMLfile = new System.Windows.Forms.Panel();
+            this.LabelPanelHTMLText = new System.Windows.Forms.Label();
+            this.PictureBoxPanelHTML = new System.Windows.Forms.PictureBox();
+            this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -131,6 +135,8 @@
             this.PanelResults.SuspendLayout();
             this.PanelSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSummary)).BeginInit();
+            this.PanelCreateHTMLfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPanelHTML)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonSetupTestPlan
@@ -256,7 +262,7 @@
             this.ButtonDownloadXLS.Padding = new System.Windows.Forms.Padding(0, 10, 0, 20);
             this.ButtonDownloadXLS.Size = new System.Drawing.Size(153, 161);
             this.ButtonDownloadXLS.TabIndex = 18;
-            this.ButtonDownloadXLS.Text = "Download XLS File";
+            this.ButtonDownloadXLS.Text = "Create XLS File";
             this.ButtonDownloadXLS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ButtonDownloadXLS.UseVisualStyleBackColor = true;
             this.ButtonDownloadXLS.Click += new System.EventHandler(this.ButtonDownloadXLS_Click);
@@ -628,14 +634,14 @@
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
@@ -648,14 +654,14 @@
             this.PreCondition,
             this.TestSteps,
             this.ExpectedBehavior});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
             this.DataGridViewTestCases.RowHeadersWidth = 90;
@@ -1179,12 +1185,56 @@
             this.PictureBoxSummary.TabIndex = 0;
             this.PictureBoxSummary.TabStop = false;
             // 
+            // PanelCreateHTMLfile
+            // 
+            this.PanelCreateHTMLfile.Controls.Add(this.LabelPanelHTMLText);
+            this.PanelCreateHTMLfile.Controls.Add(this.PictureBoxPanelHTML);
+            this.PanelCreateHTMLfile.Controls.Add(this.ButtonPanelHTMLOpenInBrowser);
+            this.PanelCreateHTMLfile.Location = new System.Drawing.Point(479, 82);
+            this.PanelCreateHTMLfile.Name = "PanelCreateHTMLfile";
+            this.PanelCreateHTMLfile.Size = new System.Drawing.Size(645, 573);
+            this.PanelCreateHTMLfile.TabIndex = 34;
+            this.PanelCreateHTMLfile.Visible = false;
+            // 
+            // LabelPanelHTMLText
+            // 
+            this.LabelPanelHTMLText.AutoSize = true;
+            this.LabelPanelHTMLText.BackColor = System.Drawing.Color.Transparent;
+            this.LabelPanelHTMLText.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelPanelHTMLText.ForeColor = System.Drawing.Color.Teal;
+            this.LabelPanelHTMLText.Location = new System.Drawing.Point(104, 517);
+            this.LabelPanelHTMLText.Name = "LabelPanelHTMLText";
+            this.LabelPanelHTMLText.Size = new System.Drawing.Size(343, 45);
+            this.LabelPanelHTMLText.TabIndex = 3;
+            this.LabelPanelHTMLText.Text = "Results Ready To Go!";
+            // 
+            // PictureBoxPanelHTML
+            // 
+            this.PictureBoxPanelHTML.Location = new System.Drawing.Point(21, 0);
+            this.PictureBoxPanelHTML.Name = "PictureBoxPanelHTML";
+            this.PictureBoxPanelHTML.Size = new System.Drawing.Size(605, 480);
+            this.PictureBoxPanelHTML.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxPanelHTML.TabIndex = 2;
+            this.PictureBoxPanelHTML.TabStop = false;
+            // 
+            // ButtonPanelHTMLOpenInBrowser
+            // 
+            this.ButtonPanelHTMLOpenInBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPanelHTMLOpenInBrowser.Location = new System.Drawing.Point(424, 518);
+            this.ButtonPanelHTMLOpenInBrowser.Name = "ButtonPanelHTMLOpenInBrowser";
+            this.ButtonPanelHTMLOpenInBrowser.Size = new System.Drawing.Size(201, 40);
+            this.ButtonPanelHTMLOpenInBrowser.TabIndex = 1;
+            this.ButtonPanelHTMLOpenInBrowser.Text = "Open in Browser";
+            this.ButtonPanelHTMLOpenInBrowser.UseVisualStyleBackColor = true;
+            this.ButtonPanelHTMLOpenInBrowser.Click += new System.EventHandler(this.ButtonPanelHTMLOpenInBrowser_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1220, 767);
+            this.Controls.Add(this.PanelCreateHTMLfile);
             this.Controls.Add(this.PanelSummary);
             this.Controls.Add(this.PanelResults);
             this.Controls.Add(this.PanelTestCasesDetailedView);
@@ -1206,6 +1256,7 @@
             this.Controls.Add(this.ButtonSetupTestPlan);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1222,6 +1273,9 @@
             this.PanelSummary.ResumeLayout(false);
             this.PanelSummary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSummary)).EndInit();
+            this.PanelCreateHTMLfile.ResumeLayout(false);
+            this.PanelCreateHTMLfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPanelHTML)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1321,6 +1375,10 @@
         private System.Windows.Forms.Button ButtonSummaryOk;
         private System.Windows.Forms.PictureBox PictureBoxSummary;
         private System.Windows.Forms.Label LabelSummaryMessage;
+        private System.Windows.Forms.Panel PanelCreateHTMLfile;
+        private System.Windows.Forms.Button ButtonPanelHTMLOpenInBrowser;
+        private System.Windows.Forms.PictureBox PictureBoxPanelHTML;
+        private System.Windows.Forms.Label LabelPanelHTMLText;
     }
 }
 
