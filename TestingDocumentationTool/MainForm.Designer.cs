@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
@@ -105,26 +105,38 @@
             this.ComboBoxSelectTestCase = new System.Windows.Forms.ComboBox();
             this.LabelSelectTestCase = new System.Windows.Forms.Label();
             this.PanelResults = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.ComboBoxStatus = new System.Windows.Forms.ComboBox();
+            this.ComboBoxResultsResult = new System.Windows.Forms.ComboBox();
+            this.LabelResultsResult = new System.Windows.Forms.Label();
+            this.ButtonResultSave = new System.Windows.Forms.Button();
+            this.TextBoxResultNotes = new System.Windows.Forms.TextBox();
+            this.TextBoxResultTestPlanRegression = new System.Windows.Forms.TextBox();
+            this.TextBoxResultTestPlanFixes = new System.Windows.Forms.TextBox();
+            this.LabelResultTestPlanRegression = new System.Windows.Forms.Label();
+            this.LabelResultNotes = new System.Windows.Forms.Label();
+            this.LabelResultStatus = new System.Windows.Forms.Label();
+            this.LabelResultTestPlanFixes = new System.Windows.Forms.Label();
+            this.ButtonResultCancel = new System.Windows.Forms.Button();
+            this.ComboBoxResultSelectTestCase = new System.Windows.Forms.ComboBox();
+            this.LabelResultSelectTestCase = new System.Windows.Forms.Label();
+            this.PanelSummary = new System.Windows.Forms.Panel();
+            this.LabelSummaryMessage = new System.Windows.Forms.Label();
+            this.ButtonSummaryOk = new System.Windows.Forms.Button();
+            this.PictureBoxSummary = new System.Windows.Forms.PictureBox();
+            this.PanelCreateHTMLfile = new System.Windows.Forms.Panel();
+            this.LabelPanelHTMLText = new System.Windows.Forms.Label();
+            this.PictureBoxPanelHTML = new System.Windows.Forms.PictureBox();
+            this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewTestCases)).BeginInit();
             this.PanelTestCasesDetailedView.SuspendLayout();
             this.PanelResults.SuspendLayout();
+            this.PanelSummary.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSummary)).BeginInit();
+            this.PanelCreateHTMLfile.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPanelHTML)).BeginInit();
             this.SuspendLayout();
             // 
             // ButtonSetupTestPlan
@@ -177,6 +189,7 @@
             this.ButtonClose.TabIndex = 12;
             this.ButtonClose.UseVisualStyleBackColor = true;
             this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
+            this.ButtonClose.MouseHover += new System.EventHandler(this.ButtonClose_MouseHover);
             // 
             // ButtonMinimize
             // 
@@ -242,6 +255,7 @@
             // 
             this.ButtonDownloadXLS.FlatAppearance.BorderSize = 0;
             this.ButtonDownloadXLS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonDownloadXLS.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ButtonDownloadXLS.Image = ((System.Drawing.Image)(resources.GetObject("ButtonDownloadXLS.Image")));
             this.ButtonDownloadXLS.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.ButtonDownloadXLS.Location = new System.Drawing.Point(80, 483);
@@ -249,7 +263,7 @@
             this.ButtonDownloadXLS.Padding = new System.Windows.Forms.Padding(0, 10, 0, 20);
             this.ButtonDownloadXLS.Size = new System.Drawing.Size(153, 161);
             this.ButtonDownloadXLS.TabIndex = 18;
-            this.ButtonDownloadXLS.Text = "Download XLS FIle";
+            this.ButtonDownloadXLS.Text = "Create XLS File";
             this.ButtonDownloadXLS.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.ButtonDownloadXLS.UseVisualStyleBackColor = true;
             this.ButtonDownloadXLS.Click += new System.EventHandler(this.ButtonDownloadXLS_Click);
@@ -621,14 +635,14 @@
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
@@ -641,14 +655,14 @@
             this.PreCondition,
             this.TestSteps,
             this.ExpectedBehavior});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle4;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
             this.DataGridViewTestCases.RowHeadersWidth = 90;
@@ -741,9 +755,10 @@
             // 
             this.ButtonGenerateHtmlFile.FlatAppearance.BorderSize = 0;
             this.ButtonGenerateHtmlFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonGenerateHtmlFile.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ButtonGenerateHtmlFile.Image = ((System.Drawing.Image)(resources.GetObject("ButtonGenerateHtmlFile.Image")));
             this.ButtonGenerateHtmlFile.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ButtonGenerateHtmlFile.Location = new System.Drawing.Point(274, 478);
+            this.ButtonGenerateHtmlFile.Location = new System.Drawing.Point(274, 483);
             this.ButtonGenerateHtmlFile.Name = "ButtonGenerateHtmlFile";
             this.ButtonGenerateHtmlFile.Padding = new System.Windows.Forms.Padding(0, 10, 0, 20);
             this.ButtonGenerateHtmlFile.Size = new System.Drawing.Size(153, 161);
@@ -968,163 +983,251 @@
             // 
             // PanelResults
             // 
-            this.PanelResults.Controls.Add(this.comboBox3);
-            this.PanelResults.Controls.Add(this.comboBox1);
-            this.PanelResults.Controls.Add(this.label1);
-            this.PanelResults.Controls.Add(this.button1);
-            this.PanelResults.Controls.Add(this.textBox2);
-            this.PanelResults.Controls.Add(this.textBox4);
-            this.PanelResults.Controls.Add(this.textBox6);
-            this.PanelResults.Controls.Add(this.label2);
-            this.PanelResults.Controls.Add(this.label3);
-            this.PanelResults.Controls.Add(this.label4);
-            this.PanelResults.Controls.Add(this.label6);
-            this.PanelResults.Controls.Add(this.button2);
-            this.PanelResults.Controls.Add(this.comboBox2);
-            this.PanelResults.Controls.Add(this.label8);
+            this.PanelResults.Controls.Add(this.ComboBoxStatus);
+            this.PanelResults.Controls.Add(this.ComboBoxResultsResult);
+            this.PanelResults.Controls.Add(this.LabelResultsResult);
+            this.PanelResults.Controls.Add(this.ButtonResultSave);
+            this.PanelResults.Controls.Add(this.TextBoxResultNotes);
+            this.PanelResults.Controls.Add(this.TextBoxResultTestPlanRegression);
+            this.PanelResults.Controls.Add(this.TextBoxResultTestPlanFixes);
+            this.PanelResults.Controls.Add(this.LabelResultTestPlanRegression);
+            this.PanelResults.Controls.Add(this.LabelResultNotes);
+            this.PanelResults.Controls.Add(this.LabelResultStatus);
+            this.PanelResults.Controls.Add(this.LabelResultTestPlanFixes);
+            this.PanelResults.Controls.Add(this.ButtonResultCancel);
+            this.PanelResults.Controls.Add(this.ComboBoxResultSelectTestCase);
+            this.PanelResults.Controls.Add(this.LabelResultSelectTestCase);
             this.PanelResults.Location = new System.Drawing.Point(485, 85);
             this.PanelResults.Name = "PanelResults";
             this.PanelResults.Size = new System.Drawing.Size(639, 570);
             this.PanelResults.TabIndex = 31;
             this.PanelResults.Visible = false;
             // 
-            // comboBox1
+            // ComboBoxStatus
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "Passed",
-            "Failed"});
-            this.comboBox1.Location = new System.Drawing.Point(102, 248);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(164, 36);
-            this.comboBox1.TabIndex = 31;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(44, 256);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(69, 23);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Result :";
-            // 
-            // button1
-            // 
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(501, 512);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(118, 43);
-            this.button1.TabIndex = 29;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(48, 85);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(571, 111);
-            this.textBox2.TabIndex = 28;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(347, 322);
-            this.textBox4.Multiline = true;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(272, 174);
-            this.textBox4.TabIndex = 25;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(51, 322);
-            this.textBox6.Multiline = true;
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(279, 174);
-            this.textBox6.TabIndex = 24;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(343, 296);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 23);
-            this.label2.TabIndex = 20;
-            this.label2.Text = "Test Plan Regression :";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(44, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 23);
-            this.label3.TabIndex = 18;
-            this.label3.Text = "Notes :";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(44, 214);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(70, 23);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Status :";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(45, 296);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 23);
-            this.label6.TabIndex = 19;
-            this.label6.Text = "Test Plan Fixes :";
-            // 
-            // button2
-            // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(367, 512);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(118, 43);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Cancel";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.ForeColor = System.Drawing.Color.Black;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(174, 16);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(446, 36);
-            this.comboBox2.TabIndex = 1;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(44, 19);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(145, 23);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Select Test Case :";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
+            this.ComboBoxStatus.FormattingEnabled = true;
+            this.ComboBoxStatus.Items.AddRange(new object[] {
             "On hold",
             "Executed",
             "Not executed",
             "In progress",
             "Blocked"});
-            this.comboBox3.Location = new System.Drawing.Point(102, 206);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(164, 36);
-            this.comboBox3.TabIndex = 32;
+            this.ComboBoxStatus.Location = new System.Drawing.Point(102, 206);
+            this.ComboBoxStatus.Name = "ComboBoxStatus";
+            this.ComboBoxStatus.Size = new System.Drawing.Size(164, 36);
+            this.ComboBoxStatus.TabIndex = 32;
+            // 
+            // ComboBoxResultsResult
+            // 
+            this.ComboBoxResultsResult.FormattingEnabled = true;
+            this.ComboBoxResultsResult.Items.AddRange(new object[] {
+            "Passed",
+            "Failed"});
+            this.ComboBoxResultsResult.Location = new System.Drawing.Point(102, 248);
+            this.ComboBoxResultsResult.Name = "ComboBoxResultsResult";
+            this.ComboBoxResultsResult.Size = new System.Drawing.Size(164, 36);
+            this.ComboBoxResultsResult.TabIndex = 31;
+            // 
+            // LabelResultsResult
+            // 
+            this.LabelResultsResult.AutoSize = true;
+            this.LabelResultsResult.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelResultsResult.Location = new System.Drawing.Point(44, 256);
+            this.LabelResultsResult.Name = "LabelResultsResult";
+            this.LabelResultsResult.Size = new System.Drawing.Size(69, 23);
+            this.LabelResultsResult.TabIndex = 30;
+            this.LabelResultsResult.Text = "Result :";
+            // 
+            // ButtonResultSave
+            // 
+            this.ButtonResultSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonResultSave.Location = new System.Drawing.Point(501, 512);
+            this.ButtonResultSave.Name = "ButtonResultSave";
+            this.ButtonResultSave.Size = new System.Drawing.Size(118, 43);
+            this.ButtonResultSave.TabIndex = 29;
+            this.ButtonResultSave.Text = "Save";
+            this.ButtonResultSave.UseVisualStyleBackColor = true;
+            this.ButtonResultSave.Click += new System.EventHandler(this.ButtonResultSave_Click);
+            // 
+            // TextBoxResultNotes
+            // 
+            this.TextBoxResultNotes.Location = new System.Drawing.Point(48, 85);
+            this.TextBoxResultNotes.Multiline = true;
+            this.TextBoxResultNotes.Name = "TextBoxResultNotes";
+            this.TextBoxResultNotes.Size = new System.Drawing.Size(571, 111);
+            this.TextBoxResultNotes.TabIndex = 28;
+            // 
+            // TextBoxResultTestPlanRegression
+            // 
+            this.TextBoxResultTestPlanRegression.Location = new System.Drawing.Point(347, 322);
+            this.TextBoxResultTestPlanRegression.Multiline = true;
+            this.TextBoxResultTestPlanRegression.Name = "TextBoxResultTestPlanRegression";
+            this.TextBoxResultTestPlanRegression.Size = new System.Drawing.Size(272, 174);
+            this.TextBoxResultTestPlanRegression.TabIndex = 25;
+            // 
+            // TextBoxResultTestPlanFixes
+            // 
+            this.TextBoxResultTestPlanFixes.Location = new System.Drawing.Point(51, 322);
+            this.TextBoxResultTestPlanFixes.Multiline = true;
+            this.TextBoxResultTestPlanFixes.Name = "TextBoxResultTestPlanFixes";
+            this.TextBoxResultTestPlanFixes.Size = new System.Drawing.Size(279, 174);
+            this.TextBoxResultTestPlanFixes.TabIndex = 24;
+            // 
+            // LabelResultTestPlanRegression
+            // 
+            this.LabelResultTestPlanRegression.AutoSize = true;
+            this.LabelResultTestPlanRegression.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelResultTestPlanRegression.Location = new System.Drawing.Point(343, 296);
+            this.LabelResultTestPlanRegression.Name = "LabelResultTestPlanRegression";
+            this.LabelResultTestPlanRegression.Size = new System.Drawing.Size(181, 23);
+            this.LabelResultTestPlanRegression.TabIndex = 20;
+            this.LabelResultTestPlanRegression.Text = "Test Plan Regression :";
+            // 
+            // LabelResultNotes
+            // 
+            this.LabelResultNotes.AutoSize = true;
+            this.LabelResultNotes.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelResultNotes.Location = new System.Drawing.Point(44, 59);
+            this.LabelResultNotes.Name = "LabelResultNotes";
+            this.LabelResultNotes.Size = new System.Drawing.Size(66, 23);
+            this.LabelResultNotes.TabIndex = 18;
+            this.LabelResultNotes.Text = "Notes :";
+            // 
+            // LabelResultStatus
+            // 
+            this.LabelResultStatus.AutoSize = true;
+            this.LabelResultStatus.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelResultStatus.Location = new System.Drawing.Point(44, 214);
+            this.LabelResultStatus.Name = "LabelResultStatus";
+            this.LabelResultStatus.Size = new System.Drawing.Size(70, 23);
+            this.LabelResultStatus.TabIndex = 16;
+            this.LabelResultStatus.Text = "Status :";
+            // 
+            // LabelResultTestPlanFixes
+            // 
+            this.LabelResultTestPlanFixes.AutoSize = true;
+            this.LabelResultTestPlanFixes.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelResultTestPlanFixes.Location = new System.Drawing.Point(45, 296);
+            this.LabelResultTestPlanFixes.Name = "LabelResultTestPlanFixes";
+            this.LabelResultTestPlanFixes.Size = new System.Drawing.Size(134, 23);
+            this.LabelResultTestPlanFixes.TabIndex = 19;
+            this.LabelResultTestPlanFixes.Text = "Test Plan Fixes :";
+            // 
+            // ButtonResultCancel
+            // 
+            this.ButtonResultCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonResultCancel.Location = new System.Drawing.Point(367, 512);
+            this.ButtonResultCancel.Name = "ButtonResultCancel";
+            this.ButtonResultCancel.Size = new System.Drawing.Size(118, 43);
+            this.ButtonResultCancel.TabIndex = 13;
+            this.ButtonResultCancel.Text = "Cancel";
+            this.ButtonResultCancel.UseVisualStyleBackColor = true;
+            this.ButtonResultCancel.Click += new System.EventHandler(this.ButtonResultCancel_Click);
+            // 
+            // ComboBoxResultSelectTestCase
+            // 
+            this.ComboBoxResultSelectTestCase.ForeColor = System.Drawing.Color.Black;
+            this.ComboBoxResultSelectTestCase.FormattingEnabled = true;
+            this.ComboBoxResultSelectTestCase.Location = new System.Drawing.Point(174, 14);
+            this.ComboBoxResultSelectTestCase.Name = "ComboBoxResultSelectTestCase";
+            this.ComboBoxResultSelectTestCase.Size = new System.Drawing.Size(446, 36);
+            this.ComboBoxResultSelectTestCase.TabIndex = 1;
+            this.ComboBoxResultSelectTestCase.SelectedIndexChanged += new System.EventHandler(this.ComboBoxResultSelectTestCase_SelectedIndexChanged);
+            // 
+            // LabelResultSelectTestCase
+            // 
+            this.LabelResultSelectTestCase.AutoSize = true;
+            this.LabelResultSelectTestCase.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelResultSelectTestCase.Location = new System.Drawing.Point(44, 19);
+            this.LabelResultSelectTestCase.Name = "LabelResultSelectTestCase";
+            this.LabelResultSelectTestCase.Size = new System.Drawing.Size(145, 23);
+            this.LabelResultSelectTestCase.TabIndex = 0;
+            this.LabelResultSelectTestCase.Text = "Select Test Case :";
+            // 
+            // PanelSummary
+            // 
+            this.PanelSummary.Controls.Add(this.LabelSummaryMessage);
+            this.PanelSummary.Controls.Add(this.ButtonSummaryOk);
+            this.PanelSummary.Controls.Add(this.PictureBoxSummary);
+            this.PanelSummary.Location = new System.Drawing.Point(479, 82);
+            this.PanelSummary.Name = "PanelSummary";
+            this.PanelSummary.Size = new System.Drawing.Size(645, 573);
+            this.PanelSummary.TabIndex = 33;
+            this.PanelSummary.Visible = false;
+            // 
+            // LabelSummaryMessage
+            // 
+            this.LabelSummaryMessage.AutoSize = true;
+            this.LabelSummaryMessage.Font = new System.Drawing.Font("Segoe UI", 13.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelSummaryMessage.ForeColor = System.Drawing.Color.DodgerBlue;
+            this.LabelSummaryMessage.Location = new System.Drawing.Point(128, 401);
+            this.LabelSummaryMessage.Name = "LabelSummaryMessage";
+            this.LabelSummaryMessage.Size = new System.Drawing.Size(456, 32);
+            this.LabelSummaryMessage.TabIndex = 2;
+            this.LabelSummaryMessage.Text = "Next step: Create a file with your stats!";
+            // 
+            // ButtonSummaryOk
+            // 
+            this.ButtonSummaryOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonSummaryOk.Location = new System.Drawing.Point(522, 518);
+            this.ButtonSummaryOk.Name = "ButtonSummaryOk";
+            this.ButtonSummaryOk.Size = new System.Drawing.Size(103, 40);
+            this.ButtonSummaryOk.TabIndex = 1;
+            this.ButtonSummaryOk.Text = "Got it";
+            this.ButtonSummaryOk.UseVisualStyleBackColor = true;
+            this.ButtonSummaryOk.Click += new System.EventHandler(this.ButtonSummaryOk_Click);
+            // 
+            // PictureBoxSummary
+            // 
+            this.PictureBoxSummary.Location = new System.Drawing.Point(191, 41);
+            this.PictureBoxSummary.Name = "PictureBoxSummary";
+            this.PictureBoxSummary.Size = new System.Drawing.Size(265, 317);
+            this.PictureBoxSummary.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.PictureBoxSummary.TabIndex = 0;
+            this.PictureBoxSummary.TabStop = false;
+            // 
+            // PanelCreateHTMLfile
+            // 
+            this.PanelCreateHTMLfile.Controls.Add(this.LabelPanelHTMLText);
+            this.PanelCreateHTMLfile.Controls.Add(this.PictureBoxPanelHTML);
+            this.PanelCreateHTMLfile.Controls.Add(this.ButtonPanelHTMLOpenInBrowser);
+            this.PanelCreateHTMLfile.Location = new System.Drawing.Point(479, 82);
+            this.PanelCreateHTMLfile.Name = "PanelCreateHTMLfile";
+            this.PanelCreateHTMLfile.Size = new System.Drawing.Size(645, 573);
+            this.PanelCreateHTMLfile.TabIndex = 34;
+            this.PanelCreateHTMLfile.Visible = false;
+            // 
+            // LabelPanelHTMLText
+            // 
+            this.LabelPanelHTMLText.AutoSize = true;
+            this.LabelPanelHTMLText.BackColor = System.Drawing.Color.Transparent;
+            this.LabelPanelHTMLText.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LabelPanelHTMLText.ForeColor = System.Drawing.Color.Teal;
+            this.LabelPanelHTMLText.Location = new System.Drawing.Point(104, 517);
+            this.LabelPanelHTMLText.Name = "LabelPanelHTMLText";
+            this.LabelPanelHTMLText.Size = new System.Drawing.Size(343, 45);
+            this.LabelPanelHTMLText.TabIndex = 3;
+            this.LabelPanelHTMLText.Text = "Results Ready To Go!";
+            // 
+            // PictureBoxPanelHTML
+            // 
+            this.PictureBoxPanelHTML.Location = new System.Drawing.Point(21, 0);
+            this.PictureBoxPanelHTML.Name = "PictureBoxPanelHTML";
+            this.PictureBoxPanelHTML.Size = new System.Drawing.Size(605, 480);
+            this.PictureBoxPanelHTML.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PictureBoxPanelHTML.TabIndex = 2;
+            this.PictureBoxPanelHTML.TabStop = false;
+            // 
+            // ButtonPanelHTMLOpenInBrowser
+            // 
+            this.ButtonPanelHTMLOpenInBrowser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonPanelHTMLOpenInBrowser.Location = new System.Drawing.Point(424, 518);
+            this.ButtonPanelHTMLOpenInBrowser.Name = "ButtonPanelHTMLOpenInBrowser";
+            this.ButtonPanelHTMLOpenInBrowser.Size = new System.Drawing.Size(201, 40);
+            this.ButtonPanelHTMLOpenInBrowser.TabIndex = 1;
+            this.ButtonPanelHTMLOpenInBrowser.Text = "Open in Browser";
+            this.ButtonPanelHTMLOpenInBrowser.UseVisualStyleBackColor = true;
+            this.ButtonPanelHTMLOpenInBrowser.Click += new System.EventHandler(this.ButtonPanelHTMLOpenInBrowser_Click);
             // 
             // MainWindow
             // 
@@ -1132,6 +1235,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1220, 767);
+            this.Controls.Add(this.PanelCreateHTMLfile);
+            this.Controls.Add(this.PanelSummary);
             this.Controls.Add(this.PanelResults);
             this.Controls.Add(this.PanelTestCasesDetailedView);
             this.Controls.Add(this.ButtonGenerateHtmlFile);
@@ -1152,6 +1257,7 @@
             this.Controls.Add(this.ButtonSetupTestPlan);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1165,6 +1271,12 @@
             this.PanelTestCasesDetailedView.PerformLayout();
             this.PanelResults.ResumeLayout(false);
             this.PanelResults.PerformLayout();
+            this.PanelSummary.ResumeLayout(false);
+            this.PanelSummary.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSummary)).EndInit();
+            this.PanelCreateHTMLfile.ResumeLayout(false);
+            this.PanelCreateHTMLfile.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPanelHTML)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1246,20 +1358,28 @@
         private System.Windows.Forms.Button ButtonTestCasesDetailedViewSave;
         private System.Windows.Forms.ComboBox ComboBoxTestCasesDetailedViewTag;
         private System.Windows.Forms.Panel PanelResults;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.Button ButtonResultSave;
+        private System.Windows.Forms.TextBox TextBoxResultNotes;
+        private System.Windows.Forms.TextBox TextBoxResultTestPlanRegression;
+        private System.Windows.Forms.TextBox TextBoxResultTestPlanFixes;
+        private System.Windows.Forms.Label LabelResultTestPlanRegression;
+        private System.Windows.Forms.Label LabelResultNotes;
+        private System.Windows.Forms.Label LabelResultStatus;
+        private System.Windows.Forms.Label LabelResultTestPlanFixes;
+        private System.Windows.Forms.Button ButtonResultCancel;
+        private System.Windows.Forms.ComboBox ComboBoxResultSelectTestCase;
+        private System.Windows.Forms.Label LabelResultSelectTestCase;
+        private System.Windows.Forms.Label LabelResultsResult;
+        private System.Windows.Forms.ComboBox ComboBoxResultsResult;
+        private System.Windows.Forms.ComboBox ComboBoxStatus;
+        private System.Windows.Forms.Panel PanelSummary;
+        private System.Windows.Forms.Button ButtonSummaryOk;
+        private System.Windows.Forms.PictureBox PictureBoxSummary;
+        private System.Windows.Forms.Label LabelSummaryMessage;
+        private System.Windows.Forms.Panel PanelCreateHTMLfile;
+        private System.Windows.Forms.Button ButtonPanelHTMLOpenInBrowser;
+        private System.Windows.Forms.PictureBox PictureBoxPanelHTML;
+        private System.Windows.Forms.Label LabelPanelHTMLText;
     }
 }
 
