@@ -793,6 +793,12 @@ namespace TestingDocumentationTool
             button.BackColor = lastColor;
         }
 
-        
+        private void ButtonClose_MouseHover(object sender, EventArgs e)
+        {
+            ButtonClose.BackColor = Color.IndianRed;
+            Refresh();
+            Thread.Sleep(850);
+            ButtonClose.BackColor = Color.White;
+        }
     }
 }
