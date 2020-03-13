@@ -64,7 +64,7 @@ namespace TestingDocumentationTool
             this.Component_Quantity.Add("Libraries", new int[4]);
             this.Component_Quantity.Add("Phases", new int[4]);
             this.Component_Quantity.Add("Users", new int[4]);
-            this.Component_Quantity.Add("Information", new int[4]);
+            this.Component_Quantity.Add("Tutorial", new int[4]);
         }
 
         public IReadOnlyList<TestCase> GetTestCasesReadOnly()

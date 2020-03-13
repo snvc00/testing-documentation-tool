@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Test Plan Summary" />
+        <meta name="author" content="" />
+        <title>Test Plan</title>
+        <link rel="shortcut icon" type="image/jpg" href="assets/favicon.png"/>
+        <link href="css/styles.css" rel="stylesheet" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="sb-nav-fixed">
+        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+            <a class="navbar-brand" href="template.html">Testing Documentation</a><button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
+        </nav>
+        <!-- Side Bar Navigation -->
+        <div id="layoutSidenav">
+            <div id="layoutSidenav_nav">
+                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                    <div class="sb-sidenav-menu">
+                        <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Navigation</div>
+                            <a class="nav-link" href="template.html"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-chart-line"></i></div>
+                                Summary</a
+                            >
+                            <a class="nav-link" href="about.html"
+                                ><div class="sb-nav-link-icon"><i class="fas fa-child"></i></div>
+                                About</a
+                            >
+                        </div>
+                    </div>
+                    <div class="sb-sidenav-footer">
+                        <div class="small">Powered by:</div>
+                        Start Bootstrap 
+                        Templates & TDT
+                    </div>
+                </nav>
+            </div>
+            <!-- End Side Bar Navigation -->
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid">
+                        <h1 class="mt-4">BlueXolo Test Plan</h1><br>
+                        <h6> Introduction</h6>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Officiis cupiditate voluptatum provident voluptatem nulla adipisci, asperiores labore exercitationem, ducimus, ex saepe voluptas recusandae non totam dolores similique. Praesentium, iure aspernatur!</li>
+                        </ol>
+                        <h6> Test Environment</h6>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae ea cum a, velit, error quidem obcaecati esse maiores deserunt consequatur labore, fugiat asperiores pariatur atque suscipit eos repudiandae. Omnis, sed?</li>
+                        </ol>
+                        <h6> Scope</h6>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Esse, ullam praesentium? Perspiciatis, sint? Maiores dolore perspiciatis rerum aliquid quod fugiat, est vero tempora at labore, optio eveniet illo omnis blanditiis!  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore et commodi corporis soluta numquam possimus, dolorem quos harum nostrum consequatur vero repellendus! Amet, numquam fugiat sed adipisci accusamus expedita nostrum.</li>
+                        </ol>
+                        <!-- Test Cases Table -->
+                        <div class="card mb-4">
+                            <div class="card-header"><i class="fas fa-table mr-1"></i> Test Cases</div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>Test Area</th>
+                                                <th>Component</th>
+                                                <th>Type</th>
+                                                <th>ID</th>
+                                                <th>Scenario</th>
+                                                <th>Description</th>
+                                                <th>Tag</th>
+                                                <th>Pre-Conditions</th>
+                                                <th>Steps</th>
+                                                <th>Expected Behavior</th>
+                                                <th>Status</th>
+                                                <th>Result</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--$start_table_rows-->
+                                            <tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>TUTORIAL_TESTCASE_A</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Security</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Not excuted</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenment</td>
+												<td>Collections</td>
+												<td>Non Functional</td>
+												<td>COLLECTIONS_TESTCASE_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>User Acceptance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>On Hold</td>
+												<td>Passed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Keyword</td>
+												<td>Functional</td>
+												<td>KEYWORD_NEW_FEATURE</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Performance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Executed</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenments</td>
+												<td>Login</td>
+												<td>Non Functional</td>
+												<td>LOGIN_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>UX</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Blocked</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>TUTORIAL_TESTCASE_A</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Security</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Not excuted</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenment</td>
+												<td>Collections</td>
+												<td>Non Functional</td>
+												<td>COLLECTIONS_TESTCASE_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>User Acceptance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>On Hold</td>
+												<td>Passed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Keyword</td>
+												<td>Functional</td>
+												<td>KEYWORD_NEW_FEATURE</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Performance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Executed</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenments</td>
+												<td>Login</td>
+												<td>Non Functional</td>
+												<td>LOGIN_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>UX</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Blocked</td>
+												<td>Failed</td>
+                                            </tr><tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>TUTORIAL_TESTCASE_A</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Security</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Not excuted</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenment</td>
+												<td>Collections</td>
+												<td>Non Functional</td>
+												<td>COLLECTIONS_TESTCASE_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>User Acceptance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>On Hold</td>
+												<td>Passed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Keyword</td>
+												<td>Functional</td>
+												<td>KEYWORD_NEW_FEATURE</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Performance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Executed</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenments</td>
+												<td>Login</td>
+												<td>Non Functional</td>
+												<td>LOGIN_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>UX</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Blocked</td>
+												<td>Failed</td>
+                                            </tr><tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>TUTORIAL_TESTCASE_A</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Security</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Not excuted</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenment</td>
+												<td>Collections</td>
+												<td>Non Functional</td>
+												<td>COLLECTIONS_TESTCASE_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>User Acceptance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>On Hold</td>
+												<td>Passed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Keyword</td>
+												<td>Functional</td>
+												<td>KEYWORD_NEW_FEATURE</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Performance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Executed</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenments</td>
+												<td>Login</td>
+												<td>Non Functional</td>
+												<td>LOGIN_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>UX</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Blocked</td>
+												<td>Failed</td>
+                                            </tr><tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>TUTORIAL_TESTCASE_A</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Security</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Not excuted</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenment</td>
+												<td>Collections</td>
+												<td>Non Functional</td>
+												<td>COLLECTIONS_TESTCASE_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>User Acceptance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>On Hold</td>
+												<td>Passed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Keyword</td>
+												<td>Functional</td>
+												<td>KEYWORD_NEW_FEATURE</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Performance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Executed</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenments</td>
+												<td>Login</td>
+												<td>Non Functional</td>
+												<td>LOGIN_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>UX</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Blocked</td>
+												<td>Failed</td>
+                                            </tr><tr>
+												<td>New Feature</td>
+												<td>Tutorial</td>
+												<td>Functional</td>
+												<td>TUTORIAL_TESTCASE_A</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Security</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Not excuted</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenment</td>
+												<td>Collections</td>
+												<td>Non Functional</td>
+												<td>COLLECTIONS_TESTCASE_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>User Acceptance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>On Hold</td>
+												<td>Passed</td>
+                                            </tr>
+                                            <tr>
+												<td>New Feature</td>
+												<td>Keyword</td>
+												<td>Functional</td>
+												<td>KEYWORD_NEW_FEATURE</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>Performance</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Executed</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <tr>
+												<td>Enhacenments</td>
+												<td>Login</td>
+												<td>Non Functional</td>
+												<td>LOGIN_ENHACENMENT</td>
+												<td>Scenario</td>
+                                                <td>Description of this test case</td>
+                                                <td>UX</td>
+												<td>All the preconditions</td>
+												<td>1. Step a 2. Step b 3. Step c</td>
+												<td>Behavior</td>
+												<td>Blocked</td>
+												<td>Failed</td>
+                                            </tr>
+                                            <!-- Format sample
+                                            <tr>
+                                                <td>Cara Stevens</td>
+                                                <td>Sales Assistant</td>
+                                                <td>New York</td>
+                                                <td>46</td>
+                                                <td>2011/12/06</td>
+                                                <td>$145,600</td>
+                                                <td>EB</td>
+                                                <td>Note</td>
+                                                <td>On Hold</td>
+                                                <td>Failed</td>
+                                                <td>On Hold</td>
+                                                <td>Failed</td>
+                                            </tr>-->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Test Cases Table -->
+                        <!-- Charts -->
+                        <div class="row">
+
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Functional New Features</div>
+                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Functional New Features - Successful / Failed</div>
+                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart0">Total Test: 0, Passed: 0, Failed: 0</code></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Functional Enhacenments</div>
+                                    <div class="card-body"><canvas id="funtionalEnhacenmentChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Functional Enhacenments - Successful / Failed</div>
+                                    <div class="card-body"><canvas id="functionalEnhacenmentsResults" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart1">Total Test: 0, Passed: 0, Failed: 0</code></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Non Functional New Features</div>
+                                    <div class="card-body"><canvas id="nonFunctionalNewFeaturesChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Non Functional New Features - Successful / Failed</div>
+                                    <div class="card-body"><canvas id="nonFunctionalNewFeaturesResults" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart2">Total Test: 0, Passed: 0, Failed: 0</code></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-bar mr-1"></i> Non Functional Enhacenments</div>
+                                    <div class="card-body"><canvas id="nonFunctionalEnhacenmentChart" width="100%" height="40"></canvas></div>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="card mb-4">
+                                    <div class="card-header"><i class="fas fa-chart-pie mr-1"></i> Non Functional Enhacenments - Successful / Failed</div>
+                                    <div class="card-body"><canvas id="nonFunctionalEnhacenmentsResults" width="100%" height="40"></canvas></div>
+                                    <div class="card-header"><code id="pieChart3">Total Test: 0, Passed: 0, Failed: 0</code></div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- End Charts -->
+                        <h6> Regression</h6>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Space to specify about the test plan regression.</li>
+                        </ol>
+                        <h6> Fixes</h6>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item active">Test Plan Fixes, this is the last part of the summary.</li>
+                        </ol>
+                    </div>
+                </main>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/chart-bar-sample.js"></script>
+        <script src="assets/chart-pie-sample.js"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+        <script src="assets/datatables-demo.js"></script>
+    </body>
+</html>
