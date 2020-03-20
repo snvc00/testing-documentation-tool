@@ -41,7 +41,7 @@ var myPieChart = new Chart(ctx, {
     labels: ["Failed", "Successful"],
     datasets: [{
       data: dataFunctionalNewFeatures,
-      backgroundColor: ["rgba(255, 0, 0, 0.7)", "rgba(0, 255, 0, 0.7)"],
+      backgroundColor: ["rgba(217, 65, 65, 1)", "rgba(65, 217, 65, 1)"],
     }],
   }
 });
@@ -55,7 +55,7 @@ var myPieChart1 = new Chart(ctx, {
     labels: ["Failed", "Successful"],
     datasets: [{
       data: dataFunctionalEnhacenments,
-      backgroundColor: ["rgba(255, 0, 0, 0.7)", "rgba(0, 255, 0, 0.7)"],
+      backgroundColor: ["rgba(217, 65, 65, 1)", "rgba(65, 217, 65, 1)"],
     }],
   },
 });
@@ -69,7 +69,7 @@ var myPieChart2 = new Chart(ctx, {
     labels: ["Failed", "Successful"],
     datasets: [{
       data: dataNonFunctionalNewFeatures,
-      backgroundColor: ["rgba(255, 0, 0, 0.7)", "rgba(0, 255, 0, 0.7)"],
+      backgroundColor: ["rgba(217, 65, 65, 1)", "rgba(65, 217, 65, 1)"],
     }],
   },
 });
@@ -83,7 +83,7 @@ var myPieChart3 = new Chart(ctx, {
     labels: ["Failed", "Successful"],
     datasets: [{
       data: dataNonFunctionalEnhacenments,
-      backgroundColor: ["rgba(255, 0, 0, 0.7)", "rgba(0, 255, 0, 0.7)"],
+      backgroundColor: ["rgba(217, 65, 65, 1)", "rgba(65, 217, 65, 1)"],
     }],
   },
 });
