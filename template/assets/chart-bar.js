@@ -2,7 +2,7 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-dataFunctionalNewFeaturesBar = [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+dataFunctionalNewFeaturesBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 dataFunctionalEnhacenmentBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 dataNonFunctionalNewFeaturesBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 dataNonFunctionalEnhacenmentBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
