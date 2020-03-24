@@ -63,6 +63,19 @@ namespace TestingDocumentationTool
         }
 
         // App Functionality Buttons
+        private void buttonLoadFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Excel excelFile = new Excel("report.xlsx", this.NotifyLoadFile);
+                excelFile.LoadData(this.TestPlan);
+                NotifyLoadFile.ShowBalloonTip(100, "Data Retrieved", "Data loaded from: report.xlsx successfully", ToolTipIcon.Info);
+            }
+            catch
+            {
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "Error trying to retrieve data from: report.xlsx", ToolTipIcon.Error);
+            }
+        }
 
         private void ButtonSetupTestPlan_Click(object sender, EventArgs e)
         {
@@ -136,6 +149,7 @@ namespace TestingDocumentationTool
                 ButtonDownloadXLS.ForeColor = Color.Black;
             }
 
+            NotifyLoadFile.ShowBalloonTip(100, "Summary Created", "HTML and XLSX report creation enabled", ToolTipIcon.Info);
             Refresh();
         }
 
@@ -143,9 +157,10 @@ namespace TestingDocumentationTool
         {
             if (AvailableSummary)
             {
-                Excel workbook = new Excel("report.xlsx");
+                Excel workbook = new Excel("report.xlsx", this.NotifyLoadFile);
                 workbook.PerformChanges(this.TestPlan);
                 workbook.OpenReport();
+                NotifyLoadFile.ShowBalloonTip(100, "XLSX Report Available", "Path: " + workbook.GetFilePath(), ToolTipIcon.Info);
             }
         }
 
@@ -172,6 +187,9 @@ namespace TestingDocumentationTool
                 PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\htmlReady.png");
                 PictureBoxPanelHTML.Refresh();
                 CurrentPanel.Refresh();
+
+                string path = Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\..\\..\\template\\report.html");
+                NotifyLoadFile.ShowBalloonTip(100, "HTML Report Available", "Path: " + path, ToolTipIcon.Info);
             }
         }
 
@@ -235,6 +253,7 @@ namespace TestingDocumentationTool
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\testDarkMode.png");
             ButtonResults.Image = Image.FromFile("..\\..\\..\\static\\resultsDarkMode.png");
             ButtonSummary.Image = Image.FromFile("..\\..\\..\\static\\summaryDarkMode.png");
+            ButtonLoadFile.Image = Image.FromFile("..\\..\\..\\static\\folderDarkMode.png");
 
             if (AvailableSummary)
             {
@@ -342,6 +361,7 @@ namespace TestingDocumentationTool
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\test.png");
             ButtonResults.Image = Image.FromFile("..\\..\\..\\static\\results.png");
             ButtonSummary.Image = Image.FromFile("..\\..\\..\\static\\summary.png");
+            ButtonLoadFile.Image = Image.FromFile("..\\..\\..\\static\\folder.png");
 
             if (AvailableSummary)
             {
@@ -679,7 +699,7 @@ namespace TestingDocumentationTool
             }
             catch
             {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "File is not available", ToolTipIcon.Error);
             }
 
             if (TestPlan.GetTestCases().Count > 0)
@@ -756,7 +776,7 @@ namespace TestingDocumentationTool
             }
             catch
             {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "File is not available", ToolTipIcon.Error);
             }
 
             TestPlan.BuildDatasets();
@@ -791,7 +811,7 @@ namespace TestingDocumentationTool
             }
             catch
             {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "File is not available", ToolTipIcon.Error);
             }
 
             TestPlan.BuildResults();
@@ -833,20 +853,6 @@ namespace TestingDocumentationTool
                 ButtonClose.BackColor = Color.FromArgb(40, 40, 40);
 
             ButtonClose.Refresh();
-        }
-
-        private void buttonLoadFile_Click(object sender, EventArgs e)
-        {
-            try
-            { 
-                Excel excelFile = new Excel("report.xlsx");
-                excelFile.LoadData(this.TestPlan);
-                NotifyLoadFile.ShowBalloonTip(200, "Success", "Data loaded from: report.xlsx successfully", ToolTipIcon.Info);
-            }
-            catch
-            {
-                NotifyLoadFile.ShowBalloonTip(200, "Error", "Error trying to retrieve data from: report.xlsx successfully", ToolTipIcon.Error);
-            }
         }
     }
 }

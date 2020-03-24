@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
+using System.Drawing;
+using System;
 
 namespace TestingDocumentationTool
 {
@@ -240,6 +242,25 @@ namespace TestingDocumentationTool
             this.Steps = "";
             this.ExpectedBehaviour = "";
             this.Notes = "";
+            this.Result = "";
+            this.Status = "";
+        }
+
+        public TestCase(TestCase _OtherTestCase)
+        {
+            this.TestArea = _OtherTestCase.TestArea;
+            this.Type = _OtherTestCase.Type;
+            this.Component = _OtherTestCase.Component;
+            this.ID = _OtherTestCase.ID;
+            this.TestScenario = _OtherTestCase.TestScenario;
+            this.Description = _OtherTestCase.Description;
+            this.Tag = _OtherTestCase.Tag;
+            this.PreConditions = _OtherTestCase.PreConditions;
+            this.Steps = _OtherTestCase.Steps;
+            this.ExpectedBehaviour = _OtherTestCase.ExpectedBehaviour;
+            this.Status = _OtherTestCase.Status;
+            this.Result = _OtherTestCase.Result;
+            this.Notes = _OtherTestCase.Notes;
         }
 
         public void Clean()
@@ -293,19 +314,24 @@ namespace TestingDocumentationTool
         string FileName;
         _Excel.Application App;
         _Excel.Workbook Workbook;
+        NotifyIcon MainFormNotifyIcon;
 
-        public Excel(string _fileName)
+        public Excel(string _fileName, NotifyIcon _mainFormNotifyIcon)
         {
             this.FileName = _fileName;
             this.App = new _Excel.Application();
             this.App.DefaultFilePath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\workbook\\";
             this.Workbook = (_Excel.Workbook)App.Workbooks.Open(App.DefaultFilePath + FileName);
+            this.MainFormNotifyIcon = _mainFormNotifyIcon;
         }
 
         public void PerformChanges(TestPlan _TestPlan)
         {
             try
             {
+                int[] a = new int[2];
+                a[2] = 1;
+
                 Clear();
 
                 _TestPlan.BuildDatasets();
@@ -321,6 +347,8 @@ namespace TestingDocumentationTool
 
                 // Test Cases
                 int row = 2;
+                string range;
+                _Excel.Range selectedCells;
             
                 foreach (TestCase tc in _TestPlan.GetTestCasesReadOnly())
                 {
@@ -336,6 +364,11 @@ namespace TestingDocumentationTool
                     App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value = tc.ExpectedBehaviour;
                     App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value = tc.Status;
                     App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value = tc.Result;
+
+                    range = "A" + row.ToString() + ":" + "L" + row.ToString();
+                    selectedCells = App.Worksheets["Test Cases"].Range[range];
+                    selectedCells.Borders.Color = Color.LightGray;
+                    selectedCells.Borders.Weight = 2;
 
                     ++row;
                 }
@@ -371,7 +404,7 @@ namespace TestingDocumentationTool
             catch
             {
                 App.Quit();
-                MessageBox.Show("Fatal error saving changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MainFormNotifyIcon.ShowBalloonTip(100, "Error", "An error occurred trying to save changes", ToolTipIcon.Error);
             }
         }
 
@@ -383,9 +416,11 @@ namespace TestingDocumentationTool
         private void Clear()
         {
             int row = 2;
+            string range = "A" + row.ToString() + ":" + "L" + row.ToString();
+            _Excel.Range selectedCells = App.Worksheets["Test Cases"].Range[range];
 
-            while (App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value != null)
-            {
+            while (App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value != null || selectedCells.Borders.Color.ToString() != "16119285") // 16119285 == Color.LightGray.ToString()
+            {     
                 App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value = "";
                 App.Worksheets["Test Cases"].Range["B" + row.ToString()].Value = "";
                 App.Worksheets["Test Cases"].Range["C" + row.ToString()].Value = "";
@@ -398,6 +433,12 @@ namespace TestingDocumentationTool
                 App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value = "";
                 App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value = "";
                 App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value = "";
+
+
+                range = "A" + row.ToString() + ":" + "L" + row.ToString();
+                selectedCells = App.Worksheets["Test Cases"].Range[range];
+                selectedCells.Borders.Color = Color.WhiteSmoke;
+
                 ++row;
             }
 
@@ -414,8 +455,37 @@ namespace TestingDocumentationTool
             _TestPlan.Fixes = App.Worksheets["Test Plan"].Range["E19"].Value;
             _TestPlan.Regression = App.Worksheets["Test Plan"].Range["E23"].Value;
 
+            // Test Cases
+            int row = 2;
+            TestCase tc = new TestCase();
+
+            while (App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value != null)
+            { 
+                tc.TestArea = App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value.ToString();
+                tc.Component = App.Worksheets["Test Cases"].Range["B" + row.ToString()].Value.ToString();
+                tc.Type = App.Worksheets["Test Cases"].Range["C" + row.ToString()].Value.ToString();
+                tc.ID = App.Worksheets["Test Cases"].Range["D" + row.ToString()].Value.ToString();
+                tc.TestScenario = App.Worksheets["Test Cases"].Range["E" + row.ToString()].Value.ToString();
+                tc.Description = App.Worksheets["Test Cases"].Range["F" + row.ToString()].Value.ToString();
+                tc.Tag = App.Worksheets["Test Cases"].Range["G" + row.ToString()].Value.ToString();
+                tc.PreConditions = App.Worksheets["Test Cases"].Range["H" + row.ToString()].Value.ToString();
+                tc.Steps = App.Worksheets["Test Cases"].Range["I" + row.ToString()].Value.ToString();
+                tc.ExpectedBehaviour = App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value.ToString();
+                tc.Status = App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value.ToString();
+                tc.Result = App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value.ToString();
+
+                _TestPlan.AddTestCase(new TestCase(tc));
+
+                ++row;
+            }
+
             Workbook.Close(false);
             App.Quit();
+        }
+
+        public string GetFilePath()
+        {
+            return App.DefaultFilePath + FileName;
         }
     }
 }

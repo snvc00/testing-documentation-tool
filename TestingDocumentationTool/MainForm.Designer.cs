@@ -130,6 +130,7 @@
             this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
             this.ButtonLoadFile = new System.Windows.Forms.Button();
             this.NotifyLoadFile = new System.Windows.Forms.NotifyIcon(this.components);
+            this.ToolTipLoadFile = new System.Windows.Forms.ToolTip(this.components);
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -1242,17 +1243,25 @@
             this.ButtonLoadFile.Name = "ButtonLoadFile";
             this.ButtonLoadFile.Size = new System.Drawing.Size(66, 64);
             this.ButtonLoadFile.TabIndex = 35;
+            this.ToolTipLoadFile.SetToolTip(this.ButtonLoadFile, "Load data from the last report created");
             this.ButtonLoadFile.UseVisualStyleBackColor = true;
             this.ButtonLoadFile.Click += new System.EventHandler(this.buttonLoadFile_Click);
             // 
             // NotifyLoadFile
             // 
             this.NotifyLoadFile.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
-            this.NotifyLoadFile.BalloonTipText = "Text";
-            this.NotifyLoadFile.BalloonTipTitle = "Title";
+            this.NotifyLoadFile.BalloonTipText = "Testing Documentation Tool";
+            this.NotifyLoadFile.BalloonTipTitle = "Testing Documentation Tool";
             this.NotifyLoadFile.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyLoadFile.Icon")));
-            this.NotifyLoadFile.Text = "Text";
+            this.NotifyLoadFile.Text = "Testing Documentation Tool";
             this.NotifyLoadFile.Visible = true;
+            // 
+            // ToolTipLoadFile
+            // 
+            this.ToolTipLoadFile.AutomaticDelay = 200;
+            this.ToolTipLoadFile.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ToolTipLoadFile.ToolTipTitle = "Load";
+            this.ToolTipLoadFile.UseAnimation = false;
             // 
             // MainWindow
             // 
@@ -1408,6 +1417,7 @@
         private System.Windows.Forms.Label LabelPanelHTMLText;
         private System.Windows.Forms.Button ButtonLoadFile;
         private System.Windows.Forms.NotifyIcon NotifyLoadFile;
+        private System.Windows.Forms.ToolTip ToolTipLoadFile;
     }
 }
 
