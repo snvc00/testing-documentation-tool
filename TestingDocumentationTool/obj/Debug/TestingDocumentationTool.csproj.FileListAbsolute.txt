@@ -16,3 +16,4 @@ C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocume
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.exe
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.pdb
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.MainWindow.resources
+C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.csproj.CoreCompileInputs.cache

@@ -1,12 +1,12 @@
-﻿using System;
+﻿using _Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Windows.Forms;
+using System.IO;
 
 namespace TestingDocumentationTool
 {
-    class TestPlan
+    public class TestPlan
     {
         public string Name;
         public string Introduction;
@@ -17,13 +17,13 @@ namespace TestingDocumentationTool
         List<TestCase> TestCases;
         public Dictionary<string, int[]> Component_Quantity;
         public string FunctionalNewFeatures;
-        public string FunctionalEnhacenments;
+        public string FunctionalEnhancements;
         public string NonFunctionalNewFeatures;
-        public string NonFunctionalEnhacenments;
+        public string NonFunctionalEnhancements;
         public int[] FunctionalNewFeaturesResults;
-        public int[] FunctionalEnhacenmentsResults;
+        public int[] FunctionalEnhancementsResults;
         public int[] NonFunctionalNewFeaturesResults;
-        public int[] NonFunctionalEnhacenmentsResults;
+        public int[] NonFunctionalEnhancementsResults;
 
         public TestPlan()
         {
@@ -34,13 +34,13 @@ namespace TestingDocumentationTool
             this.Fixes = "";
             this.Regression = "";
             this.FunctionalNewFeatures = "";
-            this.FunctionalEnhacenments = "";
+            this.FunctionalEnhancements = "";
             this.NonFunctionalNewFeatures = "";
-            this.NonFunctionalEnhacenments = "";
+            this.NonFunctionalEnhancements = "";
             this.FunctionalNewFeaturesResults = new int[2];
-            this.FunctionalEnhacenmentsResults = new int[2];
+            this.FunctionalEnhancementsResults = new int[2];
             this.NonFunctionalNewFeaturesResults = new int[2];
-            this.NonFunctionalEnhacenmentsResults = new int[2];
+            this.NonFunctionalEnhancementsResults = new int[2];
             this.TestCases = new List<TestCase>();
             this.Component_Quantity = new Dictionary<string, int[]>();
             InitDictionary();
@@ -85,10 +85,10 @@ namespace TestingDocumentationTool
 
         void EvaluateCategory(TestCase _TestCase)
         {
-            //[0] FunctionalNewFeature
-            //[1] NonFuncitonalNewFeature
-            //[2] FunctionalEnhacenment
-            //[3] NonFunctionalEnhacenment
+            //[0] FunctionalNewFeature Count
+            //[1] NonFuncitonalNewFeature Count
+            //[2] FunctionalEnhancement Count
+            //[3] NonFunctionalEnhancement Count
 
             if (_TestCase.TestArea == "New Feature")
             {
@@ -101,7 +101,7 @@ namespace TestingDocumentationTool
                     Component_Quantity[_TestCase.Component][1]++;
                 }
             }
-            else if (_TestCase.TestArea == "Enhacenment")
+            else if (_TestCase.TestArea == "Enhancements")
             {
                 if (_TestCase.Type == "Functional")
                 {
@@ -125,14 +125,14 @@ namespace TestingDocumentationTool
             {
                 FunctionalNewFeatures += key.Value[0].ToString() + ",";
                 NonFunctionalNewFeatures += key.Value[1].ToString() + ",";
-                FunctionalEnhacenments += key.Value[2].ToString() + ",";
-                NonFunctionalEnhacenments += key.Value[3].ToString() + ",";
+                FunctionalEnhancements += key.Value[2].ToString() + ",";
+                NonFunctionalEnhancements += key.Value[3].ToString() + ",";
             }
 
             FunctionalNewFeatures = FunctionalNewFeatures.Substring(0, FunctionalNewFeatures.Length - 1);
             NonFunctionalNewFeatures = NonFunctionalNewFeatures.Substring(0, NonFunctionalNewFeatures.Length - 1);
-            FunctionalEnhacenments = FunctionalEnhacenments.Substring(0, FunctionalEnhacenments.Length - 1);
-            NonFunctionalEnhacenments = NonFunctionalEnhacenments.Substring(0, NonFunctionalEnhacenments.Length - 1);
+            FunctionalEnhancements = FunctionalEnhancements.Substring(0, FunctionalEnhancements.Length - 1);
+            NonFunctionalEnhancements = NonFunctionalEnhancements.Substring(0, NonFunctionalEnhancements.Length - 1);
         }
 
         public void BuildResults()
@@ -164,28 +164,28 @@ namespace TestingDocumentationTool
                         }
                     }
                 }
-                else if (tc.TestArea == "Enhacenment")
+                else if (tc.TestArea == "Enhancement")
                 {
                     if (tc.Type == "Functional")
                     {
                         if (tc.Result == "Passed")
                         {
-                            FunctionalEnhacenmentsResults[0]++;
+                            FunctionalEnhancementsResults[0]++;
                         }
                         else if (tc.Result == "Failed")
                         {
-                            FunctionalEnhacenmentsResults[1]++;
+                            FunctionalEnhancementsResults[1]++;
                         }
                     }
                     else
                     {
                         if (tc.Result == "Passed")
                         {
-                            NonFunctionalEnhacenmentsResults[0]++;
+                            NonFunctionalEnhancementsResults[0]++;
                         }
                         else if (tc.Result == "Failed")
                         {
-                            NonFunctionalEnhacenmentsResults[1]++;
+                            NonFunctionalEnhancementsResults[1]++;
                         }
                     }
                 }
@@ -194,7 +194,7 @@ namespace TestingDocumentationTool
 
     }
 
-    class TestCase
+    public class TestCase
     {
         public string TestArea;
         public string Type;
@@ -285,6 +285,137 @@ namespace TestingDocumentationTool
             LinesOfCode.Add("\t\t\t\t\t\t\t\t\t\t\t\t<td>" + tc.Status + "</td>");
             LinesOfCode.Add("\t\t\t\t\t\t\t\t\t\t\t\t<td>" + tc.Result + "</td>");
             LinesOfCode.Add("\t\t\t\t\t\t\t\t\t\t\t</tr>");
+        }
+    }
+
+    public class Excel
+    {
+        string FileName;
+        _Excel.Application App;
+        _Excel.Workbook Workbook;
+
+        public Excel(string _fileName)
+        {
+            this.FileName = _fileName;
+            this.App = new _Excel.Application();
+            this.App.DefaultFilePath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\workbook\\";
+            this.Workbook = (_Excel.Workbook)App.Workbooks.Open(App.DefaultFilePath + FileName);
+        }
+
+        public void PerformChanges(TestPlan _TestPlan)
+        {
+            try
+            {
+                Clear();
+
+                _TestPlan.BuildDatasets();
+                _TestPlan.BuildResults();
+
+                // Test Plan General Information
+                App.Worksheets["Test Plan"].Range["E1"].Value = _TestPlan.Name;
+                App.Worksheets["Test Plan"].Range["E5"].Value = _TestPlan.Introduction;
+                App.Worksheets["Test Plan"].Range["E11"].Value = _TestPlan.SetupEnvironment;
+                App.Worksheets["Test Plan"].Range["E15"].Value = _TestPlan.Scope;
+                App.Worksheets["Test Plan"].Range["E19"].Value = _TestPlan.Fixes;
+                App.Worksheets["Test Plan"].Range["E23"].Value = _TestPlan.Regression;
+
+                // Test Cases
+                int row = 2;
+            
+                foreach (TestCase tc in _TestPlan.GetTestCasesReadOnly())
+                {
+                    App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value = tc.TestArea;
+                    App.Worksheets["Test Cases"].Range["B" + row.ToString()].Value = tc.Component;
+                    App.Worksheets["Test Cases"].Range["C" + row.ToString()].Value = tc.Type;
+                    App.Worksheets["Test Cases"].Range["D" + row.ToString()].Value = tc.ID;
+                    App.Worksheets["Test Cases"].Range["E" + row.ToString()].Value = tc.TestScenario;
+                    App.Worksheets["Test Cases"].Range["F" + row.ToString()].Value = tc.Description;
+                    App.Worksheets["Test Cases"].Range["G" + row.ToString()].Value = tc.Tag;
+                    App.Worksheets["Test Cases"].Range["H" + row.ToString()].Value = tc.PreConditions;
+                    App.Worksheets["Test Cases"].Range["I" + row.ToString()].Value = tc.Steps;
+                    App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value = tc.ExpectedBehaviour;
+                    App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value = tc.Status;
+                    App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value = tc.Result;
+
+                    ++row;
+                }
+
+                // Passed - Failed
+                App.Worksheets["Charts Data"].Range["A4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
+                App.Worksheets["Charts Data"].Range["B4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
+                App.Worksheets["Charts Data"].Range["C4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
+                App.Worksheets["Charts Data"].Range["D4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
+                App.Worksheets["Charts Data"].Range["E4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
+                App.Worksheets["Charts Data"].Range["F4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
+                App.Worksheets["Charts Data"].Range["G4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
+                App.Worksheets["Charts Data"].Range["H4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
+
+                // General Charts | A == 65, Q == 81.
+                string[] functionalNF = _TestPlan.FunctionalNewFeatures.Split(',');
+                string[] functionalEN = _TestPlan.FunctionalEnhancements.Split(',');
+                string[] nonFunctionalNF = _TestPlan.NonFunctionalNewFeatures.Split(',');
+                string[] nonFunctionalEN = _TestPlan.NonFunctionalEnhancements.Split(',');
+            
+                for (int i = 65; i < 82; ++i)
+                {
+                    App.Worksheets["Charts Data"].Range[(char)i + "8"].Value = functionalNF[i - 65];
+                    App.Worksheets["Charts Data"].Range[(char)i + "12"].Value = functionalEN[i - 65];
+                    App.Worksheets["Charts Data"].Range[(char)i + "16"].Value = nonFunctionalNF[i - 65];
+                    App.Worksheets["Charts Data"].Range[(char)i + "20"].Value = nonFunctionalEN[i - 65];
+                }
+
+                App.ActiveWorkbook.Sheets[1].Select();
+                Workbook.Close(true); 
+                App.Quit();
+            }
+            catch
+            {
+                App.Quit();
+                MessageBox.Show("Fatal error saving changes.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void OpenReport()
+        {
+            Process.Start(App.DefaultFilePath + FileName);
+        }
+
+        private void Clear()
+        {
+            int row = 2;
+
+            while (App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value != null)
+            {
+                App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["B" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["C" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["D" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["E" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["F" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["G" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["H" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["I" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value = "";
+                ++row;
+            }
+
+            Workbook.Save();
+        }
+
+        public void LoadData(TestPlan _TestPlan)
+        {
+            // Test Plan General Information
+            _TestPlan.Name = App.Worksheets["Test Plan"].Range["E1"].Value;
+            _TestPlan.Introduction = App.Worksheets["Test Plan"].Range["E5"].Value;
+            _TestPlan.SetupEnvironment = App.Worksheets["Test Plan"].Range["E11"].Value;
+            _TestPlan.Scope = App.Worksheets["Test Plan"].Range["E15"].Value;
+            _TestPlan.Fixes = App.Worksheets["Test Plan"].Range["E19"].Value;
+            _TestPlan.Regression = App.Worksheets["Test Plan"].Range["E23"].Value;
+
+            Workbook.Close(false);
+            App.Quit();
         }
     }
 }

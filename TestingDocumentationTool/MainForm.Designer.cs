@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
@@ -127,6 +128,8 @@
             this.LabelPanelHTMLText = new System.Windows.Forms.Label();
             this.PictureBoxPanelHTML = new System.Windows.Forms.PictureBox();
             this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
+            this.ButtonLoadFile = new System.Windows.Forms.Button();
+            this.NotifyLoadFile = new System.Windows.Forms.NotifyIcon(this.components);
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -636,14 +639,14 @@
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
@@ -656,14 +659,14 @@
             this.PreCondition,
             this.TestSteps,
             this.ExpectedBehavior});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle4;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
             this.DataGridViewTestCases.RowHeadersWidth = 90;
@@ -1230,12 +1233,34 @@
             this.ButtonPanelHTMLOpenInBrowser.UseVisualStyleBackColor = true;
             this.ButtonPanelHTMLOpenInBrowser.Click += new System.EventHandler(this.ButtonPanelHTMLOpenInBrowser_Click);
             // 
+            // ButtonLoadFile
+            // 
+            this.ButtonLoadFile.FlatAppearance.BorderSize = 0;
+            this.ButtonLoadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonLoadFile.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLoadFile.Image")));
+            this.ButtonLoadFile.Location = new System.Drawing.Point(0, 0);
+            this.ButtonLoadFile.Name = "ButtonLoadFile";
+            this.ButtonLoadFile.Size = new System.Drawing.Size(66, 64);
+            this.ButtonLoadFile.TabIndex = 35;
+            this.ButtonLoadFile.UseVisualStyleBackColor = true;
+            this.ButtonLoadFile.Click += new System.EventHandler(this.buttonLoadFile_Click);
+            // 
+            // NotifyLoadFile
+            // 
+            this.NotifyLoadFile.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.NotifyLoadFile.BalloonTipText = "Text";
+            this.NotifyLoadFile.BalloonTipTitle = "Title";
+            this.NotifyLoadFile.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyLoadFile.Icon")));
+            this.NotifyLoadFile.Text = "Text";
+            this.NotifyLoadFile.Visible = true;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1220, 767);
+            this.Controls.Add(this.ButtonLoadFile);
             this.Controls.Add(this.PanelCreateHTMLfile);
             this.Controls.Add(this.PanelSummary);
             this.Controls.Add(this.PanelResults);
@@ -1381,6 +1406,8 @@
         private System.Windows.Forms.Button ButtonPanelHTMLOpenInBrowser;
         private System.Windows.Forms.PictureBox PictureBoxPanelHTML;
         private System.Windows.Forms.Label LabelPanelHTMLText;
+        private System.Windows.Forms.Button ButtonLoadFile;
+        private System.Windows.Forms.NotifyIcon NotifyLoadFile;
     }
 }
 

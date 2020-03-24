@@ -3,9 +3,9 @@ Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSyste
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
 dataFunctionalNewFeaturesBar = [6,3,7,3,6,3,5,6,5,4,4,6,3,5,6,3,4];
-dataFunctionalEnhacenmentBar = [2,6,7,4,3,4,6,2,1,7,8,4,3,4,3,2,1];
+dataFunctionalEnhancementBar = [2,6,7,4,3,4,6,2,1,7,8,4,3,4,3,2,1];
 dataNonFunctionalNewFeaturesBar = [1,4,2,3,5,6,2,6,8,3,6,8,4,6,7,4,6];
-dataNonFunctionalEnhacenmentBar = [8,3,5,2,2,5,7,8,3,2,1,0,1,3,4,6,4];
+dataNonFunctionalEnhancementBar = [8,3,5,2,2,5,7,8,3,2,1,0,1,3,4,6,4];
 
 // Bar Chart Functional New Features
 var ctx = document.getElementById("myBarChart");
@@ -44,8 +44,8 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-// Bar Chart Functional Enhacenments
-var ctx = document.getElementById("funtionalEnhacenmentChart");
+// Bar Chart Functional Enhancements
+var ctx = document.getElementById("funtionalEnhancementChart");
 var myLineChart1 = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -54,7 +54,7 @@ var myLineChart1 = new Chart(ctx, {
       label: "Number of Test Cases",
       backgroundColor: "rgba(2,117,216,0.7)",
       borderColor: "rgba(2,117,216,1)",
-      data: dataFunctionalEnhacenmentBar,
+      data: dataFunctionalEnhancementBar,
     }],
   },
   options: {
@@ -118,8 +118,8 @@ var myLineChart2 = new Chart(ctx, {
   }
 });
 
-// Bar Chart Non Functional Enhacenment
-var ctx = document.getElementById("nonFunctionalEnhacenmentChart");
+// Bar Chart Non Functional Enhancement
+var ctx = document.getElementById("nonFunctionalEnhancementChart");
 var myLineChart3 = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -128,7 +128,7 @@ var myLineChart3 = new Chart(ctx, {
       label: "Number of Test Cases",
       backgroundColor: "rgba(216,117,2,0.7)",
       borderColor: "rgba(2,117,216,1)",
-      data: dataNonFunctionalEnhacenmentBar,
+      data: dataNonFunctionalEnhancementBar,
     }],
   },
   options: {

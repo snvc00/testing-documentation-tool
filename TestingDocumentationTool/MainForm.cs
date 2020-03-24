@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 
 namespace TestingDocumentationTool
-{
+{   
     public partial class MainWindow : Form
     {
         string AvailableLightMode;
         Panel CurrentPanel;
         TestPlan TestPlan;
         bool AvailableSummary;
-
+       
         /* Login
            Home
            Keyword
@@ -45,7 +41,6 @@ namespace TestingDocumentationTool
            Usability
            Security
            User Acceptance */
-
 
         public MainWindow()
         {
@@ -147,7 +142,11 @@ namespace TestingDocumentationTool
         private void ButtonDownloadXLS_Click(object sender, EventArgs e)
         {
             if (AvailableSummary)
-                Process.Start("..\\..\\..\\template\\notAvailable.html");
+            {
+                Excel workbook = new Excel("report.xlsx");
+                workbook.PerformChanges(this.TestPlan);
+                workbook.OpenReport();
+            }
         }
 
         private void ButtonGenerateHtmlFile_Click(object sender, EventArgs e)
@@ -655,7 +654,7 @@ namespace TestingDocumentationTool
             CurrentPanel.Refresh();
         }
 
-        // HTML Panel funtions
+        // HTML Panel functions
         private void ButtonPanelHTMLOpenInBrowser_Click(object sender, EventArgs e)
         {
             ButtonColorAnimation(ButtonPanelHTMLOpenInBrowser, Color.LightGreen);
@@ -763,9 +762,9 @@ namespace TestingDocumentationTool
             TestPlan.BuildDatasets();
 
             chartBar[4] = "dataFunctionalNewFeaturesBar = [" + TestPlan.FunctionalNewFeatures + "];";
-            chartBar[5] = "dataFunctionalEnhacenmentBar = [" + TestPlan.FunctionalEnhacenments + "];";
+            chartBar[5] = "dataFunctionalEnhancementBar = [" + TestPlan.FunctionalEnhancements + "];";
             chartBar[6] = "dataNonFunctionalNewFeaturesBar = [" + TestPlan.NonFunctionalNewFeatures + "];";
-            chartBar[7] = "dataNonFunctionalEnhacenmentBar = [" + TestPlan.NonFunctionalEnhacenments + "];";
+            chartBar[7] = "dataNonFunctionalEnhancementBar = [" + TestPlan.NonFunctionalEnhancements + "];";
 
             using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-bar.js"))
             {
@@ -798,9 +797,9 @@ namespace TestingDocumentationTool
             TestPlan.BuildResults();
 
             chartPie[4] = "dataFunctionalNewFeatures = [" + TestPlan.FunctionalNewFeaturesResults[1].ToString() + ", " + TestPlan.FunctionalNewFeaturesResults[0].ToString() + "];";
-            chartPie[5] = "dataFunctionalEnhacenments = [" + TestPlan.FunctionalEnhacenmentsResults[1].ToString() + ", " + TestPlan.FunctionalEnhacenmentsResults[0].ToString() + "];";
+            chartPie[5] = "dataFunctionalEnhancements = [" + TestPlan.FunctionalEnhancementsResults[1].ToString() + ", " + TestPlan.FunctionalEnhancementsResults[0].ToString() + "];";
             chartPie[6] = "dataNonFunctionalNewFeatures = [" + TestPlan.NonFunctionalNewFeaturesResults[1].ToString() + ", " + TestPlan.NonFunctionalNewFeaturesResults[0].ToString() + "];";
-            chartPie[7] = "dataNonFunctionalEnhacenments = [" + TestPlan.NonFunctionalEnhacenmentsResults[1].ToString() + ", " + TestPlan.NonFunctionalEnhacenmentsResults[0].ToString() + "];";
+            chartPie[7] = "dataNonFunctionalEnhancements = [" + TestPlan.NonFunctionalEnhancementsResults[1].ToString() + ", " + TestPlan.NonFunctionalEnhancementsResults[0].ToString() + "];";
 
             using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-pie.js"))
             {
@@ -834,6 +833,20 @@ namespace TestingDocumentationTool
                 ButtonClose.BackColor = Color.FromArgb(40, 40, 40);
 
             ButtonClose.Refresh();
+        }
+
+        private void buttonLoadFile_Click(object sender, EventArgs e)
+        {
+            try
+            { 
+                Excel excelFile = new Excel("report.xlsx");
+                excelFile.LoadData(this.TestPlan);
+                NotifyLoadFile.ShowBalloonTip(200, "Success", "Data loaded from: report.xlsx successfully", ToolTipIcon.Info);
+            }
+            catch
+            {
+                NotifyLoadFile.ShowBalloonTip(200, "Error", "Error trying to retrieve data from: report.xlsx successfully", ToolTipIcon.Error);
+            }
         }
     }
 }
