@@ -1,4 +1,73 @@
-﻿using System;
+﻿/// <summary>
+/// 
+/// @ author: Santiago Valle
+/// 
+/// @ project: testing-documentation-tool
+/// 
+/// @ description: Main Window definition and functions implementations.
+/// 
+/// <remarks>
+/// 
+/// @ classes:
+///     MainWindow
+/// 
+/// @ fields:
+///     System.String MainWindow.AvailableLightMode
+///     System.Windows.Forms.Panel MainWindow.CurrentPanel
+///     TestingDocumentation.Tool.TestPlan MainWindow.TestPlan
+///     System.Boolean MainWindow.AvailableSummary
+///     
+/// @ functions:
+///     private void MainWindow.ButtonClose_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonMinimize_Click(object sender, EventArgs e)
+///     private void MainWindow.buttonLoadFile_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlan_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCases_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonResults_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSummary_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonDownloadXLS_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonGenerateHtmlFile_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonLinkedIn_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonGitHub_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonWModeForeground_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonWModeBackground_Click(object sender, EventArgs e)
+///     private void MainWindow.WindowMode()
+///     private void MainWindow.DarkMode()
+///     private void MainWindow.LightMode()
+///     private void MainWindow.ButtonSetupTestPlanCancel_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlanSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlanFinish_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlanAddTestCase_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesRemove_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedView_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedExit_Click(object sender, EventArgs e)
+///     private void MainWindow.FillDataGridViewTestCases()
+///     private void MainWindow.ComboBoxSelectTestCase_SelectedIndexChanged(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedViewExit_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedViewRemove_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonResultSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonResultCancel_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedViewSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ComboBoxResultSelectTestCase_SelectedIndexChanged(object sender, EventArgs e)
+///     private void MainWindow.ButtonSummaryOk_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonPanelHTMLOpenInBrowser_Click(object sender, EventArgs e)
+///     private void MainWindow.OpenXlsxReport_Click(object sender, EventArgs e)
+///     private void MainWindow.CreateReportHTML()
+///     public void MainWindow.EditBarChartDatasets()
+///     private void MainWindow.EditPieChartDatasets()
+///     public void MainWindow.ButtonColorAnimation(Button button, Color color)
+///     private void MainWindow.ButtonClose_MouseHover(object sender, EventArgs e)
+///     private void MainWindow.ButtonClose_MouseLeave(object sender, EventArgs e)
+/// 
+/// </remarks>
+/// 
+///     @ namespace: TestingDocumentationTool
+/// 
+/// </summary>
+
+
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -15,32 +84,6 @@ namespace TestingDocumentationTool
         Panel CurrentPanel;
         TestPlan TestPlan;
         bool AvailableSummary;
-       
-        /* Login
-           Home
-           Keyword
-           Test Cases
-           Test Suites
-           Imported Scripts
-           Collection
-           Parameters
-           Templates
-           Profiles
-           Commands
-           Robot Framework
-           Products
-           Libraries
-           Phases
-           Users
-           Information */
-
-        /* UX
-           Functionality
-           Performance
-           Integration
-           Usability
-           Security
-           User Acceptance */
 
         public MainWindow()
         {
@@ -157,9 +200,21 @@ namespace TestingDocumentationTool
         {
             if (AvailableSummary)
             {
+                if (CurrentPanel != null)
+                    CurrentPanel.Hide();
+
+                OpenXlsxReport.Visible = true;
+                OpenXlsxReport.BringToFront();
+                PanelReportCreated.Show();
+                CurrentPanel = PanelReportCreated;
+                CurrentPanel.Refresh();
+
+                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\report-created.png");
+                PictureBoxPanelHTML.Refresh();
+                CurrentPanel.Refresh();
+
                 Excel workbook = new Excel("report.xlsx", this.NotifyLoadFile);
                 workbook.PerformChanges(this.TestPlan);
-                workbook.OpenReport();
                 NotifyLoadFile.ShowBalloonTip(100, "XLSX Report Available", "Path: " + workbook.GetFilePath(), ToolTipIcon.Info);
             }
         }
@@ -180,11 +235,13 @@ namespace TestingDocumentationTool
                 if (CurrentPanel != null)
                     CurrentPanel.Hide();
 
-                PanelCreateHTMLfile.Show();
-                CurrentPanel = PanelCreateHTMLfile;
+                ButtonPanelHTMLOpenInBrowser.Visible = true;
+                ButtonPanelHTMLOpenInBrowser.BringToFront();
+                PanelReportCreated.Show();
+                CurrentPanel = PanelReportCreated;
                 CurrentPanel.Refresh();
 
-                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\htmlReady.png");
+                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\report-created.png");
                 PictureBoxPanelHTML.Refresh();
                 CurrentPanel.Refresh();
 
@@ -489,7 +546,7 @@ namespace TestingDocumentationTool
             {
                 TestPlan.AddTestCase(new TestCase(ComboBoxSetupTestPlanTestArea.Text, ComboBoxSetupTestPlanType.Text, ComboBoxSetupTestPlanComponent.Text, textBox1.Text));
                 LabelSetupTestPlanTestOutput.ForeColor = Color.LightGreen;
-                LabelSetupTestPlanTestOutput.Text = "Test case added succesfully";
+                LabelSetupTestPlanTestOutput.Text = "Test case added successfully";
                 CurrentPanel.Refresh();
                 Thread.Sleep(2000);
                 LabelSetupTestPlanTestOutput.Text = "";
@@ -674,11 +731,31 @@ namespace TestingDocumentationTool
             CurrentPanel.Refresh();
         }
 
-        // HTML Panel functions
+        // Report panel functions
         private void ButtonPanelHTMLOpenInBrowser_Click(object sender, EventArgs e)
         {
-            ButtonColorAnimation(ButtonPanelHTMLOpenInBrowser, Color.LightGreen);
-            Process.Start("..\\..\\..\\template\\report.html");
+            try
+            {
+                ButtonColorAnimation(ButtonPanelHTMLOpenInBrowser, Color.LightGreen);
+                Process.Start("..\\..\\..\\template\\report.html");
+            }
+            catch
+            {
+                this.NotifyLoadFile.ShowBalloonTip(100, "Error", "The report.xlsx cannot be opened.", ToolTipIcon.Error);
+            }
+        }
+
+        private void OpenXlsxReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ButtonColorAnimation(OpenXlsxReport, Color.LightGreen);
+                Process.Start("..\\..\\..\\workbook\\report.xlsx");
+            }
+            catch
+            {
+                this.NotifyLoadFile.ShowBalloonTip(100, "Error", "The report.xlsx cannot be opened.", ToolTipIcon.Error);
+            }
         }
 
         private void CreateReportHTML()

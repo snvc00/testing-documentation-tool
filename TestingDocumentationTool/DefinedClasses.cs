@@ -1,10 +1,91 @@
-﻿using _Excel = Microsoft.Office.Interop.Excel;
+﻿/// <summary>
+/// 
+/// @ author: Santiago Valle
+/// 
+/// @ project: testing-documentation-tool
+/// 
+/// @ description: Auxiliary classes implementation.
+/// 
+/// <remarks>
+/// 
+/// @ classes:
+///     TestPlan
+///     TestCase
+///     TestCaseTableRow
+///     Excel
+/// 
+/// @ fields:
+///     System.String TestPlan.Name
+///     System.String TestPlan.Introduction
+///     System.String TestPlan.SetupEnvironment
+///     System.String TestPlan.Scope
+///     System.String TestPlan.Fixes
+///     System.String TestPlan.Regression
+///     System.String TestPlan.FunctionalNewFeatures
+///     System.String TestPlan.FunctionalEnhancements
+///     System.String TestPlan.NonFunctionalNewFeatures
+///     System.String TestPlan.NonFunctionalEnhancements
+///     System.Int32[] TestPlan.FunctionalNewFeaturesResults
+///     System.Int32[] TestPlan.FunctionalEnhancementsResults
+///     System.Int32[] TestPlan.NonFunctionalNewFeaturesResults
+///     System.Int32[] TestPlan.NonFunctionalEnhancementsResults
+///     System.Collections.Generic.List<TestCase> TestPlan.TestCases
+///     System.Collections.Generic.Dictionary<string, int[]> TestPlan.Component_Quantity
+///     System.String TestCase.TestArea
+///     System.String TestCase.Type
+///     System.String TestCase.Component
+///     System.String TestCase.ID
+///     System.String TestCase.TestScenario
+///     System.String TestCase.Description
+///     System.String TestCase.Tag
+///     System.String TestCase.PreConditions
+///     System.String TestCase.Steps
+///     System.String TestCase.ExpectedBehaviour
+///     System.String TestCase.Notes
+///     System.String TestCase.Result
+///     System.String TestCase.Status
+///     System.Collections.Generic.List<string> TestCaseTableRow.LinesOfCode
+///     System.String Excel.FileName
+///     Microsoft.Office.Interop.Excel.Application Excel.App
+///     Microsoft.Office.Interop.Excel.Workbook Excel.Workbook
+///     System.Windows.Forms.NotifyIcon Excel.MainFormNotifyIcon
+/// 
+/// @ functions:
+///     public TestPlan.TestPlan()
+///     private void TestPlan.InitDictionary()
+///     public IReadOnlyList<TestCase> TestPlan.GetTestCasesReadOnly()
+///     public List<TestCase> TestPlan.GetTestCases()
+///     public void TestPlan.AddTestCase(TestCase _TestCase)
+///     private void TestPlan.EvaluateCategory(TestCase _TestCase)
+///     public void TestPlan.RemoveTestCase(int _TestCaseIndex)
+///     public void TestPlan.BuildDatasets()
+///     public void TestPlan.BuildResults()
+///     public TestCase.TestCase()
+///     public TestCase.TestCase(string _TestArea, string _Type, string _Component, string _ID)
+///     public TestCase.TestCase(TestCase _OtherTestCase)
+///     public void TestCase.Clean()
+///     public override string TestCase.ToString()
+///     public TestCaseTableRow.TestCaseTableRow(TestCase tc)
+///     public Excel.Excel(string _fileName, NotifyIcon _mainFormNotifyIcon)
+///     public void Excel.PerformChanges(TestPlan _TestPlan)
+///     public void Excel.OpenReport()
+///     private void Excel.Clear()
+///     public void Excel.LoadData(TestPlan _TestPlan)
+///     public string Excel.GetFilePath()
+/// 
+/// </remarks>
+/// 
+///     @ namespace: TestingDocumentationTool
+/// 
+/// </summary>
+
+
+using _Excel = Microsoft.Office.Interop.Excel;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing;
-using System;
 
 namespace TestingDocumentationTool
 {
@@ -85,7 +166,7 @@ namespace TestingDocumentationTool
             TestCases.Add(_TestCase);
         }
 
-        void EvaluateCategory(TestCase _TestCase)
+        private void EvaluateCategory(TestCase _TestCase)
         {
             //[0] FunctionalNewFeature Count
             //[1] NonFuncitonalNewFeature Count
@@ -329,9 +410,6 @@ namespace TestingDocumentationTool
         {
             try
             {
-                int[] a = new int[2];
-                a[2] = 1;
-
                 Clear();
 
                 _TestPlan.BuildDatasets();
