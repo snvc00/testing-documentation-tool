@@ -396,9 +396,11 @@ namespace TestingDocumentationTool
             ButtonSummaryOk.ForeColor = Color.White;
             ButtonSummaryOk.BackColor = Color.FromArgb(40, 40, 40);
 
-            // HTML panel
+            // Report panel
             ButtonPanelHTMLOpenInBrowser.ForeColor = Color.White;
             ButtonPanelHTMLOpenInBrowser.BackColor = Color.FromArgb(40, 40, 40);
+            OpenXlsxReport.ForeColor = Color.White;
+            OpenXlsxReport.BackColor = Color.FromArgb(40, 40, 40);
 
             Refresh();
         }
@@ -504,9 +506,11 @@ namespace TestingDocumentationTool
             ButtonSummaryOk.ForeColor = Color.Black;
             ButtonSummaryOk.BackColor = Color.White;
 
-            // HTML panel
+            // Report panel
             ButtonPanelHTMLOpenInBrowser.ForeColor = Color.Black;
             ButtonPanelHTMLOpenInBrowser.BackColor = Color.White;
+            OpenXlsxReport.ForeColor = Color.Black;
+            OpenXlsxReport.BackColor = Color.White;
 
             Refresh();
         }

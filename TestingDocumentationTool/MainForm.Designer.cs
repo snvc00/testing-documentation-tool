@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
@@ -125,13 +125,13 @@
             this.ButtonSummaryOk = new System.Windows.Forms.Button();
             this.PictureBoxSummary = new System.Windows.Forms.PictureBox();
             this.PanelReportCreated = new System.Windows.Forms.Panel();
+            this.OpenXlsxReport = new System.Windows.Forms.Button();
             this.LabelPanelHTMLText = new System.Windows.Forms.Label();
             this.PictureBoxPanelHTML = new System.Windows.Forms.PictureBox();
             this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
             this.ButtonLoadFile = new System.Windows.Forms.Button();
             this.NotifyLoadFile = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolTipLoadFile = new System.Windows.Forms.ToolTip(this.components);
-            this.OpenXlsxReport = new System.Windows.Forms.Button();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -641,14 +641,14 @@
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
@@ -661,14 +661,14 @@
             this.PreCondition,
             this.TestSteps,
             this.ExpectedBehavior});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle2;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
             this.DataGridViewTestCases.RowHeadersWidth = 90;
@@ -1204,6 +1204,18 @@
             this.PanelReportCreated.TabIndex = 34;
             this.PanelReportCreated.Visible = false;
             // 
+            // OpenXlsxReport
+            // 
+            this.OpenXlsxReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OpenXlsxReport.Location = new System.Drawing.Point(424, 518);
+            this.OpenXlsxReport.Name = "OpenXlsxReport";
+            this.OpenXlsxReport.Size = new System.Drawing.Size(201, 40);
+            this.OpenXlsxReport.TabIndex = 4;
+            this.OpenXlsxReport.Text = "Open Report";
+            this.OpenXlsxReport.UseVisualStyleBackColor = true;
+            this.OpenXlsxReport.Visible = false;
+            this.OpenXlsxReport.Click += new System.EventHandler(this.OpenXlsxReport_Click);
+            // 
             // LabelPanelHTMLText
             // 
             this.LabelPanelHTMLText.AutoSize = true;
@@ -1265,18 +1277,6 @@
             this.ToolTipLoadFile.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.ToolTipLoadFile.ToolTipTitle = "Load";
             this.ToolTipLoadFile.UseAnimation = false;
-            // 
-            // OpenXlsxReport
-            // 
-            this.OpenXlsxReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenXlsxReport.Location = new System.Drawing.Point(424, 518);
-            this.OpenXlsxReport.Name = "OpenXlsxReport";
-            this.OpenXlsxReport.Size = new System.Drawing.Size(201, 40);
-            this.OpenXlsxReport.TabIndex = 4;
-            this.OpenXlsxReport.Text = "Open Report";
-            this.OpenXlsxReport.UseVisualStyleBackColor = true;
-            this.OpenXlsxReport.Visible = false;
-            this.OpenXlsxReport.Click += new System.EventHandler(this.OpenXlsxReport_Click);
             // 
             // MainWindow
             // 
