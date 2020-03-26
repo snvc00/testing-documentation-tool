@@ -2,10 +2,10 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-dataFunctionalNewFeatures = [1, 0];
-dataFunctionalEnhacenments = [0, 0];
+dataFunctionalNewFeatures = [0, 0];
+dataFunctionalEnhancements = [0, 0];
 dataNonFunctionalNewFeatures = [0, 0];
-dataNonFunctionalEnhacenments = [0, 0];
+dataNonFunctionalEnhancements = [0, 0];
 
 var customOptions = {
   legend:{
@@ -28,9 +28,9 @@ var customOptions = {
 };
 
 document.getElementById("pieChart0").innerHTML = "Total Tests: " + (dataFunctionalNewFeatures[0]+dataFunctionalNewFeatures[1]) + ", Passed: " + dataFunctionalNewFeatures[1] + ", Failed: " + dataFunctionalNewFeatures[0];
-document.getElementById("pieChart1").innerHTML = "Total Tests: " + (dataFunctionalEnhacenments[0]+dataFunctionalEnhacenments[1]) + ", Passed: " + dataFunctionalEnhacenments[1] + ", Failed: " + dataFunctionalEnhacenments[0];
+document.getElementById("pieChart1").innerHTML = "Total Tests: " + (dataFunctionalEnhancements[0]+dataFunctionalEnhancements[1]) + ", Passed: " + dataFunctionalEnhancements[1] + ", Failed: " + dataFunctionalEnhancements[0];
 document.getElementById("pieChart2").innerHTML = "Total Tests: " + (dataNonFunctionalNewFeatures[0]+dataNonFunctionalNewFeatures[1]) + ", Passed: " + dataNonFunctionalNewFeatures[1] + ", Failed: " + dataNonFunctionalNewFeatures[0];
-document.getElementById("pieChart3").innerHTML = "Total Tests: " + (dataNonFunctionalEnhacenments[0]+dataNonFunctionalEnhacenments[1]) + ", Passed: " + dataNonFunctionalEnhacenments[1] + ", Failed: " + dataNonFunctionalEnhacenments[0];
+document.getElementById("pieChart3").innerHTML = "Total Tests: " + (dataNonFunctionalEnhancements[0]+dataNonFunctionalEnhancements[1]) + ", Passed: " + dataNonFunctionalEnhancements[1] + ", Failed: " + dataNonFunctionalEnhancements[0];
 
 // Pie Chart Functional New Features
 var ctx = document.getElementById("myPieChart");
@@ -46,15 +46,15 @@ var myPieChart = new Chart(ctx, {
   }
 });
 
-// Pie Chart Funtional Enhacenment
-var ctx = document.getElementById("functionalEnhacenmentsResults");
+// Pie Chart Funtional Enhancement
+var ctx = document.getElementById("functionalEnhancementsResults");
 var myPieChart1 = new Chart(ctx, {
   type: 'pie',
   options: customOptions,
   data: {
     labels: ["Failed", "Successful"],
     datasets: [{
-      data: dataFunctionalEnhacenments,
+      data: dataFunctionalEnhancements,
       backgroundColor: ["rgba(217, 65, 65, 1)", "rgba(65, 217, 65, 1)"],
     }],
   },
@@ -74,15 +74,15 @@ var myPieChart2 = new Chart(ctx, {
   },
 });
 
-// Pie Chart Non Functional Enhacenment
-var ctx = document.getElementById("nonFunctionalEnhacenmentsResults");
+// Pie Chart Non Functional Enhancement
+var ctx = document.getElementById("nonFunctionalEnhancementsResults");
 var myPieChart3 = new Chart(ctx, {
   type: 'pie',
   options: customOptions,
   data: {
     labels: ["Failed", "Successful"],
     datasets: [{
-      data: dataNonFunctionalEnhacenments,
+      data: dataNonFunctionalEnhancements,
       backgroundColor: ["rgba(217, 65, 65, 1)", "rgba(65, 217, 65, 1)"],
     }],
   },

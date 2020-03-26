@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
@@ -123,10 +124,14 @@
             this.LabelSummaryMessage = new System.Windows.Forms.Label();
             this.ButtonSummaryOk = new System.Windows.Forms.Button();
             this.PictureBoxSummary = new System.Windows.Forms.PictureBox();
-            this.PanelCreateHTMLfile = new System.Windows.Forms.Panel();
+            this.PanelReportCreated = new System.Windows.Forms.Panel();
             this.LabelPanelHTMLText = new System.Windows.Forms.Label();
             this.PictureBoxPanelHTML = new System.Windows.Forms.PictureBox();
             this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
+            this.ButtonLoadFile = new System.Windows.Forms.Button();
+            this.NotifyLoadFile = new System.Windows.Forms.NotifyIcon(this.components);
+            this.ToolTipLoadFile = new System.Windows.Forms.ToolTip(this.components);
+            this.OpenXlsxReport = new System.Windows.Forms.Button();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -135,7 +140,7 @@
             this.PanelResults.SuspendLayout();
             this.PanelSummary.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSummary)).BeginInit();
-            this.PanelCreateHTMLfile.SuspendLayout();
+            this.PanelReportCreated.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPanelHTML)).BeginInit();
             this.SuspendLayout();
             // 
@@ -636,14 +641,14 @@
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
@@ -656,14 +661,14 @@
             this.PreCondition,
             this.TestSteps,
             this.ExpectedBehavior});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle10;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
             this.DataGridViewTestCases.RowHeadersWidth = 90;
@@ -1187,16 +1192,17 @@
             this.PictureBoxSummary.TabIndex = 0;
             this.PictureBoxSummary.TabStop = false;
             // 
-            // PanelCreateHTMLfile
+            // PanelReportCreated
             // 
-            this.PanelCreateHTMLfile.Controls.Add(this.LabelPanelHTMLText);
-            this.PanelCreateHTMLfile.Controls.Add(this.PictureBoxPanelHTML);
-            this.PanelCreateHTMLfile.Controls.Add(this.ButtonPanelHTMLOpenInBrowser);
-            this.PanelCreateHTMLfile.Location = new System.Drawing.Point(479, 82);
-            this.PanelCreateHTMLfile.Name = "PanelCreateHTMLfile";
-            this.PanelCreateHTMLfile.Size = new System.Drawing.Size(645, 573);
-            this.PanelCreateHTMLfile.TabIndex = 34;
-            this.PanelCreateHTMLfile.Visible = false;
+            this.PanelReportCreated.Controls.Add(this.OpenXlsxReport);
+            this.PanelReportCreated.Controls.Add(this.LabelPanelHTMLText);
+            this.PanelReportCreated.Controls.Add(this.PictureBoxPanelHTML);
+            this.PanelReportCreated.Controls.Add(this.ButtonPanelHTMLOpenInBrowser);
+            this.PanelReportCreated.Location = new System.Drawing.Point(479, 82);
+            this.PanelReportCreated.Name = "PanelReportCreated";
+            this.PanelReportCreated.Size = new System.Drawing.Size(645, 573);
+            this.PanelReportCreated.TabIndex = 34;
+            this.PanelReportCreated.Visible = false;
             // 
             // LabelPanelHTMLText
             // 
@@ -1204,7 +1210,7 @@
             this.LabelPanelHTMLText.BackColor = System.Drawing.Color.Transparent;
             this.LabelPanelHTMLText.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LabelPanelHTMLText.ForeColor = System.Drawing.Color.Teal;
-            this.LabelPanelHTMLText.Location = new System.Drawing.Point(104, 517);
+            this.LabelPanelHTMLText.Location = new System.Drawing.Point(101, 514);
             this.LabelPanelHTMLText.Name = "LabelPanelHTMLText";
             this.LabelPanelHTMLText.Size = new System.Drawing.Size(343, 45);
             this.LabelPanelHTMLText.TabIndex = 3;
@@ -1226,9 +1232,51 @@
             this.ButtonPanelHTMLOpenInBrowser.Name = "ButtonPanelHTMLOpenInBrowser";
             this.ButtonPanelHTMLOpenInBrowser.Size = new System.Drawing.Size(201, 40);
             this.ButtonPanelHTMLOpenInBrowser.TabIndex = 1;
-            this.ButtonPanelHTMLOpenInBrowser.Text = "Open in Browser";
+            this.ButtonPanelHTMLOpenInBrowser.Text = "Open Report";
             this.ButtonPanelHTMLOpenInBrowser.UseVisualStyleBackColor = true;
+            this.ButtonPanelHTMLOpenInBrowser.Visible = false;
             this.ButtonPanelHTMLOpenInBrowser.Click += new System.EventHandler(this.ButtonPanelHTMLOpenInBrowser_Click);
+            // 
+            // ButtonLoadFile
+            // 
+            this.ButtonLoadFile.FlatAppearance.BorderSize = 0;
+            this.ButtonLoadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ButtonLoadFile.Image = ((System.Drawing.Image)(resources.GetObject("ButtonLoadFile.Image")));
+            this.ButtonLoadFile.Location = new System.Drawing.Point(0, 0);
+            this.ButtonLoadFile.Name = "ButtonLoadFile";
+            this.ButtonLoadFile.Size = new System.Drawing.Size(66, 64);
+            this.ButtonLoadFile.TabIndex = 35;
+            this.ToolTipLoadFile.SetToolTip(this.ButtonLoadFile, "Load data from the last report created");
+            this.ButtonLoadFile.UseVisualStyleBackColor = true;
+            this.ButtonLoadFile.Click += new System.EventHandler(this.buttonLoadFile_Click);
+            // 
+            // NotifyLoadFile
+            // 
+            this.NotifyLoadFile.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.NotifyLoadFile.BalloonTipText = "Testing Documentation Tool";
+            this.NotifyLoadFile.BalloonTipTitle = "Testing Documentation Tool";
+            this.NotifyLoadFile.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyLoadFile.Icon")));
+            this.NotifyLoadFile.Text = "Testing Documentation Tool";
+            this.NotifyLoadFile.Visible = true;
+            // 
+            // ToolTipLoadFile
+            // 
+            this.ToolTipLoadFile.AutomaticDelay = 200;
+            this.ToolTipLoadFile.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.ToolTipLoadFile.ToolTipTitle = "Load";
+            this.ToolTipLoadFile.UseAnimation = false;
+            // 
+            // OpenXlsxReport
+            // 
+            this.OpenXlsxReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OpenXlsxReport.Location = new System.Drawing.Point(424, 518);
+            this.OpenXlsxReport.Name = "OpenXlsxReport";
+            this.OpenXlsxReport.Size = new System.Drawing.Size(201, 40);
+            this.OpenXlsxReport.TabIndex = 4;
+            this.OpenXlsxReport.Text = "Open Report";
+            this.OpenXlsxReport.UseVisualStyleBackColor = true;
+            this.OpenXlsxReport.Visible = false;
+            this.OpenXlsxReport.Click += new System.EventHandler(this.OpenXlsxReport_Click);
             // 
             // MainWindow
             // 
@@ -1236,7 +1284,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1220, 767);
-            this.Controls.Add(this.PanelCreateHTMLfile);
+            this.Controls.Add(this.ButtonLoadFile);
+            this.Controls.Add(this.PanelReportCreated);
             this.Controls.Add(this.PanelSummary);
             this.Controls.Add(this.PanelResults);
             this.Controls.Add(this.PanelTestCasesDetailedView);
@@ -1275,8 +1324,8 @@
             this.PanelSummary.ResumeLayout(false);
             this.PanelSummary.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxSummary)).EndInit();
-            this.PanelCreateHTMLfile.ResumeLayout(false);
-            this.PanelCreateHTMLfile.PerformLayout();
+            this.PanelReportCreated.ResumeLayout(false);
+            this.PanelReportCreated.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPanelHTML)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1377,10 +1426,14 @@
         private System.Windows.Forms.Button ButtonSummaryOk;
         private System.Windows.Forms.PictureBox PictureBoxSummary;
         private System.Windows.Forms.Label LabelSummaryMessage;
-        private System.Windows.Forms.Panel PanelCreateHTMLfile;
+        private System.Windows.Forms.Panel PanelReportCreated;
         private System.Windows.Forms.Button ButtonPanelHTMLOpenInBrowser;
         private System.Windows.Forms.PictureBox PictureBoxPanelHTML;
         private System.Windows.Forms.Label LabelPanelHTMLText;
+        private System.Windows.Forms.Button ButtonLoadFile;
+        private System.Windows.Forms.NotifyIcon NotifyLoadFile;
+        private System.Windows.Forms.ToolTip ToolTipLoadFile;
+        private System.Windows.Forms.Button OpenXlsxReport;
     }
 }
 

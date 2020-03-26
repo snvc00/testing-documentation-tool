@@ -11,8 +11,9 @@ C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocume
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\bin\Debug\TestingDocumentationTool.exe
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\bin\Debug\TestingDocumentationTool.pdb
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.csprojAssemblyReference.cache
+C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.MainWindow.resources
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.Properties.Resources.resources
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.csproj.GenerateResource.cache
+C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.csproj.CoreCompileInputs.cache
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.exe
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.pdb
-C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Debug\TestingDocumentationTool.MainWindow.resources

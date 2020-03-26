@@ -1,51 +1,89 @@
-﻿using System;
+﻿/// <summary>
+/// 
+/// @ author: Santiago Valle
+/// 
+/// @ project: testing-documentation-tool
+/// 
+/// @ description: Main Window definition and functions implementations.
+/// 
+/// <remarks>
+/// 
+/// @ classes:
+///     MainWindow
+/// 
+/// @ fields:
+///     System.String MainWindow.AvailableLightMode
+///     System.Windows.Forms.Panel MainWindow.CurrentPanel
+///     TestingDocumentation.Tool.TestPlan MainWindow.TestPlan
+///     System.Boolean MainWindow.AvailableSummary
+///     
+/// @ functions:
+///     private void MainWindow.ButtonClose_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonMinimize_Click(object sender, EventArgs e)
+///     private void MainWindow.buttonLoadFile_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlan_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCases_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonResults_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSummary_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonDownloadXLS_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonGenerateHtmlFile_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonLinkedIn_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonGitHub_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonWModeForeground_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonWModeBackground_Click(object sender, EventArgs e)
+///     private void MainWindow.WindowMode()
+///     private void MainWindow.DarkMode()
+///     private void MainWindow.LightMode()
+///     private void MainWindow.ButtonSetupTestPlanCancel_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlanSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlanFinish_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonSetupTestPlanAddTestCase_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesRemove_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedView_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedExit_Click(object sender, EventArgs e)
+///     private void MainWindow.FillDataGridViewTestCases()
+///     private void MainWindow.ComboBoxSelectTestCase_SelectedIndexChanged(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedViewExit_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedViewRemove_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonResultSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonResultCancel_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonTestCasesDetailedViewSave_Click(object sender, EventArgs e)
+///     private void MainWindow.ComboBoxResultSelectTestCase_SelectedIndexChanged(object sender, EventArgs e)
+///     private void MainWindow.ButtonSummaryOk_Click(object sender, EventArgs e)
+///     private void MainWindow.ButtonPanelHTMLOpenInBrowser_Click(object sender, EventArgs e)
+///     private void MainWindow.OpenXlsxReport_Click(object sender, EventArgs e)
+///     private void MainWindow.CreateReportHTML()
+///     public void MainWindow.EditBarChartDatasets()
+///     private void MainWindow.EditPieChartDatasets()
+///     public void MainWindow.ButtonColorAnimation(Button button, Color color)
+///     private void MainWindow.ButtonClose_MouseHover(object sender, EventArgs e)
+///     private void MainWindow.ButtonClose_MouseLeave(object sender, EventArgs e)
+/// 
+/// </remarks>
+/// 
+///     @ namespace: TestingDocumentationTool
+/// 
+/// </summary>
+
+
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Threading;
 using System.IO;
 
 namespace TestingDocumentationTool
-{
+{   
     public partial class MainWindow : Form
     {
         string AvailableLightMode;
         Panel CurrentPanel;
         TestPlan TestPlan;
         bool AvailableSummary;
-
-        /* Login
-           Home
-           Keyword
-           Test Cases
-           Test Suites
-           Imported Scripts
-           Collection
-           Parameters
-           Templates
-           Profiles
-           Commands
-           Robot Framework
-           Products
-           Libraries
-           Phases
-           Users
-           Information */
-
-        /* UX
-           Functionality
-           Performance
-           Integration
-           Usability
-           Security
-           User Acceptance */
-
 
         public MainWindow()
         {
@@ -68,6 +106,19 @@ namespace TestingDocumentationTool
         }
 
         // App Functionality Buttons
+        private void buttonLoadFile_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Excel excelFile = new Excel("report.xlsx", this.NotifyLoadFile);
+                excelFile.LoadData(this.TestPlan);
+                NotifyLoadFile.ShowBalloonTip(100, "Data Retrieved", "Data loaded from: report.xlsx successfully", ToolTipIcon.Info);
+            }
+            catch
+            {
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "Error trying to retrieve data from: report.xlsx", ToolTipIcon.Error);
+            }
+        }
 
         private void ButtonSetupTestPlan_Click(object sender, EventArgs e)
         {
@@ -105,8 +156,9 @@ namespace TestingDocumentationTool
             CurrentPanel = PanelResults;
 
             ComboBoxResultSelectTestCase.BeginUpdate();
-            ComboBoxResultSelectTestCase.DataSource = TestPlan.GetTestCases();
+            ComboBoxResultSelectTestCase.DataSource = TestPlan.GetTestCases().ToList();
             ComboBoxResultSelectTestCase.EndUpdate();
+            ComboBoxResultSelectTestCase.Refresh();
 
             TextBoxResultTestPlanFixes.Text = TestPlan.Fixes;
             TextBoxResultTestPlanRegression.Text = TestPlan.Regression;
@@ -141,13 +193,31 @@ namespace TestingDocumentationTool
                 ButtonDownloadXLS.ForeColor = Color.Black;
             }
 
+            NotifyLoadFile.ShowBalloonTip(100, "Summary Created", "HTML and XLSX report creation enabled", ToolTipIcon.Info);
             Refresh();
         }
 
         private void ButtonDownloadXLS_Click(object sender, EventArgs e)
         {
             if (AvailableSummary)
-                Process.Start("..\\..\\..\\template\\notAvailable.html");
+            {
+                if (CurrentPanel != null)
+                    CurrentPanel.Hide();
+
+                OpenXlsxReport.Visible = true;
+                OpenXlsxReport.BringToFront();
+                PanelReportCreated.Show();
+                CurrentPanel = PanelReportCreated;
+                CurrentPanel.Refresh();
+
+                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\report-created.png");
+                PictureBoxPanelHTML.Refresh();
+                CurrentPanel.Refresh();
+
+                Excel workbook = new Excel("report.xlsx", this.NotifyLoadFile);
+                workbook.PerformChanges(this.TestPlan);
+                NotifyLoadFile.ShowBalloonTip(100, "XLSX Report Available", "Path: " + workbook.GetFilePath(), ToolTipIcon.Info);
+            }
         }
 
         private void ButtonGenerateHtmlFile_Click(object sender, EventArgs e)
@@ -166,13 +236,19 @@ namespace TestingDocumentationTool
                 if (CurrentPanel != null)
                     CurrentPanel.Hide();
 
-                PanelCreateHTMLfile.Show();
-                CurrentPanel = PanelCreateHTMLfile;
+                ButtonPanelHTMLOpenInBrowser.Visible = true;
+                ButtonPanelHTMLOpenInBrowser.BringToFront();
+                PanelReportCreated.Show();
+                CurrentPanel = PanelReportCreated;
                 CurrentPanel.Refresh();
 
-                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\htmlReady.png");
+                PictureBoxPanelHTML.Image = Image.FromFile("..\\..\\..\\static\\report-created.png");
                 PictureBoxPanelHTML.Refresh();
                 CurrentPanel.Refresh();
+
+                string path = Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\..\\..\\template\\report.html");
+                NotifyLoadFile.ShowBalloonTip(100, "HTML Report Available", "Path: " + path, ToolTipIcon.Info);
+                TestPlan.ClearResultsAndDatasets();
             }
         }
 
@@ -236,6 +312,7 @@ namespace TestingDocumentationTool
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\testDarkMode.png");
             ButtonResults.Image = Image.FromFile("..\\..\\..\\static\\resultsDarkMode.png");
             ButtonSummary.Image = Image.FromFile("..\\..\\..\\static\\summaryDarkMode.png");
+            ButtonLoadFile.Image = Image.FromFile("..\\..\\..\\static\\folderDarkMode.png");
 
             if (AvailableSummary)
             {
@@ -343,6 +420,7 @@ namespace TestingDocumentationTool
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\test.png");
             ButtonResults.Image = Image.FromFile("..\\..\\..\\static\\results.png");
             ButtonSummary.Image = Image.FromFile("..\\..\\..\\static\\summary.png");
+            ButtonLoadFile.Image = Image.FromFile("..\\..\\..\\static\\folder.png");
 
             if (AvailableSummary)
             {
@@ -470,7 +548,7 @@ namespace TestingDocumentationTool
             {
                 TestPlan.AddTestCase(new TestCase(ComboBoxSetupTestPlanTestArea.Text, ComboBoxSetupTestPlanType.Text, ComboBoxSetupTestPlanComponent.Text, textBox1.Text));
                 LabelSetupTestPlanTestOutput.ForeColor = Color.LightGreen;
-                LabelSetupTestPlanTestOutput.Text = "Test case added succesfully";
+                LabelSetupTestPlanTestOutput.Text = "Test case added successfully";
                 CurrentPanel.Refresh();
                 Thread.Sleep(2000);
                 LabelSetupTestPlanTestOutput.Text = "";
@@ -655,11 +733,31 @@ namespace TestingDocumentationTool
             CurrentPanel.Refresh();
         }
 
-        // HTML Panel funtions
+        // Report panel functions
         private void ButtonPanelHTMLOpenInBrowser_Click(object sender, EventArgs e)
         {
-            ButtonColorAnimation(ButtonPanelHTMLOpenInBrowser, Color.LightGreen);
-            Process.Start("..\\..\\..\\template\\report.html");
+            try
+            {
+                ButtonColorAnimation(ButtonPanelHTMLOpenInBrowser, Color.LightGreen);
+                Process.Start("..\\..\\..\\template\\report.html");
+            }
+            catch
+            {
+                this.NotifyLoadFile.ShowBalloonTip(100, "Error", "The report.xlsx cannot be opened.", ToolTipIcon.Error);
+            }
+        }
+
+        private void OpenXlsxReport_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ButtonColorAnimation(OpenXlsxReport, Color.LightGreen);
+                Process.Start("..\\..\\..\\workbook\\report.xlsx");
+            }
+            catch
+            {
+                this.NotifyLoadFile.ShowBalloonTip(100, "Error", "The report.xlsx cannot be opened.", ToolTipIcon.Error);
+            }
         }
 
         private void CreateReportHTML()
@@ -680,7 +778,7 @@ namespace TestingDocumentationTool
             }
             catch
             {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "File is not available", ToolTipIcon.Error);
             }
 
             if (TestPlan.GetTestCases().Count > 0)
@@ -757,15 +855,15 @@ namespace TestingDocumentationTool
             }
             catch
             {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "File is not available", ToolTipIcon.Error);
             }
 
             TestPlan.BuildDatasets();
 
             chartBar[4] = "dataFunctionalNewFeaturesBar = [" + TestPlan.FunctionalNewFeatures + "];";
-            chartBar[5] = "dataFunctionalEnhacenmentBar = [" + TestPlan.FunctionalEnhacenments + "];";
+            chartBar[5] = "dataFunctionalEnhancementBar = [" + TestPlan.FunctionalEnhancements + "];";
             chartBar[6] = "dataNonFunctionalNewFeaturesBar = [" + TestPlan.NonFunctionalNewFeatures + "];";
-            chartBar[7] = "dataNonFunctionalEnhacenmentBar = [" + TestPlan.NonFunctionalEnhacenments + "];";
+            chartBar[7] = "dataNonFunctionalEnhancementBar = [" + TestPlan.NonFunctionalEnhancements + "];";
 
             using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-bar.js"))
             {
@@ -792,15 +890,15 @@ namespace TestingDocumentationTool
             }
             catch
             {
-                MessageBox.Show("File not available", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                NotifyLoadFile.ShowBalloonTip(100, "Error", "File is not available", ToolTipIcon.Error);
             }
 
             TestPlan.BuildResults();
 
             chartPie[4] = "dataFunctionalNewFeatures = [" + TestPlan.FunctionalNewFeaturesResults[1].ToString() + ", " + TestPlan.FunctionalNewFeaturesResults[0].ToString() + "];";
-            chartPie[5] = "dataFunctionalEnhacenments = [" + TestPlan.FunctionalEnhacenmentsResults[1].ToString() + ", " + TestPlan.FunctionalEnhacenmentsResults[0].ToString() + "];";
+            chartPie[5] = "dataFunctionalEnhancements = [" + TestPlan.FunctionalEnhancementsResults[1].ToString() + ", " + TestPlan.FunctionalEnhancementsResults[0].ToString() + "];";
             chartPie[6] = "dataNonFunctionalNewFeatures = [" + TestPlan.NonFunctionalNewFeaturesResults[1].ToString() + ", " + TestPlan.NonFunctionalNewFeaturesResults[0].ToString() + "];";
-            chartPie[7] = "dataNonFunctionalEnhacenments = [" + TestPlan.NonFunctionalEnhacenmentsResults[1].ToString() + ", " + TestPlan.NonFunctionalEnhacenmentsResults[0].ToString() + "];";
+            chartPie[7] = "dataNonFunctionalEnhancements = [" + TestPlan.NonFunctionalEnhancementsResults[1].ToString() + ", " + TestPlan.NonFunctionalEnhancementsResults[0].ToString() + "];";
 
             using (StreamWriter sw = new StreamWriter("..\\..\\..\\template\\assets\\chart-pie.js"))
             {

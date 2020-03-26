@@ -2,10 +2,10 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-dataFunctionalNewFeaturesBar = [0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-dataFunctionalEnhacenmentBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+dataFunctionalNewFeaturesBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+dataFunctionalEnhancementBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 dataNonFunctionalNewFeaturesBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
-dataNonFunctionalEnhacenmentBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+dataNonFunctionalEnhancementBar = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
 // Bar Chart Functional New Features
 var ctx = document.getElementById("myBarChart");
@@ -44,8 +44,8 @@ var myLineChart = new Chart(ctx, {
   }
 });
 
-// Bar Chart Functional Enhacenments
-var ctx = document.getElementById("funtionalEnhacenmentChart");
+// Bar Chart Functional Enhancements
+var ctx = document.getElementById("funtionalEnhancementChart");
 var myLineChart1 = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -54,7 +54,7 @@ var myLineChart1 = new Chart(ctx, {
       label: "Number of Test Cases",
       backgroundColor: "rgba(2,117,216,0.7)",
       borderColor: "rgba(2,117,216,1)",
-      data: dataFunctionalEnhacenmentBar,
+      data: dataFunctionalEnhancementBar,
     }],
   },
   options: {
@@ -118,8 +118,8 @@ var myLineChart2 = new Chart(ctx, {
   }
 });
 
-// Bar Chart Non Functional Enhacenment
-var ctx = document.getElementById("nonFunctionalEnhacenmentChart");
+// Bar Chart Non Functional Enhancement
+var ctx = document.getElementById("nonFunctionalEnhancementChart");
 var myLineChart3 = new Chart(ctx, {
   type: 'bar',
   data: {
@@ -128,7 +128,7 @@ var myLineChart3 = new Chart(ctx, {
       label: "Number of Test Cases",
       backgroundColor: "rgba(216,117,2,0.7)",
       borderColor: "rgba(2,117,216,1)",
-      data: dataNonFunctionalEnhacenmentBar,
+      data: dataNonFunctionalEnhancementBar,
     }],
   },
   options: {

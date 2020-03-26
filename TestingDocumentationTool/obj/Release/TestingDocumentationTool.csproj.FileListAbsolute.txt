@@ -1,10 +1,10 @@
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\bin\Release\TestingDocumentationTool.exe.config
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\bin\Release\TestingDocumentationTool.exe
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\bin\Release\TestingDocumentationTool.pdb
-C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.csprojAssemblyReference.cache
-C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.MainWindow.resources
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.Properties.Resources.resources
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.csproj.GenerateResource.cache
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.exe
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.pdb
 C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.csproj.CoreCompileInputs.cache
+C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.MainWindow.resources
+C:\Users\SantiagoValle\Documents\GitHub\testing-documentation-tool\TestingDocumentationTool\obj\Release\TestingDocumentationTool.csprojAssemblyReference.cache
