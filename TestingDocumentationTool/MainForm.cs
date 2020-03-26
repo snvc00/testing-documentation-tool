@@ -156,8 +156,9 @@ namespace TestingDocumentationTool
             CurrentPanel = PanelResults;
 
             ComboBoxResultSelectTestCase.BeginUpdate();
-            ComboBoxResultSelectTestCase.DataSource = TestPlan.GetTestCases();
+            ComboBoxResultSelectTestCase.DataSource = TestPlan.GetTestCases().ToList();
             ComboBoxResultSelectTestCase.EndUpdate();
+            ComboBoxResultSelectTestCase.Refresh();
 
             TextBoxResultTestPlanFixes.Text = TestPlan.Fixes;
             TextBoxResultTestPlanRegression.Text = TestPlan.Regression;
@@ -247,6 +248,7 @@ namespace TestingDocumentationTool
 
                 string path = Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\..\\..\\template\\report.html");
                 NotifyLoadFile.ShowBalloonTip(100, "HTML Report Available", "Path: " + path, ToolTipIcon.Info);
+                TestPlan.ClearResultsAndDatasets();
             }
         }
 

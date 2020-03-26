@@ -275,6 +275,20 @@ namespace TestingDocumentationTool
             }
         }
 
+        public void ClearResultsAndDatasets()
+        {
+            this.Component_Quantity.Clear();
+            InitDictionary();
+            this.FunctionalNewFeatures = "";
+            this.FunctionalEnhancements = "";
+            this.NonFunctionalNewFeatures = "";
+            this.NonFunctionalEnhancements = "";
+            this.FunctionalNewFeaturesResults = new int[2];
+            this.FunctionalEnhancementsResults = new int[2];
+            this.NonFunctionalNewFeaturesResults = new int[2];
+            this.NonFunctionalEnhancementsResults = new int[2];
+        }
+
     }
 
     public class TestCase
@@ -442,8 +456,9 @@ namespace TestingDocumentationTool
                     App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value = tc.ExpectedBehaviour;
                     App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value = tc.Status;
                     App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value = tc.Result;
+                    App.Worksheets["Test Cases"].Range["M" + row.ToString()].Value = tc.Notes;
 
-                    range = "A" + row.ToString() + ":" + "L" + row.ToString();
+                    range = "A" + row.ToString() + ":" + "M" + row.ToString();
                     selectedCells = App.Worksheets["Test Cases"].Range[range];
                     selectedCells.Borders.Color = Color.LightGray;
                     selectedCells.Borders.Weight = 2;
@@ -454,18 +469,19 @@ namespace TestingDocumentationTool
                 // Passed - Failed
                 App.Worksheets["Charts Data"].Range["A4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
                 App.Worksheets["Charts Data"].Range["B4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
-                App.Worksheets["Charts Data"].Range["C4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
-                App.Worksheets["Charts Data"].Range["D4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
-                App.Worksheets["Charts Data"].Range["E4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
-                App.Worksheets["Charts Data"].Range["F4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
-                App.Worksheets["Charts Data"].Range["G4"].Value = _TestPlan.FunctionalNewFeaturesResults[0];
-                App.Worksheets["Charts Data"].Range["H4"].Value = _TestPlan.FunctionalNewFeaturesResults[1];
+                App.Worksheets["Charts Data"].Range["C4"].Value = _TestPlan.FunctionalEnhancementsResults[0];
+                App.Worksheets["Charts Data"].Range["D4"].Value = _TestPlan.FunctionalEnhancementsResults[1];
+                App.Worksheets["Charts Data"].Range["E4"].Value = _TestPlan.NonFunctionalNewFeaturesResults[0];
+                App.Worksheets["Charts Data"].Range["F4"].Value = _TestPlan.NonFunctionalNewFeaturesResults[1];
+                App.Worksheets["Charts Data"].Range["G4"].Value = _TestPlan.NonFunctionalEnhancementsResults[0];
+                App.Worksheets["Charts Data"].Range["H4"].Value = _TestPlan.NonFunctionalEnhancementsResults[1];
 
                 // General Charts | A == 65, Q == 81.
                 string[] functionalNF = _TestPlan.FunctionalNewFeatures.Split(',');
                 string[] functionalEN = _TestPlan.FunctionalEnhancements.Split(',');
                 string[] nonFunctionalNF = _TestPlan.NonFunctionalNewFeatures.Split(',');
                 string[] nonFunctionalEN = _TestPlan.NonFunctionalEnhancements.Split(',');
+
             
                 for (int i = 65; i < 82; ++i)
                 {
@@ -476,7 +492,8 @@ namespace TestingDocumentationTool
                 }
 
                 App.ActiveWorkbook.Sheets[1].Select();
-                Workbook.Close(true); 
+                Workbook.Close(true);
+                _TestPlan.ClearResultsAndDatasets();
                 App.Quit();
             }
             catch
@@ -494,7 +511,7 @@ namespace TestingDocumentationTool
         private void Clear()
         {
             int row = 2;
-            string range = "A" + row.ToString() + ":" + "L" + row.ToString();
+            string range = "A" + row.ToString() + ":" + "M" + row.ToString();
             _Excel.Range selectedCells = App.Worksheets["Test Cases"].Range[range];
 
             while (App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value != null || selectedCells.Borders.Color.ToString() != "16119285") // 16119285 == Color.LightGray.ToString()
@@ -511,9 +528,9 @@ namespace TestingDocumentationTool
                 App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value = "";
                 App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value = "";
                 App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value = "";
+                App.Worksheets["Test Cases"].Range["M" + row.ToString()].Value = "";
 
-
-                range = "A" + row.ToString() + ":" + "L" + row.ToString();
+                range = "A" + row.ToString() + ":" + "M" + row.ToString();
                 selectedCells = App.Worksheets["Test Cases"].Range[range];
                 selectedCells.Borders.Color = Color.WhiteSmoke;
 
@@ -551,6 +568,7 @@ namespace TestingDocumentationTool
                 tc.ExpectedBehaviour = App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value.ToString();
                 tc.Status = App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value.ToString();
                 tc.Result = App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value.ToString();
+                tc.Notes = App.Worksheets["Test Cases"].Range["M" + row.ToString()].Value.ToString();
 
                 _TestPlan.AddTestCase(new TestCase(tc));
 
