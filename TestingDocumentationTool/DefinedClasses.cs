@@ -60,10 +60,11 @@
 ///     public void TestPlan.RemoveTestCase(int _TestCaseIndex)
 ///     public void TestPlan.BuildDatasets()
 ///     public void TestPlan.BuildResults()
+///     public void TestPlan.ClearResults()
 ///     public TestCase.TestCase()
 ///     public TestCase.TestCase(string _TestArea, string _Type, string _Component, string _ID)
 ///     public TestCase.TestCase(TestCase _OtherTestCase)
-///     public void TestCase.Clean()
+///     public void TestCase.Clear()
 ///     public override string TestCase.ToString()
 ///     public TestCaseTableRow.TestCaseTableRow(TestCase tc)
 ///     public Excel.Excel(string _fileName, NotifyIcon _mainFormNotifyIcon)
@@ -184,7 +185,7 @@ namespace TestingDocumentationTool
                     Component_Quantity[_TestCase.Component][1]++;
                 }
             }
-            else if (_TestCase.TestArea == "Enhancements")
+            else if (_TestCase.TestArea == "Enhancement")
             {
                 if (_TestCase.Type == "Functional")
                 {
@@ -275,10 +276,8 @@ namespace TestingDocumentationTool
             }
         }
 
-        public void ClearResultsAndDatasets()
+        public void ClearResults()
         {
-            this.Component_Quantity.Clear();
-            InitDictionary();
             this.FunctionalNewFeatures = "";
             this.FunctionalEnhancements = "";
             this.NonFunctionalNewFeatures = "";
@@ -358,7 +357,7 @@ namespace TestingDocumentationTool
             this.Notes = _OtherTestCase.Notes;
         }
 
-        public void Clean()
+        public void Clear()
         {
             this.TestArea = "";
             this.Type = "";
@@ -413,6 +412,11 @@ namespace TestingDocumentationTool
 
         public Excel(string _fileName, NotifyIcon _mainFormNotifyIcon)
         {
+            Process[] tasks = Process.GetProcessesByName("EXCEL");
+
+            foreach (var task in tasks)
+                task.Kill();
+
             this.FileName = _fileName;
             this.App = new _Excel.Application();
             this.App.DefaultFilePath = Directory.GetCurrentDirectory() + "\\..\\..\\..\\workbook\\";
@@ -493,7 +497,7 @@ namespace TestingDocumentationTool
 
                 App.ActiveWorkbook.Sheets[1].Select();
                 Workbook.Close(true);
-                _TestPlan.ClearResultsAndDatasets();
+                _TestPlan.ClearResults();
                 App.Quit();
             }
             catch
@@ -543,32 +547,91 @@ namespace TestingDocumentationTool
         public void LoadData(TestPlan _TestPlan)
         {
             // Test Plan General Information
-            _TestPlan.Name = App.Worksheets["Test Plan"].Range["E1"].Value;
-            _TestPlan.Introduction = App.Worksheets["Test Plan"].Range["E5"].Value;
-            _TestPlan.SetupEnvironment = App.Worksheets["Test Plan"].Range["E11"].Value;
-            _TestPlan.Scope = App.Worksheets["Test Plan"].Range["E15"].Value;
-            _TestPlan.Fixes = App.Worksheets["Test Plan"].Range["E19"].Value;
-            _TestPlan.Regression = App.Worksheets["Test Plan"].Range["E23"].Value;
+            if (App.Worksheets["Test Plan"].Range["E1"].Value != null)
+                _TestPlan.Name = App.Worksheets["Test Plan"].Range["E1"].Value.ToString();
+            else
+                _TestPlan.Name = "";
+
+            if (App.Worksheets["Test Plan"].Range["E5"].Value != null)
+                _TestPlan.Introduction = App.Worksheets["Test Plan"].Range["E5"].Value.ToString();
+            else
+                _TestPlan.Introduction = "";
+
+            if (App.Worksheets["Test Plan"].Range["E11"].Value != null)
+                _TestPlan.SetupEnvironment = App.Worksheets["Test Plan"].Range["E11"].Value.ToString();
+            else
+                _TestPlan.SetupEnvironment = "";
+
+            if (App.Worksheets["Test Plan"].Range["E15"].Value != null)
+                _TestPlan.Scope = App.Worksheets["Test Plan"].Range["E15"].Value.ToString();
+            else
+                _TestPlan.Scope = "";
+
+            if (App.Worksheets["Test Plan"].Range["E19"].Value != null)
+                _TestPlan.Fixes = App.Worksheets["Test Plan"].Range["E19"].Value.ToString();
+            else
+                _TestPlan.Fixes = "";
+
+            if (App.Worksheets["Test Plan"].Range["E23"].Value != null)
+                _TestPlan.Regression = App.Worksheets["Test Plan"].Range["E23"].Value.ToString();
+            else
+                _TestPlan.Regression = "";
 
             // Test Cases
             int row = 2;
             TestCase tc = new TestCase();
 
             while (App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value != null)
-            { 
+            {
                 tc.TestArea = App.Worksheets["Test Cases"].Range["A" + row.ToString()].Value.ToString();
                 tc.Component = App.Worksheets["Test Cases"].Range["B" + row.ToString()].Value.ToString();
                 tc.Type = App.Worksheets["Test Cases"].Range["C" + row.ToString()].Value.ToString();
                 tc.ID = App.Worksheets["Test Cases"].Range["D" + row.ToString()].Value.ToString();
-                tc.TestScenario = App.Worksheets["Test Cases"].Range["E" + row.ToString()].Value.ToString();
-                tc.Description = App.Worksheets["Test Cases"].Range["F" + row.ToString()].Value.ToString();
-                tc.Tag = App.Worksheets["Test Cases"].Range["G" + row.ToString()].Value.ToString();
-                tc.PreConditions = App.Worksheets["Test Cases"].Range["H" + row.ToString()].Value.ToString();
-                tc.Steps = App.Worksheets["Test Cases"].Range["I" + row.ToString()].Value.ToString();
-                tc.ExpectedBehaviour = App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value.ToString();
-                tc.Status = App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value.ToString();
-                tc.Result = App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value.ToString();
-                tc.Notes = App.Worksheets["Test Cases"].Range["M" + row.ToString()].Value.ToString();
+
+                if (App.Worksheets["Test Cases"].Range["E" + row.ToString()].Value != null)
+                    tc.TestScenario = App.Worksheets["Test Cases"].Range["E" + row.ToString()].Value.ToString();
+                else
+                    tc.TestScenario = "";
+
+                if (App.Worksheets["Test Cases"].Range["F" + row.ToString()].Value != null)
+                    tc.Description = App.Worksheets["Test Cases"].Range["F" + row.ToString()].Value.ToString();
+                else
+                    tc.Description = "";
+
+                if (App.Worksheets["Test Cases"].Range["G" + row.ToString()].Value != null)
+                    tc.Tag = App.Worksheets["Test Cases"].Range["G" + row.ToString()].Value.ToString();
+                else
+                    tc.Tag = "";
+
+                if (App.Worksheets["Test Cases"].Range["H" + row.ToString()].Value != null)
+                    tc.PreConditions = App.Worksheets["Test Cases"].Range["H" + row.ToString()].Value.ToString();
+                else
+                    tc.PreConditions = "";
+
+                if (App.Worksheets["Test Cases"].Range["I" + row.ToString()].Value != null)
+                    tc.Steps = App.Worksheets["Test Cases"].Range["I" + row.ToString()].Value.ToString();
+                else
+                    tc.Steps = "";
+
+                if (App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value != null)
+                    tc.ExpectedBehaviour = App.Worksheets["Test Cases"].Range["J" + row.ToString()].Value.ToString();
+                else
+                    tc.ExpectedBehaviour = "";
+
+                if (App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value != null)
+                    tc.Status = App.Worksheets["Test Cases"].Range["K" + row.ToString()].Value.ToString();
+                else
+                    tc.Status = "";
+
+                if (App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value != null)
+                    tc.Result = App.Worksheets["Test Cases"].Range["L" + row.ToString()].Value.ToString();
+                else
+                    tc.Result = "";
+
+                if (App.Worksheets["Test Cases"].Range["M" + row.ToString()].Value != null)
+                    tc.Notes = App.Worksheets["Test Cases"].Range["M" + row.ToString()].Value.ToString();
+                else
+                    tc.Notes = "";
 
                 _TestPlan.AddTestCase(new TestCase(tc));
 

@@ -2,10 +2,10 @@
 Chart.defaults.global.defaultFontFamily = '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#292b2c';
 
-dataFunctionalNewFeatures = [0, 0];
-dataFunctionalEnhancements = [0, 0];
-dataNonFunctionalNewFeatures = [0, 0];
-dataNonFunctionalEnhancements = [0, 0];
+dataFunctionalNewFeatures = [0, 2];
+dataFunctionalEnhancements = [1, 0];
+dataNonFunctionalNewFeatures = [0, 1];
+dataNonFunctionalEnhancements = [1, 0];
 
 var customOptions = {
   legend:{

@@ -248,7 +248,7 @@ namespace TestingDocumentationTool
 
                 string path = Path.GetFullPath(Directory.GetCurrentDirectory() + "\\..\\..\\..\\template\\report.html");
                 NotifyLoadFile.ShowBalloonTip(100, "HTML Report Available", "Path: " + path, ToolTipIcon.Info);
-                TestPlan.ClearResultsAndDatasets();
+                TestPlan.ClearResults();
             }
         }
 
