@@ -18,8 +18,6 @@
 ///     System.Boolean MainWindow.AvailableSummary
 ///     
 /// @ functions:
-///     private void MainWindow.ButtonClose_Click(object sender, EventArgs e)
-///     private void MainWindow.ButtonMinimize_Click(object sender, EventArgs e)
 ///     private void MainWindow.buttonLoadFile_Click(object sender, EventArgs e)
 ///     private void MainWindow.ButtonSetupTestPlan_Click(object sender, EventArgs e)
 ///     private void MainWindow.ButtonTestCases_Click(object sender, EventArgs e)
@@ -57,8 +55,6 @@
 ///     public void MainWindow.EditBarChartDatasets()
 ///     private void MainWindow.EditPieChartDatasets()
 ///     public void MainWindow.ButtonColorAnimation(Button button, Color color)
-///     private void MainWindow.ButtonClose_MouseHover(object sender, EventArgs e)
-///     private void MainWindow.ButtonClose_MouseLeave(object sender, EventArgs e)
 /// 
 /// </remarks>
 /// 
@@ -77,7 +73,7 @@ using System.Threading;
 using System.IO;
 
 namespace TestingDocumentationTool
-{   
+{
     public partial class MainWindow : Form
     {
         string AvailableLightMode;
@@ -92,17 +88,6 @@ namespace TestingDocumentationTool
             LabelWindowLightMode.Text = AvailableLightMode;
             TestPlan = new TestPlan();
             AvailableSummary = false;
-        }
-
-        // Window Control Buttons
-        private void ButtonClose_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void ButtonMinimize_Click(object sender, EventArgs e)
-        {
-            WindowState = FormWindowState.Minimized;
         }
 
         // App Functionality Buttons
@@ -229,7 +214,7 @@ namespace TestingDocumentationTool
 
                 // Modify Dataset in chart-bar.js
                 EditBarChartDatasets();
-                
+
                 // Modify Dataset in chart-pie.js
                 EditPieChartDatasets();
 
@@ -263,7 +248,7 @@ namespace TestingDocumentationTool
         {
             Process.Start("https://github.com/snvc00");
         }
-    
+
 
         private void ButtonWModeForeground_Click(object sender, EventArgs e)
         {
@@ -306,7 +291,6 @@ namespace TestingDocumentationTool
             ButtonSummary.ForeColor = Color.White;
             ButtonDownloadXLS.ForeColor = Color.White;
             ButtonGenerateHtmlFile.ForeColor = Color.White;
-            ButtonClose.BackColor = Color.FromArgb(40, 40, 40);
 
             ButtonSetupTestPlan.Image = Image.FromFile("..\\..\\..\\static\\setupDarkMode.png");
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\testDarkMode.png");
@@ -320,8 +304,6 @@ namespace TestingDocumentationTool
                 ButtonGenerateHtmlFile.Image = Image.FromFile("..\\..\\..\\static\\generateHtmlFileDarkMode.png");
             }
 
-            ButtonClose.Image = Image.FromFile("..\\..\\..\\static\\closeWDarkMode.png");
-            ButtonMinimize.Image = Image.FromFile("..\\..\\..\\static\\minimizeDarkMode.png");
             ButtonLinkedIn.Image = Image.FromFile("..\\..\\..\\static\\linkedinDarkMode.png");
             ButtonGitHub.Image = Image.FromFile("..\\..\\..\\static\\githubDarkMode.png");
 
@@ -414,7 +396,6 @@ namespace TestingDocumentationTool
             ButtonSummary.ForeColor = Color.Black;
             ButtonDownloadXLS.ForeColor = Color.Black;
             ButtonGenerateHtmlFile.ForeColor = Color.Black;
-            ButtonClose.BackColor = Color.White;
 
             ButtonSetupTestPlan.Image = Image.FromFile("..\\..\\..\\static\\setup.png");
             ButtonTestCases.Image = Image.FromFile("..\\..\\..\\static\\test.png");
@@ -428,8 +409,6 @@ namespace TestingDocumentationTool
                 ButtonGenerateHtmlFile.Image = Image.FromFile("..\\..\\..\\static\\generateHtmlFile.png");
             }
 
-            ButtonClose.Image = Image.FromFile("..\\..\\..\\static\\closeW.png");
-            ButtonMinimize.Image = Image.FromFile("..\\..\\..\\static\\minimize.png");
             ButtonLinkedIn.Image = Image.FromFile("..\\..\\..\\static\\linkedin.png");
             ButtonGitHub.Image = Image.FromFile("..\\..\\..\\static\\github.png");
 
@@ -603,6 +582,7 @@ namespace TestingDocumentationTool
             ComboBoxSelectTestCase.BeginUpdate();
             ComboBoxSelectTestCase.DataSource = TestPlan.GetTestCases().ToList();
         }
+
         private void ButtonTestCasesDetailedExit_Click(object sender, EventArgs e)
         {
             ButtonColorAnimation(ButtonTestCasesDetailedExit, Color.PaleVioletRed);
@@ -623,10 +603,10 @@ namespace TestingDocumentationTool
                 for (int i = DataGridViewTestCases.Rows.Count; i < TestPlan.GetTestCases().Count; ++i)
                 {
                     tc = TestPlan.GetTestCases()[i];
-                    DataGridViewTestCases.Rows.Add(tc.TestArea, tc.Type, tc.Component, tc.ID, tc.TestScenario, tc.Description,(object)tc.Tag, tc.PreConditions, tc.Steps, tc.ExpectedBehaviour);
+                    DataGridViewTestCases.Rows.Add(tc.TestArea, tc.Type, tc.Component, tc.ID, tc.TestScenario, tc.Description, (object)tc.Tag, tc.PreConditions, tc.Steps, tc.ExpectedBehaviour);
                 }
-                
-            }       
+
+            }
         }
 
         // Test cases detailed view functions
@@ -663,7 +643,7 @@ namespace TestingDocumentationTool
                 ComboBoxSelectTestCase.DataSource = TestPlan.GetTestCases().ToList();
                 ComboBoxSelectTestCase.EndUpdate();
                 ComboBoxSelectTestCase.Refresh();
-                
+
                 CurrentPanel.Refresh();
                 ButtonColorAnimation(ButtonTestCasesDetailedViewRemove, Color.PaleVioletRed);
             }
@@ -709,7 +689,7 @@ namespace TestingDocumentationTool
                 FillDataGridViewTestCases();
                 ButtonColorAnimation(ButtonTestCasesDetailedViewSave, Color.LightGreen);
             }
-            
+
         }
 
         private void ComboBoxResultSelectTestCase_SelectedIndexChanged(object sender, EventArgs e)
@@ -916,22 +896,6 @@ namespace TestingDocumentationTool
             CurrentPanel.Refresh();
             Thread.Sleep(500);
             button.BackColor = lastColor;
-        }
-
-        private void ButtonClose_MouseHover(object sender, EventArgs e)
-        {
-            ButtonClose.BackColor = Color.IndianRed;
-            ButtonClose.Refresh();
-        }
-
-        private void ButtonClose_MouseLeave(object sender, EventArgs e)
-        {
-            if (AvailableLightMode == "DARK MODE")
-                ButtonClose.BackColor = Color.White;
-            else
-                ButtonClose.BackColor = Color.FromArgb(40, 40, 40);
-
-            ButtonClose.Refresh();
         }
     }
 }

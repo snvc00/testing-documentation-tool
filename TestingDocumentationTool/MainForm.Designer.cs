@@ -30,13 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
-            this.ButtonClose = new System.Windows.Forms.Button();
-            this.ButtonMinimize = new System.Windows.Forms.Button();
             this.ButtonTestCases = new System.Windows.Forms.Button();
             this.ButtonSummary = new System.Windows.Forms.Button();
             this.ButtonResults = new System.Windows.Forms.Button();
@@ -125,13 +123,13 @@
             this.ButtonSummaryOk = new System.Windows.Forms.Button();
             this.PictureBoxSummary = new System.Windows.Forms.PictureBox();
             this.PanelReportCreated = new System.Windows.Forms.Panel();
+            this.OpenXlsxReport = new System.Windows.Forms.Button();
             this.LabelPanelHTMLText = new System.Windows.Forms.Label();
             this.PictureBoxPanelHTML = new System.Windows.Forms.PictureBox();
             this.ButtonPanelHTMLOpenInBrowser = new System.Windows.Forms.Button();
             this.ButtonLoadFile = new System.Windows.Forms.Button();
             this.NotifyLoadFile = new System.Windows.Forms.NotifyIcon(this.components);
             this.ToolTipLoadFile = new System.Windows.Forms.ToolTip(this.components);
-            this.OpenXlsxReport = new System.Windows.Forms.Button();
             this.PanelSetupTestPlan.SuspendLayout();
             this.PanelSetupTestPlanContinuation.SuspendLayout();
             this.PanelTestCases.SuspendLayout();
@@ -182,32 +180,6 @@
             this.ButtonLinkedIn.TabIndex = 6;
             this.ButtonLinkedIn.UseVisualStyleBackColor = true;
             this.ButtonLinkedIn.Click += new System.EventHandler(this.ButtonLinkedIn_Click);
-            // 
-            // ButtonClose
-            // 
-            this.ButtonClose.FlatAppearance.BorderSize = 0;
-            this.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonClose.Image = ((System.Drawing.Image)(resources.GetObject("ButtonClose.Image")));
-            this.ButtonClose.Location = new System.Drawing.Point(1183, 0);
-            this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(37, 30);
-            this.ButtonClose.TabIndex = 12;
-            this.ButtonClose.UseVisualStyleBackColor = true;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
-            this.ButtonClose.MouseLeave += new System.EventHandler(this.ButtonClose_MouseLeave);
-            this.ButtonClose.MouseHover += new System.EventHandler(this.ButtonClose_MouseHover);
-            // 
-            // ButtonMinimize
-            // 
-            this.ButtonMinimize.FlatAppearance.BorderSize = 0;
-            this.ButtonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonMinimize.Image = ((System.Drawing.Image)(resources.GetObject("ButtonMinimize.Image")));
-            this.ButtonMinimize.Location = new System.Drawing.Point(1146, -5);
-            this.ButtonMinimize.Name = "ButtonMinimize";
-            this.ButtonMinimize.Size = new System.Drawing.Size(31, 33);
-            this.ButtonMinimize.TabIndex = 14;
-            this.ButtonMinimize.UseVisualStyleBackColor = true;
-            this.ButtonMinimize.Click += new System.EventHandler(this.ButtonMinimize_Click);
             // 
             // ButtonTestCases
             // 
@@ -641,14 +613,14 @@
             // 
             this.DataGridViewTestCases.AllowUserToAddRows = false;
             this.DataGridViewTestCases.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DataGridViewTestCases.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.DataGridViewTestCases.ColumnHeadersHeight = 32;
             this.DataGridViewTestCases.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TestArea,
@@ -661,14 +633,14 @@
             this.PreCondition,
             this.TestSteps,
             this.ExpectedBehavior});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle14.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DataGridViewTestCases.DefaultCellStyle = dataGridViewCellStyle14;
             this.DataGridViewTestCases.Location = new System.Drawing.Point(6, 4);
             this.DataGridViewTestCases.Name = "DataGridViewTestCases";
             this.DataGridViewTestCases.RowHeadersWidth = 90;
@@ -1204,6 +1176,18 @@
             this.PanelReportCreated.TabIndex = 34;
             this.PanelReportCreated.Visible = false;
             // 
+            // OpenXlsxReport
+            // 
+            this.OpenXlsxReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OpenXlsxReport.Location = new System.Drawing.Point(424, 518);
+            this.OpenXlsxReport.Name = "OpenXlsxReport";
+            this.OpenXlsxReport.Size = new System.Drawing.Size(201, 40);
+            this.OpenXlsxReport.TabIndex = 4;
+            this.OpenXlsxReport.Text = "Open Report";
+            this.OpenXlsxReport.UseVisualStyleBackColor = true;
+            this.OpenXlsxReport.Visible = false;
+            this.OpenXlsxReport.Click += new System.EventHandler(this.OpenXlsxReport_Click);
+            // 
             // LabelPanelHTMLText
             // 
             this.LabelPanelHTMLText.AutoSize = true;
@@ -1266,18 +1250,6 @@
             this.ToolTipLoadFile.ToolTipTitle = "Load";
             this.ToolTipLoadFile.UseAnimation = false;
             // 
-            // OpenXlsxReport
-            // 
-            this.OpenXlsxReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OpenXlsxReport.Location = new System.Drawing.Point(424, 518);
-            this.OpenXlsxReport.Name = "OpenXlsxReport";
-            this.OpenXlsxReport.Size = new System.Drawing.Size(201, 40);
-            this.OpenXlsxReport.TabIndex = 4;
-            this.OpenXlsxReport.Text = "Open Report";
-            this.OpenXlsxReport.UseVisualStyleBackColor = true;
-            this.OpenXlsxReport.Visible = false;
-            this.OpenXlsxReport.Click += new System.EventHandler(this.OpenXlsxReport_Click);
-            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 28F);
@@ -1300,15 +1272,14 @@
             this.Controls.Add(this.ButtonSummary);
             this.Controls.Add(this.ButtonResults);
             this.Controls.Add(this.ButtonTestCases);
-            this.Controls.Add(this.ButtonMinimize);
-            this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.ButtonLinkedIn);
             this.Controls.Add(this.LabelAbout);
             this.Controls.Add(this.ButtonSetupTestPlan);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.PanelSetupTestPlan.ResumeLayout(false);
@@ -1337,8 +1308,6 @@
         private System.Windows.Forms.Button ButtonSetupTestPlan;
         private System.Windows.Forms.Label LabelAbout;
         private System.Windows.Forms.Button ButtonLinkedIn;
-        private System.Windows.Forms.Button ButtonClose;
-        private System.Windows.Forms.Button ButtonMinimize;
         private System.Windows.Forms.Button ButtonTestCases;
         private System.Windows.Forms.Button ButtonSummary;
         private System.Windows.Forms.Button ButtonResults;
