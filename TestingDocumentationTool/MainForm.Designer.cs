@@ -35,8 +35,6 @@
             this.ButtonSetupTestPlan = new System.Windows.Forms.Button();
             this.LabelAbout = new System.Windows.Forms.Label();
             this.ButtonLinkedIn = new System.Windows.Forms.Button();
-            this.ButtonClose = new System.Windows.Forms.Button();
-            this.ButtonMinimize = new System.Windows.Forms.Button();
             this.ButtonTestCases = new System.Windows.Forms.Button();
             this.ButtonSummary = new System.Windows.Forms.Button();
             this.ButtonResults = new System.Windows.Forms.Button();
@@ -182,32 +180,6 @@
             this.ButtonLinkedIn.TabIndex = 6;
             this.ButtonLinkedIn.UseVisualStyleBackColor = true;
             this.ButtonLinkedIn.Click += new System.EventHandler(this.ButtonLinkedIn_Click);
-            // 
-            // ButtonClose
-            // 
-            this.ButtonClose.FlatAppearance.BorderSize = 0;
-            this.ButtonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonClose.Image = ((System.Drawing.Image)(resources.GetObject("ButtonClose.Image")));
-            this.ButtonClose.Location = new System.Drawing.Point(1183, 0);
-            this.ButtonClose.Name = "ButtonClose";
-            this.ButtonClose.Size = new System.Drawing.Size(37, 30);
-            this.ButtonClose.TabIndex = 12;
-            this.ButtonClose.UseVisualStyleBackColor = true;
-            this.ButtonClose.Click += new System.EventHandler(this.ButtonClose_Click);
-            this.ButtonClose.MouseLeave += new System.EventHandler(this.ButtonClose_MouseLeave);
-            this.ButtonClose.MouseHover += new System.EventHandler(this.ButtonClose_MouseHover);
-            // 
-            // ButtonMinimize
-            // 
-            this.ButtonMinimize.FlatAppearance.BorderSize = 0;
-            this.ButtonMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonMinimize.Image = ((System.Drawing.Image)(resources.GetObject("ButtonMinimize.Image")));
-            this.ButtonMinimize.Location = new System.Drawing.Point(1146, -5);
-            this.ButtonMinimize.Name = "ButtonMinimize";
-            this.ButtonMinimize.Size = new System.Drawing.Size(31, 33);
-            this.ButtonMinimize.TabIndex = 14;
-            this.ButtonMinimize.UseVisualStyleBackColor = true;
-            this.ButtonMinimize.Click += new System.EventHandler(this.ButtonMinimize_Click);
             // 
             // ButtonTestCases
             // 
@@ -1300,15 +1272,14 @@
             this.Controls.Add(this.ButtonSummary);
             this.Controls.Add(this.ButtonResults);
             this.Controls.Add(this.ButtonTestCases);
-            this.Controls.Add(this.ButtonMinimize);
-            this.Controls.Add(this.ButtonClose);
             this.Controls.Add(this.ButtonLinkedIn);
             this.Controls.Add(this.LabelAbout);
             this.Controls.Add(this.ButtonSetupTestPlan);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
             this.Name = "MainWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.PanelSetupTestPlan.ResumeLayout(false);
@@ -1337,8 +1308,6 @@
         private System.Windows.Forms.Button ButtonSetupTestPlan;
         private System.Windows.Forms.Label LabelAbout;
         private System.Windows.Forms.Button ButtonLinkedIn;
-        private System.Windows.Forms.Button ButtonClose;
-        private System.Windows.Forms.Button ButtonMinimize;
         private System.Windows.Forms.Button ButtonTestCases;
         private System.Windows.Forms.Button ButtonSummary;
         private System.Windows.Forms.Button ButtonResults;
